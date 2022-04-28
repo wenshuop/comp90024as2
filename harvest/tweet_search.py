@@ -41,9 +41,7 @@ def save_tweet(database, tweet, city_id, city_details):
                                  "city_id": city_id,
                                  "city_full_name": city_details["full_name"],
                                  "city_coordinates": city_details["bounding_box"]})
-        print("tweet saved", id)
-    else:
-        print("tweet already exits")
+        # print("tweet saved", id)
 
 # load search start/end time from file "search_start_times.csv"
 def load_search_times(file_name, city):
