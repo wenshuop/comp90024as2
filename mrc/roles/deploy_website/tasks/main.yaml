@@ -30,7 +30,7 @@
     yes
   shell: docker-compose down --rmi local
   args:
-    chdir: /home/ubuntu/COMP90024/comp90024as2/website_bulid
+    chdir: /home/ubuntu/COMP90024/comp90024as2/website_build
 
 
 - name: Start website server
@@ -38,4 +38,4 @@
     yes
   shell: docker-compose up  --build -d
   args:
-    chdir: /home/ubuntu/COMP90024/comp90024as2/website_bulid
+    chdir: /home/ubuntu/COMP90024/comp90024as2/website_build
