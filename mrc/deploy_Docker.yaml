@@ -1,0 +1,13 @@
+- hosts: instances
+  vars_files:
+    - host_vars/nectar.yaml
+  gather_facts: false
+  vars:
+    - ansible_user: ubuntu
+    - ansible_ssh_private_key_file: ~/mrccloud.key
+    - ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+  roles:
+    - role: installDependencies
+    - role: deployMountVolumes
+    - role: docker
+    # - role: wordpress

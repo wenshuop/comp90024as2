@@ -1,0 +1,20 @@
+version: '3.6'
+
+services:
+
+    backend:
+        build: ./backend
+        environment:
+            APP_SERVER_PORT: 8000
+            COUCHDB_HOST: "http://{{ couchdb_user }}:{{ couchdb_pass }}@{{ groups['dbMaster'][0] }}:{{couchdb_port}}"
+        ports:
+            - "8000:8000"
+        command: npm run start
+
+    frontend:
+        build: ./frontend
+        environment:
+            REACT_APP_PORT: 4000
+        ports:
+            - "80:80"
+        stdin_open: true

@@ -1,0 +1,26 @@
+---
+- name: Create Website directory
+  become: yes
+  ansible.builtin.file:
+    path: "{{ wb_dir }}"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    recurse: yes
+    state: directory
+
+- name: Configure compose
+  become: yes
+  ansible.builtin.template:
+    src: docker-compose.yaml.j2
+    dest: "{{ wb_dir }}/docker-compose.yaml"
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+
+- name: Run docker compose
+  become: yes
+  community.docker.docker_compose:
+    project_src: "{{ wb_dir }}"
+    pull: yes
+    state: present
+    remove_orphans: yes
+    recreate: always

@@ -1,0 +1,14 @@
+---
+- hosts: dbServers
+  vars_files:
+    - host_vars/nectar.yaml
+  gather_facts: true
+  roles:
+    - role: install_couchdb
+
+- hosts: dbMaster
+  vars_files:
+    - host_vars/nectar.yaml
+  gather_facts: true
+  roles:
+    - role: setup_couchdb_clusters

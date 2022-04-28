@@ -1,0 +1,7 @@
+- hosts: instance4
+  vars_files:
+    - host_vars/nectar.yaml
+  gather_facts: true
+  roles:
+    # - role: clone-github-rep
+    - role: deploy_website
