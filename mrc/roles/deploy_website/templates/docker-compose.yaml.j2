@@ -1,16 +1,6 @@
 version: '3.6'
 
 services:
-
-    backend:
-        build: ./backend
-        environment:
-            APP_SERVER_PORT: {{ APP_SERVER_PORT }}
-            COUCHDB_HOST: {{ COUCHDB_HOST }}
-        ports:
-            - {{ APP_SERVER_PORT }}:{{ APP_SERVER_PORT }}
-        command: npm run start
-        
     frontend:
         build: ./frontend
         environment:
