@@ -3,5 +3,5 @@
     - host_vars/nectar.yaml
   gather_facts: true
   roles:
-    # - role: clone-github-rep
+    - role: git-pull
     - role: deploy_website
