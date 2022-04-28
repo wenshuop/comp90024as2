@@ -3,7 +3,7 @@ version: '3.6'
 services:
 
     backend:
-        build: /backend
+        build: ./backend
         environment:
             APP_SERVER_PORT: {{ APP_SERVER_PORT }}
             COUCHDB_HOST: {{ COUCHDB_HOST }}
@@ -12,7 +12,7 @@ services:
         command: npm run start
         
     frontend:
-        build: /frontend
+        build: ./frontend
         environment:
             REACT_APP_PORT: {{ REACT_APP_PORT }}
         ports:

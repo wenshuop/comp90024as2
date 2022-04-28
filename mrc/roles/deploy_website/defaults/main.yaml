@@ -5,5 +5,5 @@ APP_SERVER_PORT: "8000"
 REACT_APP_PORT: "4000"
 # Database connection string
 COUCHDB_HOST: "http://admin:admin@{{ groups['dbMaster'][0] }}:{{couchdb_port}}"
-wb_dir: website_build
+
 ansible_user: ubuntu

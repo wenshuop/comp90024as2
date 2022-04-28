@@ -12,14 +12,14 @@
   become: yes
   ansible.builtin.template:
     src: docker-compose.yaml.j2
-    dest: "{{ wb_dir }}/docker-compose.yaml"
+    dest: "/home/ubuntu/COMP90024/comp90024as2/website_build/docker-compose.yaml"
     owner: "{{ ansible_user }}"
     group: "{{ ansible_user }}"
 
 - name: Run docker compose
   become: yes
   community.docker.docker_compose:
-    project_src: "{{ wb_dir }}"
+    project_src: "/home/ubuntu/COMP90024/comp90024as2/website_build/"
     pull: yes
     state: present
     remove_orphans: yes

@@ -1,0 +1,8 @@
+---
+- hosts: instance4
+  gather_facts: true
+  vars_files:
+    - host_vars/nectar.yaml
+#    - host_vars/deploy.yaml
+  roles:
+    - role: deploy_harvest

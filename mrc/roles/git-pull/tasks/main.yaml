@@ -2,7 +2,7 @@
 
 - name: copy github ssh key
   copy:
-    src: git_ssh_key.key
+    src: git_key
     dest: /home/ubuntu/.ssh/git_key
     owner: ubuntu
     group: ubuntu

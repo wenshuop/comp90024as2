@@ -70,7 +70,7 @@ cluster_name: "_cluster_setup"
 couchdb_container_name: "couchdb_"
 couchdb_port: 5984
 
-wb_dir: website_build
+wb_dir: /home/ubuntu/COMP90024
 
 # Wordpress / MySQL
 database_name: wordpress
