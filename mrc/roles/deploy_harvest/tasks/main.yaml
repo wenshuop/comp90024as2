@@ -5,7 +5,7 @@
   shell: docker-compose down --rmi local
   args:
     chdir: /home/ubuntu/COMP90024/comp90024as2/harvest
-#
+
 - name: Start server
   become:
     yes
