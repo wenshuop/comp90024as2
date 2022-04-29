@@ -1,0 +1,704 @@
+[{
+  "id": "01864a8a64df9dc4",
+  "name": "Melbourne",
+  "full_name": "Melbourne, Victoria",
+  "country": "Australia",
+  "country_code": "AU",
+  "url": "https://api.twitter.com/1.1/geo/id/01864a8a64df9dc4.json",
+  "place_type": "city",
+  "attributes": {
+    "geotagCount": "2486"
+  },
+  "bounding_box": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          144.593741856,
+          -38.433859306
+        ],
+        [
+          144.593741856,
+          -37.5112737225
+        ],
+        [
+          145.512528832,
+          -37.5112737225
+        ],
+        [
+          145.512528832,
+          -38.433859306
+        ],
+        [
+          144.593741856,
+          -38.433859306
+        ]
+      ]
+    ]
+  },
+  "centroid": [
+    145.15252629070534,
+    -37.9725599375
+  ],
+  "contained_within": [
+    {
+      "id": "0ec0c4fcacbd0083",
+      "name": "Victoria",
+      "full_name": "Victoria, Australia",
+      "country": "Australia",
+      "country_code": "AU",
+      "url": "https://api.twitter.com/1.1/geo/id/0ec0c4fcacbd0083.json",
+      "place_type": "admin",
+      "attributes": {},
+      "bounding_box": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              140.961681976682,
+              -39.1591895298437
+            ],
+            [
+              140.961681976682,
+              -33.9804255797424
+            ],
+            [
+              149.976679007421,
+              -33.9804255797424
+            ],
+            [
+              149.976679007421,
+              -39.1591895298437
+            ],
+            [
+              140.961681976682,
+              -39.1591895298437
+            ]
+          ]
+        ]
+      },
+      "centroid": [
+        144.54966869581392,
+        -36.558570424292
+      ]
+    }
+  ],
+  "polylines": [],
+  "geometry": null
+},
+{
+  "id": "0073b76548e5984f",
+  "name": "Sydney",
+  "full_name": "Sydney, New South Wales",
+  "country": "Australia",
+  "country_code": "AU",
+  "url": "https://api.twitter.com/1.1/geo/id/0073b76548e5984f.json",
+  "place_type": "city",
+  "attributes": {
+    "geotagCount": "2637"
+  },
+  "bounding_box": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          150.520928608,
+          -34.1183470085
+        ],
+        [
+          150.520928608,
+          -33.578140996
+        ],
+        [
+          151.343020992,
+          -33.578140996
+        ],
+        [
+          151.343020992,
+          -34.1183470085
+        ],
+        [
+          150.520928608,
+          -34.1183470085
+        ]
+      ]
+    ]
+  },
+  "centroid": [
+    150.96870742118324,
+    -33.8482430125
+  ],
+  "contained_within": [
+    {
+      "id": "265b933184e2b88a",
+      "name": "New South Wales",
+      "full_name": "New South Wales, Australia",
+      "country": "Australia",
+      "country_code": "AU",
+      "url": "https://api.twitter.com/1.1/geo/id/265b933184e2b88a.json",
+      "place_type": "admin",
+      "attributes": {},
+      "bounding_box": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              140.999474522999,
+              -37.5050599967256
+            ],
+            [
+              140.999474522999,
+              -28.1570199141289
+            ],
+            [
+              159.109219005872,
+              -28.1570199141289
+            ],
+            [
+              159.109219005872,
+              -37.5050599967256
+            ],
+            [
+              140.999474522999,
+              -37.5050599967256
+            ]
+          ]
+        ]
+      },
+      "centroid": [
+        146.3463422232526,
+        -32.831042971537
+      ]
+    }
+  ],
+  "polylines": [],
+  "geometry": null
+},
+{
+  "id": "004ec16c62325149",
+  "name": "Brisbane",
+  "full_name": "Brisbane, Queensland",
+  "country": "Australia",
+  "country_code": "AU",
+  "url": "https://api.twitter.com/1.1/geo/id/004ec16c62325149.json",
+  "place_type": "city",
+  "attributes": {
+    "geotagCount": "874"
+  },
+  "bounding_box": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          152.668522848,
+          -27.767440994
+        ],
+        [
+          152.668522848,
+          -26.996844991
+        ],
+        [
+          153.31787024,
+          -26.996844991
+        ],
+        [
+          153.31787024,
+          -27.767440994
+        ],
+        [
+          152.668522848,
+          -27.767440994
+        ]
+      ]
+    ]
+  },
+  "centroid": [
+    153.03025743950496,
+    -27.382065033499998
+  ],
+  "contained_within": [
+    {
+      "id": "7e347291be7bbab4",
+      "name": "Queensland",
+      "full_name": "Queensland, Australia",
+      "country": "Australia",
+      "country_code": "AU",
+      "url": "https://api.twitter.com/1.1/geo/id/7e347291be7bbab4.json",
+      "place_type": "admin",
+      "attributes": {},
+      "bounding_box": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              137.99595743193,
+              -29.1778977038344
+            ],
+            [
+              137.99595743193,
+              -9.14217597872764
+            ],
+            [
+              153.552171234046,
+              -9.14217597872764
+            ],
+            [
+              153.552171234046,
+              -29.1778977038344
+            ],
+            [
+              137.99595743193,
+              -29.1778977038344
+            ]
+          ]
+        ]
+      },
+      "centroid": [
+        143.04830564566902,
+        -19.9304730058438
+      ]
+    }
+  ],
+  "polylines": [],
+  "geometry": null
+},
+{
+  "id": "01e8a1a140ccdc5c",
+  "name": "Adelaide",
+  "full_name": "Adelaide, South Australia",
+  "country": "Australia",
+  "country_code": "AU",
+  "url": "https://api.twitter.com/1.1/geo/id/01e8a1a140ccdc5c.json",
+  "place_type": "city",
+  "attributes": {
+    "geotagCount": "485"
+  },
+  "bounding_box": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          138.44212992,
+          -35.348970061
+        ],
+        [
+          138.44212992,
+          -34.652564053
+        ],
+        [
+          138.780189824,
+          -34.652564053
+        ],
+        [
+          138.780189824,
+          -35.348970061
+        ],
+        [
+          138.44212992,
+          -35.348970061
+        ]
+      ]
+    ]
+  },
+  "centroid": [
+    138.5719128375431,
+    -35.00084804075
+  ],
+  "contained_within": [
+    {
+      "id": "4e3c0a60cb10372a",
+      "name": "South Australia",
+      "full_name": "South Australia, Australia",
+      "country": "Australia",
+      "country_code": "AU",
+      "url": "https://api.twitter.com/1.1/geo/id/4e3c0a60cb10372a.json",
+      "place_type": "admin",
+      "attributes": {},
+      "bounding_box": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              129.001336997342,
+              -38.0626029901026
+            ],
+            [
+              129.001336997342,
+              -25.9961464965035
+            ],
+            [
+              141.002955609625,
+              -25.9961464965035
+            ],
+            [
+              141.002955609625,
+              -38.0626029901026
+            ],
+            [
+              129.001336997342,
+              -38.0626029901026
+            ]
+          ]
+        ]
+      },
+      "centroid": [
+        136.94844605821135,
+        -32.028816915235
+      ]
+    }
+  ],
+  "polylines": [],
+  "geometry": null
+},
+{
+  "id": "01e4b0c84959d430",
+  "name": "Canberra",
+  "full_name": "Canberra, Australian Capital Territory",
+  "country": "Australia",
+  "country_code": "AU",
+  "url": "https://api.twitter.com/1.1/geo/id/01e4b0c84959d430.json",
+  "place_type": "city",
+  "attributes": {
+    "geotagCount": "182"
+  },
+  "bounding_box": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          148.9959216,
+          -35.480260417
+        ],
+        [
+          148.9959216,
+          -35.147699163
+        ],
+        [
+          149.263643456,
+          -35.147699163
+        ],
+        [
+          149.263643456,
+          -35.480260417
+        ],
+        [
+          148.9959216,
+          -35.480260417
+        ]
+      ]
+    ]
+  },
+  "centroid": [
+    149.16238424017655,
+    -35.314292736
+  ],
+  "contained_within": [
+    {
+      "id": "066b94a60af1c21d",
+      "name": "Australian Capital Territory",
+      "full_name": "Australian Capital Territory, Australia",
+      "country": "Australia",
+      "country_code": "AU",
+      "url": "https://api.twitter.com/1.1/geo/id/066b94a60af1c21d.json",
+      "place_type": "admin",
+      "attributes": {},
+      "bounding_box": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              148.76267481475,
+              -35.9207622144096
+            ],
+            [
+              148.76267481475,
+              -35.1245172749714
+            ],
+            [
+              149.399287194177,
+              -35.1245172749714
+            ],
+            [
+              149.399287194177,
+              -35.9207622144096
+            ],
+            [
+              148.76267481475,
+              -35.9207622144096
+            ]
+          ]
+        ]
+      },
+      "centroid": [
+        148.95634246007643,
+        -35.5224134508296
+      ]
+    }
+  ],
+  "polylines": [],
+  "geometry": null
+},
+{
+  "id": "002891d33ed032d3",
+  "name": "Darwin",
+  "full_name": "Darwin, Northern Territory",
+  "country": "Australia",
+  "country_code": "AU",
+  "url": "https://api.twitter.com/1.1/geo/id/002891d33ed032d3.json",
+  "place_type": "city",
+  "attributes": {
+    "geotagCount": "64"
+  },
+  "bounding_box": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          130.815116992,
+          -12.521741584
+        ],
+        [
+          130.815116992,
+          -12.330059717
+        ],
+        [
+          131.05149984,
+          -12.330059717
+        ],
+        [
+          131.05149984,
+          -12.521741584
+        ],
+        [
+          130.815116992,
+          -12.521741584
+        ]
+      ]
+    ]
+  },
+  "centroid": [
+    130.92393371242872,
+    -12.42595179375
+  ],
+  "contained_within": [
+    {
+      "id": "06883f205e78b159",
+      "name": "Northern Territory",
+      "full_name": "Northern Territory, Australia",
+      "country": "Australia",
+      "country_code": "AU",
+      "url": "https://api.twitter.com/1.1/geo/id/06883f205e78b159.json",
+      "place_type": "admin",
+      "attributes": {},
+      "bounding_box": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              129.00043972181,
+              -25.9994823328982
+            ],
+            [
+              129.00043972181,
+              -10.9659142638934
+            ],
+            [
+              138.001197860428,
+              -10.9659142638934
+            ],
+            [
+              138.001197860428,
+              -25.9994823328982
+            ],
+            [
+              129.00043972181,
+              -25.9994823328982
+            ]
+          ]
+        ]
+      },
+      "centroid": [
+        133.50085439396656,
+        -18.52860695183675
+      ]
+    }
+  ],
+  "polylines": [],
+  "geometry": null
+},
+{
+  "id": "0118c71c0ed41109",
+  "name": "Perth (WA)",
+  "full_name": "Perth, Western Australia",
+  "country": "Australia",
+  "country_code": "AU",
+  "url": "https://api.twitter.com/1.1/geo/id/0118c71c0ed41109.json",
+  "place_type": "city",
+  "attributes": {
+    "geotagCount": "708"
+  },
+  "bounding_box": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          115.617614368,
+          -32.675715325
+        ],
+        [
+          115.617614368,
+          -31.6244855145
+        ],
+        [
+          116.239023008,
+          -31.6244855145
+        ],
+        [
+          116.239023008,
+          -32.675715325
+        ],
+        [
+          115.617614368,
+          -32.675715325
+        ]
+      ]
+    ]
+  },
+  "centroid": [
+    115.83018576955499,
+    -31.83938873875
+  ],
+  "contained_within": [
+    {
+      "id": "1b66f15d4efa136f",
+      "name": "Western Australia",
+      "full_name": "Western Australia, Australia",
+      "country": "Australia",
+      "country_code": "AU",
+      "url": "https://api.twitter.com/1.1/geo/id/1b66f15d4efa136f.json",
+      "place_type": "admin",
+      "attributes": {},
+      "bounding_box": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              112.921113954128,
+              -35.1348464327536
+            ],
+            [
+              112.921113954128,
+              -13.6894920283571
+            ],
+            [
+              129.00193001566,
+              -13.6894920283571
+            ],
+            [
+              129.00193001566,
+              -35.1348464327536
+            ],
+            [
+              112.921113954128,
+              -35.1348464327536
+            ]
+          ]
+        ]
+      },
+      "centroid": [
+        121.20191643643977,
+        -24.437885457483198
+      ]
+    }
+  ],
+  "polylines": [],
+  "geometry": null
+},
+{
+  "id": "019e32e73d7d3282",
+  "name": "Hobart",
+  "full_name": "Hobart, Tasmania",
+  "country": "Australia",
+  "country_code": "AU",
+  "url": "https://api.twitter.com/1.1/geo/id/019e32e73d7d3282.json",
+  "place_type": "city",
+  "attributes": {
+    "geotagCount": "56"
+  },
+  "bounding_box": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          147.133660416,
+          -43.014122643
+        ],
+        [
+          147.133660416,
+          -42.655375527
+        ],
+        [
+          147.613383232,
+          -42.655375527
+        ],
+        [
+          147.613383232,
+          -43.014122643
+        ],
+        [
+          147.133660416,
+          -43.014122643
+        ]
+      ]
+    ]
+  },
+  "centroid": [
+    147.2256666204912,
+    -42.7063270245
+  ],
+  "contained_within": [
+    {
+      "id": "190244466eab0860",
+      "name": "Tasmania",
+      "full_name": "Tasmania, Australia",
+      "country": "Australia",
+      "country_code": "AU",
+      "url": "https://api.twitter.com/1.1/geo/id/190244466eab0860.json",
+      "place_type": "admin",
+      "attributes": {},
+      "bounding_box": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              143.818922731609,
+              -43.7405096002224
+            ],
+            [
+              143.818922731609,
+              -39.2036616587427
+            ],
+            [
+              148.498673596735,
+              -39.2036616587427
+            ],
+            [
+              148.498673596735,
+              -43.7405096002224
+            ],
+            [
+              143.818922731609,
+              -43.7405096002224
+            ]
+          ]
+        ]
+      },
+      "centroid": [
+        146.67241266057914,
+        -42.1423596726934
+      ]
+    }
+  ],
+  "polylines": [],
+  "geometry": null
+}]

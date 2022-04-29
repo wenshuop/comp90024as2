@@ -6,4 +6,4 @@
 #    - host_vars/deploy.yaml
   roles:
    - role: git-pull
-   - role: deploy_harvest
+   - role: deploy_harvest_search

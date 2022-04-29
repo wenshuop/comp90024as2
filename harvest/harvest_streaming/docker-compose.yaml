@@ -3,4 +3,4 @@ services:
   harvest:
     build: ./
     volumes:
-      - .:/usr/src/
+      - .:/usr/src/harvest_streaming
