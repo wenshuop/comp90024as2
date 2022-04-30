@@ -1,9 +1,0 @@
-version: '3'
-
-services:
-    website:
-        build: ./
-        ports:
-            - "80:5000"
-        volumes:
-            - .:/usr/website
