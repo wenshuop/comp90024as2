@@ -23,7 +23,7 @@ def index():  # put application's code here
 if __name__ == '__main__':
     app.config.update(
         DEBUG=True,
-        COUCHDB_SERVER='http://admin:123456@localhost:5984/',
+        COUCHDB_SERVER='http://admin:admin@172.26.128.22:5984/',
         COUCHDB_DATABASE='demo'
     )
     # set up couchdb
