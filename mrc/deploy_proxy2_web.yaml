@@ -1,0 +1,8 @@
+---
+- hosts: instance4
+  gather_facts: true
+  vars_files:
+    - host_vars/nectar.yaml
+  roles:
+   - role: proxy_setUp
+   - role: deploy_proxy2_docker
