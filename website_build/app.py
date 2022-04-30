@@ -31,4 +31,4 @@ if __name__ == '__main__':
     manager.setup(app)
     # Install the view
     manager.add_viewdef(active_users_view)
-    app.run(host='0.0.0.0', port=8090)
+    app.run(host='0.0.0.0', port=5000)
