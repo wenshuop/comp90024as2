@@ -1,0 +1,6 @@
+version: '3'
+services:
+  harvest:
+    build: ./
+    volumes:
+      - .:/usr/src/classifier

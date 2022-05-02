@@ -10,7 +10,7 @@ from nltk.stem import WordNetLemmatizer
 from nltk.tag import pos_tag
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from textblob import TextBlob
-# nltk.download(['wordnet', 'omw-1.4', 'averaged_perceptron_tagger', 'stopwords', 'punkt', 'vader_lexicon'])
+nltk.download(['wordnet', 'omw-1.4', 'averaged_perceptron_tagger', 'stopwords', 'punkt', 'vader_lexicon'])
 
 
 # a TweetProcessor class to process raw tweet,
