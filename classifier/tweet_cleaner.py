@@ -63,7 +63,24 @@ if __name__ == '__main__':
     city_lst = ['Adelaide', 'Brisbane', 'Canberra', 'Darwin', 'Hobart', 'Melbourne', 'Perth (WA)', 'Sydney']
 
     view = 'tweet_stats/count_city_month'
-    for year, month in date_lst:
+    # for year, month in date_lst:
+    #     for city in city_lst:
+    #         cleaner.set_new_db(city.lower().replace(' ', ''))
+    #         cleaner.clean_tweets(view, city, year, month)
+
+    # 2021-01 remaining last two cities
+    for city in ['Perth (WA)', 'Sydney']:
+        cleaner.set_new_db(city.lower().replace(' ', ''))
+        cleaner.clean_tweets(view, city, 2021, 1)
+
+    # for city in city list, year 2021, month from 02-12
+    for month in list(range(2, 13)):
         for city in city_lst:
-            cleaner.set_new_db(city.lower())
-            cleaner.clean_tweets(view, city, year, month)
+            cleaner.set_new_db(city.lower().replace(' ', ''))
+            cleaner.clean_tweets(view, city, 2021, month)
+
+    # for city in city list, year 2022, month from 01-04
+    for month in list(range(1, 5)):
+        for city in city_lst:
+            cleaner.set_new_db(city.lower().replace(' ', ''))
+            cleaner.clean_tweets(view, city, 2022, month)
