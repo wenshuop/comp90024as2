@@ -1,4 +1,5 @@
 import couchdb
+import sys
 from sentiment_classifier import TweetProcessor
 
 # clean and process the raw tweet from a database and store the cleaned data into new database
@@ -17,7 +18,8 @@ class TweetCleaner:
         if db in self.server:
             return self.server[db]
         else:
-            print('the database {} does not exit'.format(db))
+            sys.stdout.write('the database {} does not exit\n'.format(db))
+            # print('the database {} does not exit'.format(db))
             return None
 
     # get specified database, or create a new database if not exit
@@ -32,18 +34,22 @@ class TweetCleaner:
         end_date = str(year) + '-' + '{0:02d}'.format(month+1)
         view = self.db.view(view, group=True, group_level=3,
                             start_key=[city, start_date], end_key=[city, end_date])
-        print('the total number of raw tweets retrieved is {}'.format(len(view)))
+        sys.stdout.write('the total number of raw tweets retrieved is {}\n'.format(len(view)))
+        # print('the total number of raw tweets retrieved is {}'.format(len(view)))
         id_lst = [item.key[2] for item in view]
         return id_lst
 
     def clean_tweets(self, view, city, year, month):
-        print('Process and clean tweets located at {} Y {} M {}.'.format(city, year, month))
+        sys.stdout.write('Process and clean tweets located at {} Y {} M {}.\n'.format(city, year, month))
+        # print('Process and clean tweets located at {} Y {} M {}.'.format(city, year, month))
         id_lst = self.get_tweets_id(view, city, year, month)
         for id in id_lst:
             tweet = dict(self.db[id])
             tweet_new = self.processor.process(tweet)
-            self.newdb.save(tweet_new)
-        print('Process tweets finished.')
+            if tweet_new['_id'] not in self.newdb:
+                self.newdb.save(tweet_new)
+        sys.stdout.write('Process tweets finished.\n')
+        # print('Process tweets finished.')
 
 
 if __name__ == '__main__':
