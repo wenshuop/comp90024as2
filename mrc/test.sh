@@ -9,4 +9,4 @@ export size=${#nodes[@]}
 export user=admin
 export pass=admin
 echo "--------"
-for node in "${nodes[@]}"; do  curl -X GET "http://${user}:${pass}@${node}:5984/_all_dbs"; done
+curl -H 'Content-Type: application/json' -X DELETE 'http://admin:admin@172.26.128.22:5984/melbourne/database_id?_rev'

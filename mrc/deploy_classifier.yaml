@@ -1,9 +1,9 @@
 ---
-- hosts: instance3
+- hosts: instance2
   gather_facts: true
   vars_files:
     - host_vars/nectar.yaml
 #    - host_vars/deploy.yaml
   roles:
-   - role: git-pull
-   - role: deploy_classifier
+    # - role: git-pull
+    - role: deploy_classifier
