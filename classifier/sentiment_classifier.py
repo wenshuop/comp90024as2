@@ -10,8 +10,7 @@ from nltk.stem import WordNetLemmatizer
 from nltk.tag import pos_tag
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from textblob import TextBlob
-nltk.download(['wordnet', 'omw-1.4', 'averaged_perceptron_tagger', 'stopwords', 'punkt', 'vader_lexicon'])
-
+# nltk.download(['wordnet', 'omw-1.4', 'averaged_perceptron_tagger', 'stopwords', 'punkt', 'vader_lexicon'])
 
 # a TweetProcessor class to process raw tweet,
 # do tokenization/normalization on tweet text, sentiment/subjectivity analysis, and analyse whether covid-related
@@ -33,9 +32,6 @@ class TweetProcessor:
 
     # do sentiment analysis, subjectivity analysis, covid-related and text normalization
     def process(self, tweet):
-        # remove attribute '_rev', and attribute 'city_coordinates'
-        tweet.pop('_rev', None)
-        tweet.pop('city_coordinates', None)
         tweet['text'] = re.sub(r'\s+', ' ', tweet['text'])               # remove newline/tab characters to whitespace
         tweet['text'] = re.sub(r'https?:\/\/\S*', '', tweet['text'])     # remove urls
         tweet['text'] = re.sub(r'@[^\s]+', '', tweet['text'])            # remove mentions @mention
