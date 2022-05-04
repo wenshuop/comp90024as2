@@ -6,9 +6,10 @@
 
 .banner_container {
     position: relative;
-    margin: 50px;
-    width: 400px;
-    height: 250px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 860px;
+    height: 500px;
     /* 超出隐藏 */
     overflow: hidden;  
 }
@@ -18,7 +19,7 @@ ul.img_box {
     left: 0;
     top: 0;
     /* html中的第一张图片不是我们想要显示，第二张才是我们轮播图的第一张图片因此要让这排图片往左移动一张图片的距离 */
-    transform: translateX(-400px);
+    transform: translateX(-860px);
 }
 
 .img_box li {
@@ -28,7 +29,7 @@ ul.img_box {
 
 /* 图片大小 */
 .img_box li img {
-    width: 400px;
+    width: 860px;
 }
 
 /* 小圆点 */
@@ -69,7 +70,7 @@ ul.img_box {
 .right_btn {
     position: absolute;
     top: 50%;
-    left: 94%;
+    left: 97.1%;
     transform: translateY(-50%);
     width: 25px;
     height: 30px;

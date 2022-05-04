@@ -40,8 +40,8 @@ app = Flask(__name__)
 # myQuery = [docType].query(db, map_func, reduce_fun=None)
 
 
-@app.route('/')
-def index():  # put application's code here
+#@app.route('/')
+#def index():  # put application's code here
     # return 'Hello World!'
     # pie = model.Pie.query.all()
     # pies = []
@@ -55,12 +55,12 @@ def index():  # put application's code here
     #for row in active_users_view():
         #docs.append({'name': row.key, 'value': row.value})
     # return render_template('route_one.html', docs=json.dumps(docs))
-    return render_template('index.html')
+    #return render_template('layout.html')
 
     
-@app.route('/layout')
+@app.route('/')
 def layout():  # put application's code here
-    return render_template('layout.html')
+    return render_template('homepage.html')
 
 
 

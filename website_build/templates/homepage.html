@@ -1,0 +1,48 @@
+﻿{% extends "layout.html" %}
+
+
+{% block right %}
+	<!-- Banner -->
+         <section id="banner" style="padding: 0em;">
+            <div class="content">
+                <header>
+                    <center>
+                        <div class="banner_container">
+                            <!-- 6张图片 -->
+                    
+                            <ul class="img_box">
+                                <li><img src="{{ url_for('static',filename='images/demo1.jpeg') }}"alt=""></li>  
+                                <li><img src="{{ url_for('static',filename='images/demo2.jpeg') }}"alt=""></li> 
+                                <li><img src="{{ url_for('static',filename='images/pic13.jpg') }}" alt=""></li>
+                                <li><img src="{{ url_for('static',filename='images/melbourne.jpeg') }}" alt=""></li> 
+                                <li><img src="{{ url_for('static',filename='images/demo1.jpeg') }}" alt=""></li>
+                                <li><img src="{{ url_for('static',filename='images/demo2.jpeg') }}" alt=""></li> 
+                        
+                            </ul> 
+                    
+                        <!-- 中间圆点 -->
+                        <ul class="sel_box">
+                            <!-- 自定义属性 -->
+                            <li data-index="0"></li>
+                            <li data-index="1"></li>
+                            <li data-index="2"></li>
+                            <li data-index="3"></li>
+                        </ul>
+                    
+                        <!-- 左箭头 -->
+                        <div class="left_btn"> &lt; </div>
+                        <!-- 右箭头 -->
+                        <div class="right_btn"> &gt; </div>
+                    </div>
+                    </center>       
+                                    </header>
+                                    <p>In recent years, the Covid-19 has been common everywhere. Health is an important indicator in considering the livability of the city of Melbourne. This website discusses health indicator in terms of Covid-19.</p>
+                                    <ul class="actions">
+                                        <li><a href="#" class="button big">Learn More</a></li>
+                                    </ul>
+                                </div>
+                                
+                                
+                            </section>
+<!-- 这是一个注释 -->
+{% endblock %}
