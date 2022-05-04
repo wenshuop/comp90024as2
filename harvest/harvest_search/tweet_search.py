@@ -4,6 +4,7 @@ import couchdb
 import pandas as pd
 from collections import defaultdict
 from datetime import datetime, timedelta
+from classifier.sentiment_classifier import TweetProcessor
 
 # read the city information from file "australia_cities.json"
 def load_cities(file_name):
@@ -25,23 +26,11 @@ def load_cities(file_name):
         return cities
 
 # get a database if exits, or create a new database if not exits
-def find_or_create_db(server, db_name):
-    if db_name in server:
-        return server[db_name]
+def find_or_create_db(server, db):
+    if db in server:
+        return server[db]
     else:
-        return server.create(db_name)
-
-# save each tweet into the database
-def save_tweet(database, tweet, city_id, city_details):
-    if str(tweet.id) not in database:
-        id, rev = database.save({"_id": str(tweet.id),
-                                 "created_at": str(tweet.created_at),
-                                 "text": tweet.text,
-                                 "city_name": city_details['name'],
-                                 "city_id": city_id,
-                                 "city_full_name": city_details["full_name"],
-                                 "city_coordinates": city_details["bounding_box"]})
-        # print("tweet saved", id)
+        return server.create(db)
 
 # load search start/end time from file "search_start_times.csv"
 def load_search_times(file_name, city):
@@ -71,13 +60,15 @@ if __name__ == '__main__':
     bearer_token = "AAAAAAAAAAAAAAAAAAAAAOXibwEAAAAAaCPX7W8EsUIUh1jXeGE2OboACuI%3DXJ9BoTzhi2OXh7C3J7AUoEATEjnqhUkgtjeLO4WBRDn0ce1w8Y"
     client = tweepy.Client(bearer_token, wait_on_rate_limit=True)
     server = couchdb.Server('http://admin:admin@172.26.128.22:5984//')
-    database = find_or_create_db(server, 'twitter')
+    tweet_processor = TweetProcessor()
 
     # iteratively harvest tweets through cities by month
     cities = load_cities("australia_cities.json")
     break_loop = False
     while True:
         for city_id, city_details in cities.items():
+            # find the corresponding city database
+            db = find_or_create_db(server, city_details['name'].lower().replace(' ', ''))
             query = "lang:en place:" + city_id
             # load search time from "search_start_times.csv"
             start_time, end_time = load_search_times("search_start_times.csv", city_details['name'])
@@ -92,7 +83,17 @@ if __name__ == '__main__':
                 raise RuntimeError(resp.errors)
             if resp.data:
                 for tweet in resp.data:
-                    save_tweet(database, tweet, city_id, city_details)
+                    # clean/process tweet and save to the corresponding city database
+                    tweet = {'_id': str(tweet.id),
+                             'created_at': str(tweet.created_at),
+                             'text': tweet.text,
+                             'city_name': city_details['name'],
+                             'city_id': city_id,
+                             'city_full_name': city_details['full_name']
+                             }
+                    tweet = tweet_processor.process(tweet)
+                    if tweet['_id'] not in db:
+                        db.save(tweet)
 
             while 'next_token' in resp.meta:
                 resp = client.search_all_tweets(query, tweet_fields=["created_at", "geo"], max_results=500,
@@ -102,7 +103,17 @@ if __name__ == '__main__':
                     raise RuntimeError(resp.errors)
                 if resp.data:
                     for tweet in resp.data:
-                        save_tweet(database, tweet, city_id, city_details)
+                        # clean/process tweet and save to the corresponding city database
+                        tweet = {'_id': str(tweet.id),
+                                 'created_at': str(tweet.created_at),
+                                 'text': tweet.text,
+                                 'city_name': city_details['name'],
+                                 'city_id': city_id,
+                                 'city_full_name': city_details['full_name']
+                                 }
+                        tweet = tweet_processor.process(tweet)
+                        if tweet['_id'] not in db:
+                            db.save(tweet)
 
             # update the search time for this city in "search_start_times.csv"
             update_search_times("search_start_times.csv", city_details['name'], start_time)
