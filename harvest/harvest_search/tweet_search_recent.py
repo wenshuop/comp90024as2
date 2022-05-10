@@ -42,7 +42,7 @@ if __name__ == '__main__':
     # iteratively harvest recent tweets through cities, specify start_time and end_time
     cities = load_cities("australia_cities.json")
     end_time = datetime.now() - timedelta(days=1)
-    start_time = end_time - timedelta(days=10)
+    start_time = end_time - timedelta(days=30)
 
     for city_id, city_details in cities.items():
         # find the corresponding city database

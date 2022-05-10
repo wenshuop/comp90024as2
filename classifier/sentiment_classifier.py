@@ -1,6 +1,5 @@
 import os.path
 import re
-import emoji
 import string
 import nltk
 from collections import defaultdict
@@ -21,6 +20,26 @@ class TweetProcessor:
         self.lemmatizer = WordNetLemmatizer()
         self.stopwords = nltk.corpus.stopwords.words('english') + list(string.punctuation)
         self.covid_keywords = self.load_covid_keywords()
+        self.emoji_pattern = re.compile("["
+                                        u"\U0001F600-\U0001F64F"  # emoticons
+                                        u"\U0001F300-\U0001F5FF"  # symbols & pictographs
+                                        u"\U0001F680-\U0001F6FF"  # transport & map symbols
+                                        u"\U0001F1E0-\U0001F1FF"  # flags (iOS)
+                                        u"\U00002500-\U00002BEF"  # chinese char
+                                        u"\U00002702-\U000027B0"
+                                        u"\U00002702-\U000027B0"
+                                        u"\U000024C2-\U0001F251"
+                                        u"\U0001f926-\U0001f937"
+                                        u"\U00010000-\U0010ffff"
+                                        u"\u2640-\u2642"
+                                        u"\u2600-\u2B55"
+                                        u"\u200d"
+                                        u"\u23cf"
+                                        u"\u23e9"
+                                        u"\u231a"
+                                        u"\ufe0f"  # dingbats
+                                        u"\u3030"
+                                        "]+", flags=re.UNICODE)
 
     def load_covid_keywords(self):
         file_path = os.path.dirname(__file__) + '/covid_keywords.txt'
@@ -39,14 +58,13 @@ class TweetProcessor:
         # analyse sentiment with NLTK Vader
         # (vader does not require much preprocessing, it can understand emojis, punctuation and capital case)
         tweet = self.sentiment_classify(tweet)
-
         # subjectivity classification with Textblob
-        # textblob does not understand emojis, so convert emoji to textual data first
-        tweet['text'] = emoji.demojize(tweet['text'], delimiters=(' ', ' '))
         tweet = self.subjectivity_classify(tweet)
 
+        tweet['text'] = tweet['text'].lower()                            # lowercase
+        tweet['text'] = self.emoji_pattern.sub(r' ', tweet['text'])      # remove emojis
+
         # check if the tweet is covid-related
-        tweet['text'] = tweet['text'].lower()     # lowercase
         tweet = self.is_covid_related(tweet)
 
         # tokenize and normalize text
@@ -93,7 +111,7 @@ class TweetProcessor:
         text = tweet['text']
         # tokenize
         tokens = self.tokenizer.tokenize(text)
-        # remove the hashtag symbol '#'
+        # keep hashtag but remove the start_with symbol '#'
         for i in range(len(tokens)):
             if tokens[i].startswith('#'):
                 tokens[i] = tokens[i][1:]
