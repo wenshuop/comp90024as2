@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+<head>
+    <title>{% block title %} Economy of Melbourne {% endblock %}</title>
+</head>>
+
+{% block right %}
+    <!-- Header -->
+    <header id="header">
+        <h1> Melbourne: Housing </h1> 
+    </header>
+    <center>
+            <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px; padding-top:3%" id="house">
+            </div>
+            <p>
+              写这里！！
+            </p>
+    </center>
+<!-- 这是一个注释 -->
+{% endblock %}
+
+{% block echarts_js %}
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var house = echarts.init(document.getElementById('house'));
+        // 指定图表的配置项和数据
+        var ecoSecondOption = {
+            title: {
+              text: 'Housing Prices in Cities',
+              left: 'center'
+            },
+            legend: {
+              orient: 'vertical',
+              right: 0
+            },
+            tooltip: {},
+            dataset: {
+              source: {{house_source |safe}}
+            },
+            xAxis: { type: 'category' },
+            yAxis: {},
+            // Declare several bar series, each will be mapped
+            // to a column of dataset.source by default.
+            series: [{ type: 'bar' }, { type: 'bar' }]
+          };
+
+        house.setOption(ecoSecondOption);
+        
+
+
+
+</script>
+{% endblock %}

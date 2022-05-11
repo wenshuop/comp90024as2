@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+<head>
+    <title>{% block title %} Economy of Melbourne {% endblock %}</title>
+</head>>
+
+{% block right %}
+    <!-- Header -->
+    <header id="header">
+        <h1> Melbourne: Enterprise </h1> 
+    </header>
+    <center>
+            <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;" id="enterprise">
+            </div>
+    </center>
+<!-- 这是一个注释 -->
+{% endblock %}
+
+{% block echarts_js %}
+    <script type="text/javascript">
+            // 基于准备好的dom，初始化echarts实例
+            var enterprise = echarts.init(document.getElementById('enterprise'));
+            
+            // 指定图表的配置项和数据
+            var ecoFirstOption = {
+                title: {
+                  text: 'Situation of Enterprise in Cities',
+                  left: 'center'
+                },
+                legend: {
+                  orient: 'vertical',
+                  right: 0
+                },
+                tooltip: {},
+                dataset: {
+                  source: {{ source | safe}}
+                  
+                },
+                xAxis: { type: 'category' },
+                yAxis: {},
+                // Declare several bar series, each will be mapped
+                // to a column of dataset.source by default.
+                series: [{type: 'bar'}, {type: 'bar'}, {type: 'bar'}, {type: 'bar'}]
+              };
+            enterprise.setOption(ecoFirstOption);
+
+
+</script>
+{% endblock %}

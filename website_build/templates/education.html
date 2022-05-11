@@ -1,0 +1,312 @@
+{% extends "layout.html" %}
+<head>
+    <title>{% block title %} Education of Melbourne {% endblock %}</title>
+</head>>
+
+{% block right %}
+    <!-- Header -->
+    <header id="header">
+        <h1> Melbourne: Education </h1> 
+    </header>
+    <center>
+            <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px; padding-top:3%" id="eduStatus">
+            </div>
+            <p>
+              写这里！！
+            </p>
+            <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px; padding-top:1%" id="highestEducation">
+            </div>
+            <p>
+              写这里！！
+            </p>
+    </center>
+{% endblock %}
+
+{% block echarts_js %}
+    <script type="text/javascript">
+var eduStatus = echarts.init(document.getElementById('eduStatus'));
+const dataMel = [
+ {{source.Melbourne |safe}}
+];
+
+const dataDar = [
+{{source.Darwin |safe}}
+
+];
+const dataHob = [
+{{source.Hobart |safe}}
+
+];
+const dataPer = [
+{{source.Perth |safe}}
+
+];
+const dataSyd = [
+{{source.Sydney |safe}}
+
+];
+const dataAde = [
+{{source.Adelaide |safe}}
+
+];
+const dataBri = [
+{{source.Brisbane |safe}}
+
+];
+const lineStyle = {
+  width: 1,
+  opacity: 0.5
+};
+eduFirstOption = {
+  backgroundColor: '#FFFAF0',
+  title: {
+    text: 'Educational Status in Cities',
+    left: 'center',
+    textStyle: {
+      color: '#000000'
+    }
+  },
+  legend: {
+    bottom: 5,
+    data: ['Melbourne', 'Sydney', 'Brisbane', 'Adelaide',  'Darwin', 'Perth', 'Hobart'],
+    itemGap: 20,
+    textStyle: {
+      color: '#B0E0E6',
+      fontSize: 14
+    },
+    selectedMode: 'single'
+  },
+  radar: {
+    indicator: [
+
+      { name: 'Preschool', max: 10 },
+      { name: 'Secondary', max: 50 },
+      { name: 'Technical or Further Educational', max: 20 },
+      { name: 'University or other Tertiary', max: 60 },
+      { name: 'Oversea Visitor', max: 50 },
+      { name: 'Other Type', max: 10 }
+    ],
+    shape: 'circle',
+    splitNumber: 5,
+    axisName: {
+      color: '#00FF00'
+    },
+    splitLine: {
+      lineStyle: {
+        color: [
+          '#873324',
+          '#873324',
+          '#873324',
+          '#873324',
+          '#873324',
+          '#873324'
+
+        ].reverse()
+      }
+    },
+    splitArea: {
+      show: false
+    },
+    axisLine: {
+      lineStyle: {
+        color: '#000000'
+      }
+    }
+  },
+  series: [
+    {
+      name: 'Melbourne',
+      type: 'radar',
+      lineStyle: lineStyle,
+      data: dataMel,
+      symbol: 'none',
+      itemStyle: {
+        color: '#000000'
+      },
+      areaStyle: {
+        opacity: 0.1
+      }
+    },
+    {
+      name: 'Sydney',
+      type: 'radar',
+      lineStyle: lineStyle,
+      data: dataSyd,
+      symbol: 'none',
+      itemStyle: {
+        color: '#000000'
+      },
+      areaStyle: {
+        opacity: 0.05
+      }
+    },
+    {
+      name: 'Brisbane',
+      type: 'radar',
+      lineStyle: lineStyle,
+      data: dataBri,
+      symbol: 'none',
+      itemStyle: {
+        color: '#000000'
+      },
+      areaStyle: {
+        opacity: 0.05
+      }
+    },
+    {
+      name: 'Adelaide',
+      type: 'radar',
+      lineStyle: lineStyle,
+      data: dataAde,
+      symbol: 'none',
+      itemStyle: {
+        color: '#000000'
+      },
+      areaStyle: {
+        opacity: 0.05
+      }
+    },
+    {
+      name: 'Darwin',
+      type: 'radar',
+      lineStyle: lineStyle,
+      data: dataDar,
+      symbol: 'none',
+      itemStyle: {
+        color: '#000000'
+      },
+      areaStyle: {
+        opacity: 0.05
+      }
+    },
+    {
+      name: 'Perth',
+      type: 'radar',
+      lineStyle: lineStyle,
+      data: dataPer,
+      symbol: 'none',
+      itemStyle: {
+        color: '#000000'
+      },
+      areaStyle: {
+        opacity: 0.05
+      }
+    },
+    {
+      name: 'Hobart',
+      type: 'radar',
+      lineStyle: lineStyle,
+      data: dataHob,
+      symbol: 'none',
+      itemStyle: {
+        color: '#000000'
+      },
+      areaStyle: {
+        opacity: 0.05
+      }
+    }
+  ]
+};
+eduStatus.setOption(eduFirstOption);
+
+        var highestEducation = echarts.init(document.getElementById('highestEducation'));
+        var highestEducationOption = {
+            title: {
+              text: 'Situation of Maximum Years of Education in Cities',
+              left: 'center'
+            },
+            tooltip: {
+              trigger: 'axis',
+              axisPointer: {
+                type: 'shadow'
+              }
+            },
+            legend: {
+              orient: 'horizontal',
+              right: 0,
+              top: 25
+            },
+            grid: {
+              left: '3%',
+              right: '4%',
+              bottom: '3%',
+              containLabel: true
+            },
+            xAxis: [
+              {
+                type: 'category',
+                data: ['Melbourne', 'Sydney', 'Brisbane', 'Adelaide', 'Darwin', 'Perth', 'Hobart']
+              }
+            ],
+            yAxis: [
+              {
+                type: 'value',
+                axisLabel : {
+                  formatter: '{value} %'
+                },
+                name: 'Percentage of Education with Different Levels',
+                nameLocation: 'middle',
+                nameGap: 50,
+                max: 100
+              }
+            ],
+            series: [
+            {
+              name: 'no schooling',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ highest_school_year[5] | safe }}
+            },
+                {
+                  name: '8 Year',
+                  type: 'bar',
+                  stack: 'Ad',
+                  emphasis: {
+                    focus: 'series'
+                  },
+                  data: {{ highest_school_year[4] | safe }}
+                },
+                {
+                  name: '9 Year',
+                  type: 'bar',
+                  stack: 'Ad',
+                  emphasis: {
+                    focus: 'series'
+                  },
+                  data: {{ highest_school_year[1] | safe }}
+                },
+                {
+                  name: '10 Year',
+                  type: 'bar',
+                  stack: 'Ad',
+                  emphasis: {
+                    focus: 'series'
+                  },
+                  data: {{ highest_school_year[2] | safe }}
+                },
+                {
+                  name: '11 Year',
+                  type: 'bar',
+                  stack: 'Ad',
+                  emphasis: {
+                    focus: 'series'
+                  },
+                  data: {{ highest_school_year[0] | safe }}
+                },
+                {
+                  name: '12 Year',
+                  type: 'bar',
+                  stack: 'Ad',
+                  emphasis: {
+                    focus: 'series'
+                  },
+                  data: {{ highest_school_year[3] | safe }}
+                }
+              ]
+            };
+        highestEducation.setOption(highestEducationOption);
+</script>
+{% endblock %}

@@ -1,0 +1,193 @@
+{% extends "layout.html" %}
+<head>
+    <title>{% block title %}Infection Status in Melbourne{% endblock %}</title>
+</head>>
+
+{% block right %}
+    <!-- Header -->
+    <header id="header">
+        <h1> Melbourne: Infection Status </h1>
+    </header>
+    <center>
+        <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px; padding-top:3%" id="newCase">
+            </div>
+        <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px; padding-top:1%" id="newCasePerMillion">
+            </div>
+            <p>
+              This is analysis!!
+            </p>
+        <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px; padding-top:1%" id="totalCase">
+            </div>
+        <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px; padding-top:1%" id="totalCasePerMillion">
+            </div>
+            <p>
+              This is analysis!!
+            </p>
+    </center>
+{% endblock %}
+
+{% block echarts_js %}
+    <script type="text/javascript">
+        var newCase = echarts.init(document.getElementById('newCase'));
+        var newOption = {
+         title: {
+            text: 'Number of New Case',
+            left: 'center'
+          },
+          legend: {
+              orient: 'horizontal',
+              right: 100,
+              top: 25
+          },
+          xAxis: {
+            type: 'category',
+            data: {{ new_case.xAxis | safe }},
+          },
+          yAxis: [
+              {
+                type: 'value',
+              }
+          ],
+          series: [
+            {
+              name: 'new_case_Melb',
+              type: 'line',
+              data: {{ new_case.new_case_Melb | safe }},
+            },
+            {
+              name: 'new_case_VIC',
+              type: 'line',
+              data: {{ new_case.new_case_VIC | safe }}
+            },
+            {
+              name: 'new_case_AUS',
+              type: 'line',
+              data: {{ new_case.new_case_AUS | safe }}
+            },
+          ]
+        };
+        newCase.setOption(newOption);
+
+        var newCasePerMillion = echarts.init(document.getElementById('newCasePerMillion'));
+        var newCasePerMillionOption = {
+         title: {
+            text: 'Number of New Case Per Million',
+            left: 'center'
+          },
+          xAxis: {
+            type: 'category',
+            data: {{ new_case_per_million.xAxis | safe }},
+          },
+          yAxis: [
+              {
+                type: 'value',
+              }
+          ],
+          legend: {
+              orient: 'horizontal',
+              right: 100,
+              top: 25
+          },
+          series: [
+            {
+              name: 'new_case_per_million_Melb',
+              type: 'line',
+              data: {{ new_case_per_million.new_case_per_million_Melb | safe }},
+            },
+            {
+              name: 'new_case_per_million_VIC',
+              type: 'line',
+              data: {{ new_case_per_million.new_case_per_million_VIC | safe }}
+            },
+            {
+              name: 'new_case_per_million_AUS',
+              type: 'line',
+              data: {{ new_case_per_million.new_case_per_million_AUS | safe }}
+            },
+          ]
+        };
+        newCasePerMillion.setOption(newCasePerMillionOption);
+
+        var totalCase = echarts.init(document.getElementById('totalCase'));
+        var totalOption = {
+          title: {
+            text: 'Number of Total Case',
+            left: 'center'
+          },
+          xAxis: {
+            type: 'category',
+            data: {{ total_case.xAxis | safe }},
+          },
+          yAxis: [
+              {
+                type: 'value',
+              }
+          ],
+          legend: {
+              orient: 'horizontal',
+              right: 100,
+              top: 25
+          },
+          series: [
+            {
+              name: 'total_case_Melb',
+              type: 'line',
+              data: {{ total_case.total_case_Melb | safe }},
+              areaStyle: {}
+            },
+            {
+              name: 'total_case_VIC',
+              type: 'line',
+              data: {{ total_case.total_case_VIC | safe }}
+            },
+            {
+              name: 'total_case_AUS',
+              type: 'line',
+              data: {{ total_case.total_case_AUS | safe }}
+            },
+          ]
+        };
+        totalCase.setOption(totalOption);
+
+        var totalCasePerMillion = echarts.init(document.getElementById('totalCasePerMillion'));
+        var totalCasePerMillionOption = {
+         title: {
+            text: 'Number of Total Case Per Million',
+            left: 'center'
+          },
+          xAxis: {
+            type: 'category',
+            data: {{ total_case_per_million.xAxis | safe }},
+          },
+          yAxis: [
+              {
+                type: 'value',
+              }
+          ],
+          legend: {
+              orient: 'horizontal',
+              right: 100,
+              top: 25
+          },
+          series: [
+            {
+              name: 'total_case_per_million_Melb',
+              type: 'line',
+              data: {{ total_case_per_million.total_case_per_million_Melb | safe }},
+              areaStyle: {}
+            },
+            {
+              name: 'total_case_per_million_VIC',
+              type: 'line',
+              data: {{ total_case_per_million.total_case_per_million_VIC | safe }}
+            },
+            {
+              name: 'total_case_per_million_AUS',
+              type: 'line',
+              data: {{ total_case_per_million.total_case_per_million_AUS | safe }}
+            },
+          ]
+        };
+        totalCasePerMillion.setOption(totalCasePerMillionOption);
+</script>
+{% endblock %}

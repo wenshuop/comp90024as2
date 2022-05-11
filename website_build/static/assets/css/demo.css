@@ -10,21 +10,23 @@
     margin-bottom: 30px;
     width: 860px;
     height: 500px;
-    /* 超出隐藏 */
-    overflow: hidden;  
+    overflow: hidden;
 }
 
 ul.img_box {
+    /* width: 860px; */
     position: absolute;
     left: 0;
     top: 0;
     /* html中的第一张图片不是我们想要显示，第二张才是我们轮播图的第一张图片因此要让这排图片往左移动一张图片的距离 */
     transform: translateX(-860px);
+    padding: 0;
 }
 
 .img_box li {
     float: left;
     list-style: none;
+    padding: 0;
 }
 
 /* 图片大小 */
@@ -50,6 +52,7 @@ ul.img_box {
     margin-right: 3px;
     border-radius: 5px;
     transition: all 0.4s;
+    cursor: pointer;
 }
 
 /* 左箭头 */

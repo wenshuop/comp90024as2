@@ -1,0 +1,258 @@
+{% extends "layout.html" %}
+<head>
+    <title>{% block title %} Health of Melbourne {% endblock %}</title>
+</head>>
+
+{% block right %}
+    <!-- Header -->
+    <header id="header">
+        <h1> Melbourne: Medical Status </h1> 
+    </header>
+    <center>
+            <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px; padding-top:3%" id="hospital">
+            </div>
+            <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;" id="medicalStatus">
+            </div>
+            <p>analysis</p>
+    </center>
+<!-- 这是一个注释 -->
+{% endblock %}
+
+{% block echarts_js %}
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var hospital = echarts.init(document.getElementById('hospital'));
+        // 指定图表的配置项和数据
+        var heaFirstOption = {
+            title: {
+              text: 'Number of Hospitals in Cities',
+              left: 'center'
+            },
+            tooltip: {
+                trigger: 'item'
+              },
+              legend: {
+                orient: 'vertical',
+                right: 0
+              },
+              series: [
+                {
+                  name: 'Access From',
+                  type: 'pie',
+                  radius: ['40%', '70%'],
+                  avoidLabelOverlap: false,
+                  label: {
+                    show: false,
+                    position: 'center'
+                  },
+                  emphasis: {
+                    label: {
+                      show: true,
+                      fontSize: '40',
+                      fontWeight: 'bold'
+                    }
+                  },
+                  labelLine: {
+                    show: false
+                  },
+                  data: [
+                  { value: {{ hospital[4] | safe }}, name: 'Melbourne'},
+                  { value: {{ hospital[0] | safe }}, name: 'Adelaide'},
+                  { value: {{ hospital[1] | safe }}, name: 'Brisbane'},
+                  { value: {{ hospital[2] | safe }}, name: 'Darwin'},
+                  { value: {{ hospital[3] | safe }}, name: 'Hobart'},
+                  { value: {{ hospital[5] | safe }}, name: 'Perth'},
+                  { value: {{ hospital[6] | safe }}, name: 'Sydney'}
+                  ]
+                }
+              ]
+            };
+        hospital.setOption(heaFirstOption);
+
+        var medicalStatus = echarts.init(document.getElementById('medicalStatus'));
+const dataMel = [
+ {{source.Melbourne |safe}}
+];
+
+const dataDar = [
+{{source.Darwin |safe}}
+
+];
+const dataHob = [
+{{source.Hobart |safe}}
+
+];
+const dataPer = [
+{{source.Perth |safe}}
+
+];
+const dataSyd = [
+{{source.Sydney |safe}}
+
+];
+const dataAde = [
+{{source.Adelaide |safe}}
+
+];
+const dataBri = [
+{{source.Brisbane |safe}}
+
+];
+const lineStyle = {
+  width: 1,
+  opacity: 0.5
+};
+heaSecondOption = {
+  backgroundColor: '#FFFAF0',
+  title: {
+    text: 'Medical Status in Cities',
+    left: 'center',
+    textStyle: {
+      color: '#000000'
+    }
+  },
+  legend: {
+    bottom: 3,
+    data: ['Melbourne', 'Sydney', 'Brisbane', 'Adelaide',  'Darwin', 'Perth', 'Hobart'],
+    itemGap: 20,
+    textStyle: {
+      color: '#B0E0E6',
+      fontSize: 14
+    },
+    selectedMode: 'single'
+  },
+  radar: {
+    indicator: [
+
+      { name: 'Practice Nurse', max: 100 },
+      { name: 'Psychiatrist', max: 5 },
+      { name: 'General Psychologist', max: 40 },
+      { name: 'Clinical Psychologist', max: 40 },
+
+    ],
+    shape: 'circle',
+    splitNumber: 3,
+    axisName: {
+      color: '#00FF00'
+    },
+    splitLine: {
+      lineStyle: {
+        color: [
+          '#873324',
+          '#873324',
+          '#873324',
+          '#873324',
+          '#873324',
+          '#873324'
+
+        ].reverse()
+      }
+    },
+    splitArea: {
+      show: false
+    },
+    axisLine: {
+      lineStyle: {
+        color: '#000000'
+      }
+    }
+  },
+  series: [
+    {
+      name: 'Melbourne',
+      type: 'radar',
+      lineStyle: lineStyle,
+      data: dataMel,
+      symbol: 'none',
+      itemStyle: {
+        color: '#000000'
+      },
+      areaStyle: {
+        opacity: 0.1
+      }
+    },
+    {
+      name: 'Sydney',
+      type: 'radar',
+      lineStyle: lineStyle,
+      data: dataSyd,
+      symbol: 'none',
+      itemStyle: {
+        color: '#000000'
+      },
+      areaStyle: {
+        opacity: 0.05
+      }
+    },
+    {
+      name: 'Brisbane',
+      type: 'radar',
+      lineStyle: lineStyle,
+      data: dataBri,
+      symbol: 'none',
+      itemStyle: {
+        color: '#000000'
+      },
+      areaStyle: {
+        opacity: 0.05
+      }
+    },
+    {
+      name: 'Adelaide',
+      type: 'radar',
+      lineStyle: lineStyle,
+      data: dataAde,
+      symbol: 'none',
+      itemStyle: {
+        color: '#000000'
+      },
+      areaStyle: {
+        opacity: 0.05
+      }
+    },
+    {
+      name: 'Darwin',
+      type: 'radar',
+      lineStyle: lineStyle,
+      data: dataDar,
+      symbol: 'none',
+      itemStyle: {
+        color: '#000000'
+      },
+      areaStyle: {
+        opacity: 0.05
+      }
+    },
+    {
+      name: 'Perth',
+      type: 'radar',
+      lineStyle: lineStyle,
+      data: dataPer,
+      symbol: 'none',
+      itemStyle: {
+        color: '#000000'
+      },
+      areaStyle: {
+        opacity: 0.05
+      }
+    },
+    {
+      name: 'Hobart',
+      type: 'radar',
+      lineStyle: lineStyle,
+      data: dataHob,
+      symbol: 'none',
+      itemStyle: {
+        color: '#000000'
+      },
+      areaStyle: {
+        opacity: 0.05
+      }
+    }
+  ]
+};
+        medicalStatus.setOption(heaSecondOption);
+
+
+</script>
+{% endblock %}

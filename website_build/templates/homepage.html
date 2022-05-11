@@ -1,7 +1,13 @@
 ﻿{% extends "layout.html" %}
-
+<head>
+    <title>{% block title %}Melbourne: a good place to live!{% endblock %}</title>
+</head>>
 
 {% block right %}
+    <!-- Header -->
+    <header id="header">
+        <h1> Melbourne: Liveability </h1> 
+    </header>
 	<!-- Banner -->
          <section id="banner" style="padding: 0em;">
             <div class="content">
@@ -9,14 +15,13 @@
                     <center>
                         <div class="banner_container">
                             <!-- 6张图片 -->
-                    
                             <ul class="img_box">
-                                <li><img src="{{ url_for('static',filename='images/demo1.jpeg') }}"alt=""></li>  
-                                <li><img src="{{ url_for('static',filename='images/demo2.jpeg') }}"alt=""></li> 
-                                <li><img src="{{ url_for('static',filename='images/pic13.jpg') }}" alt=""></li>
-                                <li><img src="{{ url_for('static',filename='images/melbourne.jpeg') }}" alt=""></li> 
-                                <li><img src="{{ url_for('static',filename='images/demo1.jpeg') }}" alt=""></li>
-                                <li><img src="{{ url_for('static',filename='images/demo2.jpeg') }}" alt=""></li> 
+                                <li><img src="{{ url_for('static',filename='images/melbourne1.jpeg') }}"alt=""></li>  
+                                <li><img src="{{ url_for('static',filename='images/melbourne2.jpeg') }}"alt=""></li> 
+                                <li><img src="{{ url_for('static',filename='images/covid1.jpeg') }}" alt=""></li>
+                                <li><img src="{{ url_for('static',filename='images/covid2.jpg') }}" alt=""></li> 
+                                <li><img src="{{ url_for('static',filename='images/melbourne1.jpeg') }}" alt=""></li>
+                                <li><img src="{{ url_for('static',filename='images/melbourne2.jpeg') }}" alt=""></li> 
                         
                             </ul> 
                     
@@ -36,9 +41,11 @@
                     </div>
                     </center>       
                                     </header>
-                                    <p>In recent years, the Covid-19 has been common everywhere. Health is an important indicator in considering the livability of the city of Melbourne. This website discusses health indicator in terms of Covid-19.</p>
+                                    <p> Melbourne is the capital and most-populous city of the Australian state of Victoria, and the second-most populous city in both Australia and Oceania.<br />
+                                        In recent years, the Covid-19 has been common everywhere. Health is an important indicator in considering the livability of the city of Melbourne. 
+                                        This website discusses health indicator in terms of Covid-19.</p>
                                     <ul class="actions">
-                                        <li><a href="#" class="button big">Learn More</a></li>
+                                        <li><a href="/economy" class="button big">Learn More</a></li>
                                     </ul>
                                 </div>
                                 
@@ -46,3 +53,5 @@
                             </section>
 <!-- 这是一个注释 -->
 {% endblock %}
+
+{% block echarts_js %}{% endblock %}

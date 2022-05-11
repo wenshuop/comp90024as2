@@ -1,39 +1,26 @@
 <!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+
 <html>
 	<head>
-		<title>Website</title>
+		<title>{% block title %}{% endblock %}</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="{{ url_for('static',filename='assets/css/main.css') }}" />
-		<!--bootstrap的css-->
-		<!-- <link rel="stylesheet" href="plug/bootstrap-3.2.0-dist/css/bootstrap.min.css"> -->
-		<!--自己的css-->
+		<link rel="stylesheet" href="{{ url_for('static',filename='assets/css/boostrap.min.css') }}">
 		<link rel="stylesheet" href="{{ url_for('static',filename='assets/css/demo.css') }}">
 		<link rel="icon" href="../static/images/logo.ico" type="image/x-icon">
+		{% block header %}{% endblock %}
         
         
 </head>
 	</head>
 	<body class="is-preload" >
 		
-      	<!--右边展示-->
-		
-		<!-- Wrapper -->
 			<div id="wrapper">
 
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
-							<!-- Header -->
-								<header id="header">
-									<!-- <img src="{{ url_for('static',filename='images/unimelblogo.png') }}"alt="" style="width: 100%; "> -->
-									 <h1> Website: CCC </h1> 
-								</header>
 								{% block right %}
 								{% endblock %}
 							<!-- Section -->
@@ -41,38 +28,66 @@
 					</div>
 
 				<!-- Sidebar -->
-					<div id="sidebar">
-						<div class="inner" style="background: floralwhite;">							
+					<div id="sidebar" style="background: floralwhite;">
+						<div class="inner">							
 							<!-- Menu -->
 								<nav id="menu">
 									<header class="major">
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="/">Homepage</a></li>
-										<li><a href="generic.html">Generic</a></li>
-										<li><a href="elements.html">Elements</a></li>
-										
+										<li><a href="/">home page</a></li>
+										<li>
+											<span class="opener">economy</span>
+											<ul>
+												<li><a href="/enterprise">enterprise</a></li>
+												<li><a href="/housing">housing</a></li>
+												<li><a href="/household">household</a></li>
+											</ul>
+										</li>
+										<li><a href="/education">education</a></li>
+										<li>
+											<span class="opener">health</span>
+											<ul>
+												<li><a href="/mental">mental health</a></li>
+												<li><a href="/medical">medical status</a></li>
+												<li><a href="/assistance">unpaid assistance</a></li>
+											</ul>
+										</li>
+										<li>
+											<span class="opener">covid-19</span>
+											<ul>
+												<li><a href="/vaccination">vaccination rate</a></li>
+												<li><a href="/infection">infection status</a></li>
+												<li><a href="/sentiment">sentiment analysis</a></li>
+												<li><a href="/topic">topic trend</a></li>
+											</ul>
+										</li>
 									</ul>
 								</nav>
 
 							
 								<section>
 									<header class="major">
-										<h2>Get in touch</h2>
+										<h2>Contact Us</h2>
 									</header>
-									<p>Sed varius enim lorem ullamcorper dolore aliquam aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin sed aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+									<p>
+										If you have any question, the information below allows you to contact us directly.<br />
+									    Welcome to contact us!
+									</p>
 									<ul class="contact">
-										<li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>
-										<li class="icon solid fa-phone">(000) 000-0000</li>
-										<li class="icon solid fa-home">1234 Somewhere Road #8254<br />
-										Nashville, TN 00000-0000</li>
+										<li class="icon solid fa-envelope"><a href="#">sjjiao@student.unimelb.edu.au</a></li>
+										<li class="icon solid fa-paperclip"><a href="#">https://github.com/wenshuop <br />
+														                                /comp90024as2</a></li>
+										<li class="icon solid fa-home">Grattan Street, Parkville, Victoria, 3010<br />
+																	   The University of Melbourne,<br />
+																	   Victoria 3010 Australia</li>
 									</ul>
 								</section>
 
 							<!-- Footer -->
 								<footer id="footer">
-									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+									<p class="copyright">Copyright &copy; 2021-2022, Group 13 </p>
 								</footer>
 
 						</div>
@@ -88,6 +103,11 @@
 			<script src="{{ url_for('static',filename='assets/js/util.js') }}"></script>
 			<script src="{{ url_for('static',filename='assets/js/main.js') }}"></script>
 			<script src="{{ url_for('static',filename='assets/js/demo.js') }}"></script>
-			
+			<script src="{{ url_for('static',filename='assets/js/echarts.js') }}"></script>
+            <!-- <script src='https://cdn.bootcss.com/echarts/3.4.0/echarts.js'></script>
+            <script src='http://gallery.echartsjs.com/dep/echarts/map/js/china.js'></script>
+            <script src='https://cdnjs.cloudflare.com/ajax/libs/echarts/4.3.0/echarts.min.js'></script> -->
+            {% block echarts_js %}{% endblock %}
+
 	</body>
 </html>

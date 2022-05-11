@@ -1,0 +1,222 @@
+{% extends "layout.html" %}
+<head>
+    <title>{% block title %} Economy of Melbourne {% endblock %}</title>
+</head>>
+
+{% block right %}
+    <!-- Header -->
+    <header id="header">
+        <h1> Melbourne: Household </h1> 
+    </header>
+    <center>
+            <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px; padding-top:3%" id="income">
+            </div>
+            <p>
+              This is analysis!!
+            </p>
+            <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px; padding-top:1%" id="vehicle">
+            </div>
+            <p>
+              This is analysis!!
+            </p>>  
+    </center>
+<!-- 这是一个注释 -->
+{% endblock %}
+
+{% block echarts_js %}
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var vehicle = echarts.init(document.getElementById('vehicle'));
+        // 指定图表的配置项和数据
+        var vehicleOption = {
+            title: {
+              text: "Household's Vehicle Status in Cities",
+              left: 'center'
+            },
+            tooltip: {
+              trigger: 'axis',
+              axisPointer: {
+                type: 'shadow'
+              }
+            },
+            legend: {
+              orient: 'horizontal',
+              right: 0,
+              top: 25
+            },
+            grid: {
+              left: '3%',
+              right: '4%',
+              bottom: '3%',
+              containLabel: true
+            },
+            xAxis: [
+              {
+                type: 'category',
+                data: ['Melbourne', 'Sydney', 'Brisbane', 'Adelaide', 'Darwin', 'Perth', 'Hobart']
+              }
+            ],
+            yAxis: [
+              {
+                type: 'value',
+                axisLabel : {
+                  formatter: '{value} %'
+                },
+                name: 'Percentage of Household with Different Vehicles',
+                nameLocation: 'middle',
+                nameGap: 50,
+                max: 100
+              }
+            ],
+            series: [
+            {
+              name: '0 Vehicle',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ vehicle[3] | safe }}
+            },
+            {
+              name: '1 Vehicle',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ vehicle[1] | safe }}
+            },
+            {
+              name: '2 Vehicles',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ vehicle[0] | safe }}
+            },
+            {
+              name: '3 Vehicles',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ vehicle[2] | safe }}
+            },
+            {
+              name: '4 Vehicles',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ vehicle[4] | safe }}
+            }
+            ]
+          };
+        vehicle.setOption(vehicleOption);
+
+        var income = echarts.init(document.getElementById('income'));
+        // 指定图表的配置项和数据
+        var incomeOption = {
+            title: {
+              text: 'Income Status in Cities',
+              left: 'center'
+            },
+            tooltip: {
+              trigger: 'axis',
+              axisPointer: {
+                type: 'shadow'
+              }
+            },
+            legend: {
+              orient: 'horizontal',
+              right: 0,
+              top: 25
+            },
+            grid: {
+              left: '3%',
+              right: '4%',
+              bottom: '3%',
+              containLabel: true
+            },
+            xAxis: [
+              {
+                type: 'category',
+                data: ['Melbourne', 'Sydney', 'Brisbane', 'Adelaide', 'Darwin', 'Perth', 'Hobart']
+              }
+            ],
+            yAxis: [
+              {
+                type: 'value',
+                axisLabel : {
+                  formatter: '{value} %'
+                },
+                name: 'Percentage of People from Different Income Intervals',
+                nameLocation: 'middle',
+                nameGap: 50,
+                max: 100
+              }
+            ],
+            series: [
+            {
+              name: "$1000-$1249",
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ income[5] | safe }}
+            },
+            {
+              name: "$1250-$1499",
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ income[1] | safe }}
+            },
+            {
+              name: "$1500-$1749",
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ income[4] | safe }}
+            },
+            {
+              name: "$1750-$1999",
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ income[0] | safe }}
+            },
+            {
+              name: "$2000-$2999",
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ income[3] | safe }}
+            },
+            {
+              name: "more than $3000",
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ income[2] | safe }}
+            },
+            ]
+          };
+        income.setOption(incomeOption);
+</script>
+{% endblock %}

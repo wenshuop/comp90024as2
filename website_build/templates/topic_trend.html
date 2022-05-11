@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/topic.css') }}">
+</head>
+
+<body  style="background: floralwhite;" >
+    
+        
+    <!-- Section -->
+    <section >
+        <div  id="test">
+        </div>
+        <ul class="actions">
+            <li><a href="/" style = '-moz-appearance: none;
+                -webkit-appearance: none;
+                -ms-appearance: none;
+                appearance: none;
+                -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+                -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+                -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+                transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+                background-color: transparent;
+                border-radius: 0.375em;
+                border: 0;
+                box-shadow: inset 0 0 0 2px #f56a6a;
+                color: #f56a6a !important;
+                cursor: pointer;
+                display: inline-block;
+                font-family: "Roboto Slab", serif;
+                font-size: 0.8em;
+                font-weight: 700;
+                height: 3.5em;
+                letter-spacing: 0.075em;
+                line-height: 3.5em;
+                padding: 0 2.25em;
+                text-align: center;
+                text-decoration: none;
+                text-transform: uppercase;
+                white-space: nowrap;'>back</a></li>
+        </ul>
+    </section>
+    
+    
+
+    
+    <script type="text/javascript">
+    function LDAvis_load_lib(url, callback){
+      var s = document.createElement('script');
+      s.src = url;
+      s.async = true;
+      s.onreadystatechange = s.onload = callback;
+      s.onerror = function(){console.warn("failed to load library " + url);};
+      document.getElementsByTagName("head")[0].appendChild(s);
+    }
+    
+    if(typeof(LDAvis) !== "undefined"){
+       // already loaded: just create the visualization
+       !function(LDAvis){
+           new LDAvis("#" + "test",  {{ vis_dict |safe }});
+       }(LDAvis);
+    }else if(typeof define === "function" && define.amd){
+       // require.js is available: use it to load d3/LDAvis
+       require.config({paths: {d3: "https://d3js.org/d3.v5"}});
+       require(["d3"], function(d3){
+          window.d3 = d3;
+          LDAvis_load_lib("{{ url_for('static',filename='assets/js/topic.js') }}", function(){
+            new LDAvis("#" + "test",  {{ vis_dict |safe }});
+          });
+        });
+    }else{
+        // require.js not available: dynamically load d3 & LDAvis
+        LDAvis_load_lib("https://d3js.org/d3.v5.js", function(){
+             LDAvis_load_lib("{{ url_for('static',filename='assets/js/topic.js') }}", function(){
+                     new LDAvis("#" + "test", {{ vis_dict |safe }});
+                })
+             });
+    }
+    
+    </script>
+    
+</body>
+</html>

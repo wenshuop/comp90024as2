@@ -1,0 +1,1344 @@
+{% extends "layout.html" %}
+<head>
+    <title>{% block title %} Health of Melbourne {% endblock %}</title>
+</head>>
+
+{% block right %}
+    <!-- Header -->
+    <header id="header">
+        <h1> Melbourne: Mental Health </h1> 
+    </header>
+    <center>
+        <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px; padding-top:3%" id="melbSentimentRate">
+        </div>
+        <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;padding-top:1%" id="sySentimentRate">
+        </div>
+        <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;padding-top:1%" id="caSentimentRate">
+        </div>
+        <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;padding-top:1%" id="brSentimentRate">
+        </div>
+        <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;padding-top:1%" id="adSentimentRate">
+        </div>
+        <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;padding-top:1%" id="daSentimentRate">
+        </div>
+        <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;padding-top:1%" id="peSentimentRate">
+        </div>
+        <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;padding-top:1%" id="hoSentimentRate">
+        </div>
+        <p>
+          This is analysis!
+        </p>
+        <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;padding-top:1%" id="melbPosNeg">
+        </div>
+        <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;padding-top:1%" id="syPosNeg">
+        </div>
+        <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;padding-top:1%" id="caPosNeg">
+        </div>
+        <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;padding-top:1%" id="brPosNeg">
+        </div>
+        <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;padding-top:1%" id="adPosNeg">
+        </div>
+        <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;padding-top:1%" id="daPosNeg">
+        </div>
+        <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;padding-top:1%" id="pePosNeg">
+        </div>
+        <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;padding-top:1%" id="hoPosNeg">
+        </div>
+        <p>
+          This is analysis!
+        </p>
+        <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;" id="polScoreHeat">
+        </div>
+        <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;" id="subScoreHeat">
+        </div>
+        <p>
+          This is analysis!
+        </p>
+  
+            
+            
+    </center>
+<!-- 这是一个注释 -->
+{% endblock %}
+
+{% block echarts_js %}
+    <script type="text/javascript">
+            // 基于准备好的dom，初始化echarts实例
+        var melbSentimentRate = echarts.init(document.getElementById('melbSentimentRate'));
+        // 指定图表的配置项和数据
+        var melbSentimentRateOption = {
+            title: {
+              text: 'Sentiment Analysis in Melbourne',
+              left: 'center'
+            },
+            tooltip: {
+              trigger: 'axis',
+              axisPointer: {
+                type: 'shadow'
+              }
+            },
+            legend: {
+              orient: 'horizontal',
+              right: 0,
+              top: 25
+            },
+            grid: {
+              left: '3%',
+              right: '4%',
+              bottom: '3%',
+              containLabel: true
+            },
+            xAxis: [
+              {
+                type: 'category',
+                data: {{ sentiment_rate.melb_y | safe }}
+              }
+            ],
+            yAxis: [
+              {
+                type: 'value',
+                axisLabel : {
+                  formatter: '{value} %'
+                },
+                name: 'Percentage of Different Attitude',
+                nameLocation: 'middle',
+                nameGap: 50,
+                max: 100
+              }
+            ],
+            series: [
+            {
+              name: 'Positive Rate',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ sentiment_rate.melb_pos_rate | safe }}
+            },
+            {
+              name: 'Neutral Rate',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ sentiment_rate.melb_neu_rate | safe }}
+            },
+            {
+              name: 'Negative Rate',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ sentiment_rate.melb_neg_rate | safe }}
+            },
+            ]
+          };
+        melbSentimentRate.setOption(melbSentimentRateOption);
+
+        // 基于准备好的dom，初始化echarts实例
+        var sySentimentRate = echarts.init(document.getElementById('sySentimentRate'));
+        // 指定图表的配置项和数据
+        var sySentimentRateOption = {
+            title: {
+              text: 'Sentiment Analysis in Sydney',
+              left: 'center'
+            },
+            tooltip: {
+              trigger: 'axis',
+              axisPointer: {
+                type: 'shadow'
+              }
+            },
+            legend: {
+              orient: 'horizontal',
+              right: 0,
+              top: 25
+            },
+            grid: {
+              left: '3%',
+              right: '4%',
+              bottom: '3%',
+              containLabel: true
+            },
+            xAxis: [
+              {
+                type: 'category',
+                data: {{ sentiment_rate.y | safe }}
+              }
+            ],
+            yAxis: [
+              {
+                type: 'value',
+                axisLabel : {
+                  formatter: '{value} %'
+                },
+                name: 'Percentage of Different Attitude',
+                nameLocation: 'middle',
+                nameGap: 50,
+                max: 100
+              }
+            ],
+            series: [
+            {
+              name: 'Positive Rate',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ sentiment_rate.sy_pos_rate | safe }}
+            },
+            {
+              name: 'Neutral Rate',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ sentiment_rate.sy_neu_rate | safe }}
+            },
+            {
+              name: 'Negative Rate',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ sentiment_rate.sy_neg_rate | safe }}
+            },
+            ]
+          };
+        sySentimentRate.setOption(sySentimentRateOption);
+
+                // 基于准备好的dom，初始化echarts实例
+        var hoSentimentRate = echarts.init(document.getElementById('hoSentimentRate'));
+        // 指定图表的配置项和数据
+        var hoSentimentRateOption = {
+            title: {
+              text: 'Sentiment Analysis in Hobart',
+              left: 'center'
+            },
+            tooltip: {
+              trigger: 'axis',
+              axisPointer: {
+                type: 'shadow'
+              }
+            },
+            legend: {
+              orient: 'horizontal',
+              right: 0,
+              top: 25
+            },
+            grid: {
+              left: '3%',
+              right: '4%',
+              bottom: '3%',
+              containLabel: true
+            },
+            xAxis: [
+              {
+                type: 'category',
+                data: {{ sentiment_rate.y | safe }}
+              }
+            ],
+            yAxis: [
+              {
+                type: 'value',
+                axisLabel : {
+                  formatter: '{value} %'
+                },
+                name: 'Percentage of Different Attitude',
+                nameLocation: 'middle',
+                nameGap: 50,
+                max: 100
+              }
+            ],
+            series: [
+            {
+              name: 'Positive Rate',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ sentiment_rate.ho_pos_rate | safe }}
+            },
+            {
+              name: 'Neutral Rate',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ sentiment_rate.ho_neu_rate | safe }}
+            },
+            {
+              name: 'Negative Rate',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ sentiment_rate.ho_neg_rate | safe }}
+            },
+            ]
+          };
+        hoSentimentRate.setOption(hoSentimentRateOption);
+
+                // 基于准备好的dom，初始化echarts实例
+        var peSentimentRate = echarts.init(document.getElementById('peSentimentRate'));
+        // 指定图表的配置项和数据
+        var peSentimentRateOption = {
+            title: {
+              text: 'Sentiment Analysis in Perth',
+              left: 'center'
+            },
+            tooltip: {
+              trigger: 'axis',
+              axisPointer: {
+                type: 'shadow'
+              }
+            },
+            legend: {
+              orient: 'horizontal',
+              right: 0,
+              top: 25
+            },
+            grid: {
+              left: '3%',
+              right: '4%',
+              bottom: '3%',
+              containLabel: true
+            },
+            xAxis: [
+              {
+                type: 'category',
+                data: {{ sentiment_rate.y | safe }}
+              }
+            ],
+            yAxis: [
+              {
+                type: 'value',
+                axisLabel : {
+                  formatter: '{value} %'
+                },
+                name: 'Percentage of Different Attitude',
+                nameLocation: 'middle',
+                nameGap: 50,
+                max: 100
+              }
+            ],
+            series: [
+            {
+              name: 'Positive Rate',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ sentiment_rate.pe_pos_rate | safe }}
+            },
+            {
+              name: 'Neutral Rate',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ sentiment_rate.pe_neu_rate | safe }}
+            },
+            {
+              name: 'Negative Rate',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ sentiment_rate.pe_neg_rate | safe }}
+            },
+            ]
+          };
+        peSentimentRate.setOption(peSentimentRateOption);
+
+        // 基于准备好的dom，初始化echarts实例
+        var caSentimentRate = echarts.init(document.getElementById('caSentimentRate'));
+        // 指定图表的配置项和数据
+        var caSentimentRateOption = {
+            title: {
+              text: 'Sentiment Analysis in Canberra',
+              left: 'center'
+            },
+            tooltip: {
+              trigger: 'axis',
+              axisPointer: {
+                type: 'shadow'
+              }
+            },
+            legend: {
+              orient: 'horizontal',
+              right: 0,
+              top: 25
+            },
+            grid: {
+              left: '3%',
+              right: '4%',
+              bottom: '3%',
+              containLabel: true
+            },
+            xAxis: [
+              {
+                type: 'category',
+                data: {{ sentiment_rate.y | safe }}
+              }
+            ],
+            yAxis: [
+              {
+                type: 'value',
+                axisLabel : {
+                  formatter: '{value} %'
+                },
+                name: 'Percentage of Different Attitude',
+                nameLocation: 'middle',
+                nameGap: 50,
+                max: 100
+              }
+            ],
+            series: [
+            {
+              name: 'Positive Rate',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ sentiment_rate.ca_pos_rate | safe }}
+            },
+            {
+              name: 'Neutral Rate',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ sentiment_rate.ca_neu_rate | safe }}
+            },
+            {
+              name: 'Negative Rate',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ sentiment_rate.ca_neg_rate | safe }}
+            },
+            ]
+          };
+        caSentimentRate.setOption(caSentimentRateOption);
+
+        // 基于准备好的dom，初始化echarts实例
+        var brSentimentRate = echarts.init(document.getElementById('brSentimentRate'));
+        // 指定图表的配置项和数据
+        var brSentimentRateOption = {
+            title: {
+              text: 'Sentiment Analysis in Brisbane',
+              left: 'center'
+            },
+            tooltip: {
+              trigger: 'axis',
+              axisPointer: {
+                type: 'shadow'
+              }
+            },
+            legend: {
+              orient: 'horizontal',
+              right: 0,
+              top: 25
+            },
+            grid: {
+              left: '3%',
+              right: '4%',
+              bottom: '3%',
+              containLabel: true
+            },
+            xAxis: [
+              {
+                type: 'category',
+                data: {{ sentiment_rate.y | safe }}
+              }
+            ],
+            yAxis: [
+              {
+                type: 'value',
+                axisLabel : {
+                  formatter: '{value} %'
+                },
+                name: 'Percentage of Different Attitude',
+                nameLocation: 'middle',
+                nameGap: 50,
+                max: 100
+              }
+            ],
+            series: [
+            {
+              name: 'Positive Rate',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ sentiment_rate.br_pos_rate | safe }}
+            },
+            {
+              name: 'Neutral Rate',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ sentiment_rate.br_neu_rate | safe }}
+            },
+            {
+              name: 'Negative Rate',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ sentiment_rate.br_neg_rate | safe }}
+            },
+            ]
+          };
+        brSentimentRate.setOption(brSentimentRateOption);
+
+        // 基于准备好的dom，初始化echarts实例
+        var adSentimentRate = echarts.init(document.getElementById('adSentimentRate'));
+        // 指定图表的配置项和数据
+        var adSentimentRateOption = {
+            title: {
+              text: 'Sentiment Analysis in Adelaide',
+              left: 'center'
+            },
+            tooltip: {
+              trigger: 'axis',
+              axisPointer: {
+                type: 'shadow'
+              }
+            },
+            legend: {
+              orient: 'horizontal',
+              right: 0,
+              top: 25
+            },
+            grid: {
+              left: '3%',
+              right: '4%',
+              bottom: '3%',
+              containLabel: true
+            },
+            xAxis: [
+              {
+                type: 'category',
+                data: {{ sentiment_rate.y | safe }}
+              }
+            ],
+            yAxis: [
+              {
+                type: 'value',
+                axisLabel : {
+                  formatter: '{value} %'
+                },
+                name: 'Percentage of Different Attitude',
+                nameLocation: 'middle',
+                nameGap: 50,
+                max: 100
+              }
+            ],
+            series: [
+            {
+              name: 'Positive Rate',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ sentiment_rate.ad_pos_rate | safe }}
+            },
+            {
+              name: 'Neutral Rate',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ sentiment_rate.ad_neu_rate | safe }}
+            },
+            {
+              name: 'Negative Rate',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ sentiment_rate.ad_neg_rate | safe }}
+            },
+            ]
+          };
+        adSentimentRate.setOption(adSentimentRateOption);
+
+        // 基于准备好的dom，初始化echarts实例
+        var daSentimentRate = echarts.init(document.getElementById('daSentimentRate'));
+        // 指定图表的配置项和数据
+        var daSentimentRateOption = {
+            title: {
+              text: 'Sentiment Analysis in Darwin',
+              left: 'center'
+            },
+            tooltip: {
+              trigger: 'axis',
+              axisPointer: {
+                type: 'shadow'
+              }
+            },
+            legend: {
+              orient: 'horizontal',
+              right: 0,
+              top: 25
+            },
+            grid: {
+              left: '3%',
+              right: '4%',
+              bottom: '3%',
+              containLabel: true
+            },
+            xAxis: [
+              {
+                type: 'category',
+                data: {{ sentiment_rate.y | safe }}
+              }
+            ],
+            yAxis: [
+              {
+                type: 'value',
+                axisLabel : {
+                  formatter: '{value} %'
+                },
+                name: 'Percentage of Different Attitude',
+                nameLocation: 'middle',
+                nameGap: 50,
+                max: 100
+              }
+            ],
+            series: [
+            {
+              name: 'Positive Rate',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ sentiment_rate.da_pos_rate | safe }}
+            },
+            {
+              name: 'Neutral Rate',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ sentiment_rate.da_neu_rate | safe }}
+            },
+            {
+              name: 'Negative Rate',
+              type: 'bar',
+              stack: 'Ad',
+              emphasis: {
+                focus: 'series'
+              },
+              data: {{ sentiment_rate.da_neg_rate | safe }}
+            },
+            ]
+          };
+        daSentimentRate.setOption(daSentimentRateOption);
+
+
+
+            var melbPosNeg = echarts.init(document.getElementById('melbPosNeg'));
+            // 指定图表的配置项和数据
+            var melbPosNegOption = {
+              title: {
+              text: 'Number of Positive and Negative attitude of tweets in Melbourne',
+              left: 'center'
+             },
+              tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                type: 'shadow'
+                }
+              },
+              legend: {
+                data: ['positive_count', 'negative_count'],
+                orient: 'horizontal',
+                right: 0,
+                top: 25
+              },
+              grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+              },
+              xAxis: [
+                {
+                  type: 'value'
+                }
+              ],
+              yAxis: [
+                {
+                  type: 'category',
+                  axisTick: {
+                    show: false
+                  },
+                  data: {{ pos_neg.y | safe }}
+                }
+              ],
+              series: [
+                {
+                  name: 'positive_count',
+                  type: 'bar',
+                  stack: 'Total',
+                  label: {
+                    show: true
+                  },
+                  emphasis: {
+                    focus: 'series'
+                  },
+                  data: {{ pos_neg.melb_pos | safe }}
+                },
+                {
+                  name: 'negative_count',
+                  type: 'bar',
+                  stack: 'Total',
+                  label: {
+                    show: true
+                  },
+                  emphasis: {
+                    focus: 'series'
+                  },
+                  data: {{ pos_neg.melb_neg | safe }}
+                }
+              ]
+            };
+melbPosNeg.setOption(melbPosNegOption);
+
+
+
+            var syPosNeg = echarts.init(document.getElementById('syPosNeg'));
+            // 指定图表的配置项和数据
+            var syPosNegOption = {
+              title: {
+              text: 'Number of Positive and Negative attitude of tweets in Sydney',
+              left: 'center'
+            },
+              tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                  type: 'shadow'
+                }
+              },
+              legend: {
+                data: ['positive_count', 'negative_count'],
+                orient: 'horizontal',
+                right: 0,
+                top: 25
+              },
+              grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+              },
+              xAxis: [
+                {
+                  type: 'value',
+                }
+              ],
+              yAxis: [
+                {
+                  type: 'category',
+                  axisTick: {
+                    show: false
+                  },
+                  data: {{ pos_neg.y | safe }}
+                }
+              ],
+              series: [
+                {
+                  name: 'positive_count',
+                  type: 'bar',
+                  stack: 'Total',
+                  label: {
+                    show: true
+                  },
+                  emphasis: {
+                    focus: 'series'
+                  },
+                  data: {{ pos_neg.sy_pos | safe }}
+                },
+                {
+                  name: 'negative_count',
+                  type: 'bar',
+                  stack: 'Total',
+                  label: {
+                    show: true
+                  },
+                  emphasis: {
+                    focus: 'series'
+                  },
+                  data: {{ pos_neg.sy_neg | safe }}
+                }
+              ]
+            };
+syPosNeg.setOption(syPosNegOption);
+
+          var brPosNeg = echarts.init(document.getElementById('brPosNeg'));
+          // 指定图表的配置项和数据
+          var brPosNegOption = {
+              title: {
+              text: 'Number of Positive and Negative attitude of tweets in Brisbane',
+              left: 'center'
+            },
+              tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                  type: 'shadow'
+                }
+              },
+              legend: {
+                data: ['positive_count', 'negative_count'],
+                orient: 'horizontal',
+                right: 0,
+                top: 25
+              },
+              grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
+              },
+              xAxis: [
+                {
+                  type: 'value'
+                }
+              ],
+              yAxis: [
+                {
+                  type: 'category',
+                  axisTick: {
+                    show: false
+                  },
+                  data: {{ pos_neg.y | safe }}
+                }
+              ],
+              series: [
+                {
+                  name: 'positive_count',
+                  type: 'bar',
+                  stack: 'Total',
+                  label: {
+                    show: true
+                  },
+                  emphasis: {
+                    focus: 'series'
+                  },
+                  data: {{ pos_neg.br_pos | safe }}
+                },
+                {
+                  name: 'negative_count',
+                  type: 'bar',
+                  stack: 'Total',
+                  label: {
+                    show: true
+                  },
+                  emphasis: {
+                    focus: 'series'
+                  },
+                  data: {{ pos_neg.br_neg | safe }}
+                }
+              ]
+            };
+brPosNeg.setOption(brPosNegOption);
+
+            var adPosNeg = echarts.init(document.getElementById('adPosNeg'));
+            // 指定图表的配置项和数据
+            var adPosNegOption = {
+title: {
+  text: 'Number of Positive and Negative attitude of tweets in Adelaide',
+  left: 'center'
+},
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'shadow'
+    }
+  },
+  legend: {
+    data: ['positive_count', 'negative_count'],
+    orient: 'horizontal',
+    right: 0,
+    top: 25
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: 'value',
+    }
+  ],
+  yAxis: [
+    {
+      type: 'category',
+      axisTick: {
+        show: false
+      },
+      data: {{ pos_neg.y | safe }}
+    }
+  ],
+  series: [
+    {
+      name: 'positive_count',
+      type: 'bar',
+      stack: 'Total',
+      label: {
+        show: true
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: {{ pos_neg.ad_pos | safe }}
+    },
+    {
+      name: 'negative_count',
+      type: 'bar',
+      stack: 'Total',
+      label: {
+        show: true
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: {{ pos_neg.ad_neg | safe }}
+    }
+  ]
+};
+adPosNeg.setOption(adPosNegOption);
+
+            var daPosNeg = echarts.init(document.getElementById('daPosNeg'));
+            // 指定图表的配置项和数据
+            var daPosNegOption = {
+title: {
+  text: 'Number of Positive and Negative attitude of tweets in Darwin',
+  left: 'center'
+},
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'shadow'
+    }
+  },
+  legend: {
+    data: ['positive_count', 'negative_count'],
+    orient: 'horizontal',
+    right: 0,
+    top: 25
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: 'value'
+    }
+  ],
+  yAxis: [
+    {
+      type: 'category',
+      axisTick: {
+        show: false
+      },
+      data: {{ pos_neg.y | safe }}
+    }
+  ],
+  series: [
+    {
+      name: 'positive_count',
+      type: 'bar',
+      stack: 'Total',
+      label: {
+        show: true
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: {{ pos_neg.da_pos | safe }}
+    },
+    {
+      name: 'negative_count',
+      type: 'bar',
+      stack: 'Total',
+      label: {
+        show: true
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: {{ pos_neg.da_neg | safe }}
+    }
+  ]
+};
+daPosNeg.setOption(daPosNegOption);
+
+ var pePosNeg = echarts.init(document.getElementById('pePosNeg'));
+            // 指定图表的配置项和数据
+            var pePosNegOption = {
+                title: {
+  text: 'Number of Positive and Negative attitude of tweets in Perth',
+  left: 'center'
+},
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'shadow'
+    }
+  },
+  legend: {
+    data: ['positive_count', 'negative_count'],
+    orient: 'horizontal',
+    right: 0,
+    top: 25
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: 'value'
+    }
+  ],
+  yAxis: [
+    {
+      type: 'category',
+      axisTick: {
+        show: false
+      },
+      data: {{ pos_neg.y | safe }}
+    }
+  ],
+  series: [
+    {
+      name: 'positive_count',
+      type: 'bar',
+      stack: 'Total',
+      label: {
+        show: true
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: {{ pos_neg.pe_pos | safe }}
+    },
+    {
+      name: 'negative_count',
+      type: 'bar',
+      stack: 'Total',
+      label: {
+        show: true
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: {{ pos_neg.pe_neg | safe }}
+    }
+  ]
+};
+pePosNeg.setOption(pePosNegOption);
+
+ var hoPosNeg = echarts.init(document.getElementById('hoPosNeg'));
+            // 指定图表的配置项和数据
+            var hoPosNegOption = {
+                title: {
+  text: 'Number of Positive and Negative attitude of tweets in Hobart',
+  left: 'center'
+},
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'shadow'
+    }
+  },
+  legend: {
+    data: ['positive_count', 'negative_count'],
+    orient: 'horizontal',
+    right: 0,
+    top: 25
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: 'value'
+    }
+  ],
+  yAxis: [
+    {
+      type: 'category',
+      axisTick: {
+        show: false
+      },
+      data: {{ pos_neg.y | safe }}
+    }
+  ],
+  series: [
+    {
+      name: 'positive_count',
+      type: 'bar',
+      stack: 'Total',
+      label: {
+        show: true
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: {{ pos_neg.ho_pos | safe }}
+    },
+    {
+      name: 'negative_count',
+      type: 'bar',
+      stack: 'Total',
+      label: {
+        show: true
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: {{ pos_neg.ho_neg | safe }}
+    }
+  ]
+};
+hoPosNeg.setOption(hoPosNegOption);
+
+
+
+
+ var caPosNeg = echarts.init(document.getElementById('caPosNeg'));
+            // 指定图表的配置项和数据
+            var caPosNegOption = {
+                title: {
+  text: 'Number of Positive and Negative attitude of tweets in Canberra',
+  left: 'center'
+},
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'shadow'
+    }
+  },
+  legend: {
+    data: ['positive_count', 'negative_count'],
+    orient: 'horizontal',
+    right: 0,
+    top: 25
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: 'value'
+    }
+  ],
+  yAxis: [
+    {
+      type: 'category',
+      axisTick: {
+        show: false
+      },
+      data: {{ pos_neg.y | safe }}
+    }
+  ],
+  series: [
+    {
+      name: 'positive_count',
+      type: 'bar',
+      stack: 'Total',
+      label: {
+        show: true
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: {{ pos_neg.ca_pos | safe }}
+    },
+    {
+      name: 'negative_count',
+      type: 'bar',
+      stack: 'Total',
+      label: {
+        show: true
+      },
+      emphasis: {
+        focus: 'series'
+      },
+      data: {{ pos_neg.ca_neg | safe }}
+    }
+  ]
+};
+caPosNeg.setOption(caPosNegOption);
+
+
+// prettier-ignore
+const months = {{ pos_neg.y | safe }};
+// prettier-ignore
+const citys = [
+    'Adelaide', 'Brisbane', 'Canberra', 'Darwin', 'Hobart', 'Melbourne','Perth', 'Sydney'
+];
+// prettier-ignore
+const polData = {{ heat_score.pol_score | safe }} .map(function (item) {
+    return [item[1], item[0], item[2] || '-'];
+});
+        var polScoreHeat = echarts.init(document.getElementById('polScoreHeat'));
+            // 指定图表的配置项和数据
+            var polScoreHeatOption = {
+                title: {
+  text: 'Pol score of tweets',
+  left: 'center'
+},
+  tooltip: {
+    position: 'top'
+  },
+  grid: {
+    height: '50%',
+    top: '10%'
+  },
+  xAxis: {
+    type: 'category',
+    data: months,
+    splitArea: {
+      show: true
+    }
+  },
+  yAxis: {
+    type: 'category',
+    data: citys,
+    splitArea: {
+      show: true
+    }
+  },
+  visualMap: {
+    min: -0.238,
+    max: 0.453,
+    calculable: true,
+    orient: 'horizontal',
+    left: 'center',
+    bottom: '15%'
+  },
+  series: [
+    {
+      name: 'Punch Card',
+      type: 'heatmap',
+      data: polData,
+      label: {
+        show: true
+      },
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }
+    }
+  ]
+};
+polScoreHeat.setOption(polScoreHeatOption);
+
+// prettier-ignore
+const subData = {{ heat_score.sub_score | safe }}.map(function (item) {
+    return [item[1], item[0], item[2] || '-'];
+});
+        var subScoreHeat = echarts.init(document.getElementById('subScoreHeat'));
+            // 指定图表的配置项和数据
+            var subScoreHeatOption = {
+                title: {
+  text: 'Sub score of tweets',
+  left: 'center'
+},
+  tooltip: {
+    position: 'top'
+  },
+  grid: {
+    height: '50%',
+    top: '10%'
+  },
+  xAxis: {
+    type: 'category',
+    data: months,
+    splitArea: {
+      show: true
+    }
+  },
+  yAxis: {
+    type: 'category',
+    data: citys,
+    splitArea: {
+      show: true
+    }
+  },
+  visualMap: {
+    min: 0.346,
+    max: 0.503,
+    calculable: true,
+    orient: 'horizontal',
+    left: 'center',
+    bottom: '15%'
+  },
+  series: [
+    {
+      name: 'Punch Card',
+      type: 'heatmap',
+      data: subData,
+      label: {
+        show: true
+      },
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }
+    }
+  ]
+};
+subScoreHeat.setOption(subScoreHeatOption);
+
+
+</script>
+{% endblock %}
