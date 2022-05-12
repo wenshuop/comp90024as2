@@ -112,7 +112,7 @@ def get_twitter_data(db):
             ca_pos_rate.append(round(row['pos']/row['total']*100, 2))
             ca_neg_rate.append(round(row['neg']/row['total']*100, 2))
             ca_neu_rate.append(round(row['neu']/row['total']*100, 2))
-        if row['month'] != '2021-05':
+        if row['month'] != '2022-05':
             pol_score.append([Y, X, round(row['pol_score'], 3)])
             sub_score.append([Y, X, round(row['sub_score'], 3)])
         X += 1
@@ -347,10 +347,9 @@ def get_medical():
 
 
 @app.route('/topic_trend')
-def getTopic():
+def get_topic():
     vis_dict = dict(server['topics'].get('melbourne_2023-01_covid'))
-    
-    return render_template('topic_trend.html',vis_dict = vis_dict)
+    return render_template('topic_trend.html',vis_dict=vis_dict)
 
 
 if __name__ == '__main__':
