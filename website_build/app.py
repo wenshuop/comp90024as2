@@ -1,7 +1,5 @@
 #encoding:utf-8
 from flask import Flask, jsonify, request, render_template, redirect
-import simplejson as json
-# import flaskext.couchdb
 import couchdb
 from couchdb.design import ViewDefinition
 from wordcloud import WordCloud, STOPWORDS
@@ -18,8 +16,6 @@ def get_home():
 
 def get_dose_data(db):
     dose_x, dose_melb, dose_sy, dose_br, dose_ad, dose_da, dose_pe, dose_ho = [], [], [], [], [], [], [], []
-    mango = {'selector': {}, 'fields': ['date', 'Melbourne', 'Sydney', 'Brisbane', 'Adelaide', 'Darwin', 'Perth', 'Hobart']}
-    # for row in db.find(mango):
     for id in db:
         row = db.get(id)
         dose_x.append(row['date'])
@@ -38,8 +34,6 @@ def get_dose_data(db):
     dose_da.reverse()
     dose_pe.reverse()
     dose_ho.reverse()
-    # result = {'xAxis': dose_x.reverse(), 'Melbourne': dose_melb.reverse(), 'Sydney': dose_sy.reverse(), 'Brisbane': dose_br.reverse(), 'Adelaide': dose_ad.reverse(), 'Darwin': dose_da.reverse(), 'Perth': dose_pe.reverse(), 'Hobart': dose_ho.reverse()}
-    # result = {'xAxis': dose_x[::-1], 'Melbourne': dose_melb[::-1], 'Sydney': dose_sy[::-1], 'Brisbane': dose_br[::-1], 'Adelaide': dose_ad[::-1], 'Darwin': dose_da[::-1], 'Perth': dose_pe[::-1], 'Hobart': dose_ho[::-1]}
     result = {'xAxis': dose_x, 'Melbourne': dose_melb, 'Sydney': dose_sy, 'Brisbane': dose_br, 'Adelaide': dose_ad, 'Darwin': dose_da, 'Perth': dose_pe, 'Hobart': dose_ho}
     return result
 
@@ -50,14 +44,8 @@ def get_twitter_data(db):
     da_pos, da_neg, pe_pos, pe_neg, ho_pos, ho_neg, ca_pos, ca_neg = [], [], [], [], [], [], [], []
     melb_pos_rate, melb_neg_rate, melb_neu_rate, sy_pos_rate, sy_neg_rate, sy_neu_rate, br_pos_rate, br_neu_rate, br_neg_rate, ad_pos_rate, ad_neu_rate, ad_neg_rate = [], [], [], [], [], [], [], [], [], [], [], []
     da_pos_rate, da_neg_rate, da_neu_rate, pe_pos_rate, pe_neg_rate, pe_neu_rate, ho_pos_rate, ho_neg_rate, ho_neu_rate, ca_pos_rate, ca_neg_rate, ca_neu_rate = [], [], [], [], [], [], [], [],[], [], [], []
-    melb_pol_score, melb_sub_score, sy_pol_score, sy_sub_score, br_pol_score, br_sub_score,ad_pol_score,ad_sub_score = [], [], [], [], [], [], [], []
-    da_pol_score, da_sub_score, pe_pol_score, pe_sub_score, ho_pol_score, ho_sub_score = [], [], [], [], [], []
     pol_score, sub_score = [], []
-    # mango = {'selector': {}, 'fields': ['date', 'Melbourne', 'Sydney', 'Brisbane', 'Adelaide', 'Darwin', 'Perth', 'Hobart']}
-    # mango = {'selector': {}, 'fields': ['month', 'city', 'total', 'pos', 'neg', 'pol_score', 'sub_score']}
-    # city = ['Melbourne', 'Sydney', 'Brisbane', 'Adelaide', 'Darwin', 'Perth', 'Hobart']
     X, Y = 0, 0
-    # for row in db.find(mango):
     for id in db:
         row = db.get(id)
         if X > 15:
@@ -113,9 +101,10 @@ def get_twitter_data(db):
             ca_pos_rate.append(round(row['pos']/row['total']*100, 2))
             ca_neg_rate.append(round(row['neg']/row['total']*100, 2))
             ca_neu_rate.append(round(row['neu']/row['total']*100, 2))
-        if row['month'] != '2022-05':
-            pol_score.append([Y, X, round(row['pol_score'], 3)])
-            sub_score.append([Y, X, round(row['sub_score'], 3)])
+        if row['month'] == '2022-05':
+            continue
+        pol_score.append([Y, X, round(row['pol_score'], 3)])
+        sub_score.append([Y, X, round(row['sub_score'], 3)])
         X += 1
     pos_neg = {
         'y': y,
@@ -222,28 +211,11 @@ def get_sentiment():
 
 @app.route('/enterprise')
 def get_enterprise():
-    # employee = {
-    #     '1': list(server['business'].get('e78cc88ab97d696a019b20be463ee052').values())[2:-1],
-    #     '2': list(server['business'].get('e78cc88ab97d696a019b20be463ef633').values())[2:-1],
-    #     '3': list(server['business'].get('e78cc88ab97d696a019b20be463eea64').values())[2:-1],
-    #     '4': list(server['business'].get('e78cc88ab97d696a019b20be463eea13').values())[2:-1]
-    # }
-    # source = [
-    #     ['product', 'Micro Enterprise', 'Small Enterprise', 'Medium-sized Enterprise', 'Large Enterprise'],
-    #     ['Melbourne', employee['1'][5], employee['2'][5], employee['3'][5], employee['4'][5]],
-    #     ['Adelaide', employee['1'][0], employee['2'][0], employee['3'][0], employee['4'][0]],
-    #     ['Brisbane', employee['1'][1], employee['2'][1], employee['3'][1], employee['4'][1]],
-    #     ['Darwin', employee['1'][2], employee['2'][2], employee['3'][2], employee['4'][2]],
-    #     ['Hobart', employee['1'][3], employee['2'][3], employee['3'][3], employee['4'][3]],
-    #     ['Perth', employee['1'][4], employee['2'][4], employee['3'][4], employee['4'][4]],
-    #     ['Sydney', employee['1'][6], employee['2'][6], employee['3'][6], employee['4'][6]]
-    # ]
     enterprise = []
     for id in server['business']:
         row = get_doc_data(server['business'].get(id))
         enterprise.append(list(row.values()))
     return render_template('enterprise.html', enterprise=enterprise)
-
 
 
 @app.route('/housing')
@@ -286,11 +258,6 @@ def get_education():
     other = dict(get_doc_data(server['education'].get('e78cc88ab97d696a019b20be463e0063')))
     oversea = dict(get_doc_data(server['education'].get('e78cc88ab97d696a019b20be463dedaf')))
     university = dict(get_doc_data(server['education'].get('e78cc88ab97d696a019b20be463deccb')))
-    # melb, ade, br, da, ho, pe, sy = ['Melbourne',secondary['M'Melbourne'], ['Adelaide'], ['Brisbane'], ['Darwin'], ['Hobart'], ['Perth'], ['Sydney']
-    # for i in range(6):
-    #     melb.append(secondary['Melb'])
-    # 'Preschool', 'Secondary', 'Technical or Further Educational',
-    # 'University or other Tertiary', 'Oversea Visitor', 'Other Type'],
     source ={
         'cat':['product', 'Preschool', 'Secondary', 'Technical or Further Educational',
          'University or other Tertiary', 'Oversea Visitor', 'Other Type'],
@@ -302,27 +269,6 @@ def get_education():
         'Perth':[preschool['Perth'], secondary['Perth'], technical['Perth'], university['Perth'], oversea['Perth'], other['Perth']],
         'Sydney':[ preschool['Sydney'], secondary['Sydney'], technical['Sydney'], university['Sydney'], oversea['Sydney'], other['Sydney']],
     }
-    # years_11 = dict(get_doc_data(server['highest_school_year'].get('e78cc88ab97d696a019b20be4639cdcb')))
-    # years_9 = dict(get_doc_data(server['highest_school_year'].get('e78cc88ab97d696a019b20be4639d35e')))
-    # years_10 = dict(get_doc_data(server['highest_school_year'].get('e78cc88ab97d696a019b20be4639da1c')))
-    # years_12 = dict(get_doc_data(server['highest_school_year'].get('e78cc88ab97d696a019b20be4639e060')))
-    # years_8 = dict(get_doc_data(server['highest_school_year'].get('e78cc88ab97d696a019b20be4639ee5a')))
-    # highest_school_year = {
-    # 'Melbourne' : [years_8['Melbourne'], years_9['Melbourne'], years_10['Melbourne'], years_11['Melbourne'],years_12['Melbourne']],
-    # 'Adelaide' : [years_8['Adelaide'], years_9['Adelaide'], years_10['Adelaide'], years_11['Adelaide'],years_12['Adelaide']],
-    # 'Brisbane' : [years_8['Brisbane'], years_9['Brisbane'], years_10['Brisbane'], years_11['Brisbane'],years_12['Brisbane']],
-    # 'Darwin' : [years_8['Darwin'], years_9['Darwin'], years_10['Darwin'], years_11['Darwin'],years_12['Darwin']],
-    # 'Hobart' : [years_8['Hobart'], years_9['Hobart'], years_10['Hobart'], years_11['Hobart'],years_12['Hobart']],
-    # 'Perth' : [years_8['Perth'], years_9['Perth'], years_10['Perth'], years_11['Perth'],years_12['Perth']],
-    # 'Sydney' : [years_8['Sydney'], years_9['Sydney'], years_10['Sydney'], years_11['Sydney'],years_12['Sydney']]
-    # }
-    # highest_school_year = {
-    #     'years_8': list(years_8.values()),
-    #     'years_9': list(years_9.values()),
-    #     'years_10': list(years_10.values()),
-    #     'years_11': list(years_11.values()),
-    #     'years_12': list(years_12.values()),
-    # }
     highest_school_year = []
     for id in server['highest_school_year']:
         row = get_doc_data(server['highest_school_year'].get(id))
@@ -382,16 +328,10 @@ def get_wordcloud():
 def get_wordcloud_pic():
     # set document id, e.g. 'darwin_2021-01_covid'
     if request.method == 'POST':
-        # data = request.get_data()
-        # json_data = json.loads(data.decode("utf-8"))
-        # name = json_data.get('username')
-        # pwd = json_data.get('password')
         city = request.form['city']
         date = request.form['date']
         print(city, date)
-        # month = request.form['month']
         type = 'covid'
-        # time = str(year) + '-' + '{0:02d}'.format(month)
         doc_id = '{}_{}_{}'.format(city.lower().replace(' ', ''), date, type)
         stopwords = set(STOPWORDS)
         wordcloud_fdict = dict(server['wordcloud'].get(doc_id))
