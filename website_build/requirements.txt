@@ -1,3 +1,4 @@
 Flask==2.1.2
 simplejson==3.17.6
 CouchDB==1.2
+wordcloud==1.8.1

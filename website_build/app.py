@@ -1,9 +1,10 @@
 #encoding:utf-8
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, jsonify, request, render_template, redirect
 import simplejson as json
 # import flaskext.couchdb
 import couchdb
 from couchdb.design import ViewDefinition
+from wordcloud import WordCloud, STOPWORDS
 
 
 app = Flask(__name__)
@@ -221,11 +222,28 @@ def get_sentiment():
 
 @app.route('/enterprise')
 def get_enterprise():
-    income = []
-    for id in server['income']:
-        row = get_doc_data(server['income'].get(id))
-        income.append(list(row.values()))
-    return render_template('medical_status.html', income=income)
+    # employee = {
+    #     '1': list(server['business'].get('e78cc88ab97d696a019b20be463ee052').values())[2:-1],
+    #     '2': list(server['business'].get('e78cc88ab97d696a019b20be463ef633').values())[2:-1],
+    #     '3': list(server['business'].get('e78cc88ab97d696a019b20be463eea64').values())[2:-1],
+    #     '4': list(server['business'].get('e78cc88ab97d696a019b20be463eea13').values())[2:-1]
+    # }
+    # source = [
+    #     ['product', 'Micro Enterprise', 'Small Enterprise', 'Medium-sized Enterprise', 'Large Enterprise'],
+    #     ['Melbourne', employee['1'][5], employee['2'][5], employee['3'][5], employee['4'][5]],
+    #     ['Adelaide', employee['1'][0], employee['2'][0], employee['3'][0], employee['4'][0]],
+    #     ['Brisbane', employee['1'][1], employee['2'][1], employee['3'][1], employee['4'][1]],
+    #     ['Darwin', employee['1'][2], employee['2'][2], employee['3'][2], employee['4'][2]],
+    #     ['Hobart', employee['1'][3], employee['2'][3], employee['3'][3], employee['4'][3]],
+    #     ['Perth', employee['1'][4], employee['2'][4], employee['3'][4], employee['4'][4]],
+    #     ['Sydney', employee['1'][6], employee['2'][6], employee['3'][6], employee['4'][6]]
+    # ]
+    enterprise = []
+    for id in server['business']:
+        row = get_doc_data(server['business'].get(id))
+        enterprise.append(list(row.values()))
+    return render_template('enterprise.html', enterprise=enterprise)
+
 
 
 @app.route('/housing')
@@ -334,6 +352,9 @@ def get_medical():
         row = get_doc_data(server['hospital'].get(id))
         hospital.append(list(row.values())[0])
     medical = []
+    for id in server['medical_benefits']:
+        row = get_doc_data(server['medical_benefits'].get(id))
+        medical.append(list(row.values()))
     source = {
         'Melbourne': [i[0] for i in medical],
         'Adelaide': [i[3] for i in medical],
@@ -350,6 +371,39 @@ def get_medical():
 def get_topic():
     vis_dict = dict(server['topics'].get('melbourne_2023-01_covid'))
     return render_template('topic_trend.html',vis_dict=vis_dict)
+
+
+@app.route('/wordcloud')
+def get_wordcloud():
+    return render_template('wordcloud.html')
+
+
+@app.route('/wordcloud_pic', methods=['POST'])
+def get_wordcloud_pic():
+    # set document id, e.g. 'darwin_2021-01_covid'
+    if request.method == 'POST':
+        # data = request.get_data()
+        # json_data = json.loads(data.decode("utf-8"))
+        # name = json_data.get('username')
+        # pwd = json_data.get('password')
+        city = request.form['city']
+        date = request.form['date']
+        print(city, date)
+        # month = request.form['month']
+        type = 'covid'
+        # time = str(year) + '-' + '{0:02d}'.format(month)
+        doc_id = '{}_{}_{}'.format(city.lower().replace(' ', ''), date, type)
+        stopwords = set(STOPWORDS)
+        wordcloud_fdict = dict(server['wordcloud'].get(doc_id))
+        if wordcloud_fdict is not None:
+            # drop '_id' and '_rev' from the retrieved dictionary
+            wordcloud_fdict.pop('_id', None)
+            wordcloud_fdict.pop('_rev', None)
+            wc = WordCloud(width=800, height=400, max_words=50, stopwords=stopwords, background_color='floralwhite').generate_from_frequencies(wordcloud_fdict)
+            wc.to_file('static/images/wordcloud.png')
+        else:
+            print('document does not exit.')
+        return redirect('/wordcloud')
 
 
 if __name__ == '__main__':
