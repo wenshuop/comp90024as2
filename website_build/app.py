@@ -340,12 +340,6 @@ def get_medical():
     return render_template('medical_status.html', hospital=hospital, source=source)
 
 
-@app.route('/topic_trend')
-def get_topic():
-    vis_dict = dict(server['topics'].get('melbourne_2023-01_covid'))
-    return render_template('topic_trend.html', vis_dict=vis_dict)
-
-
 @app.route('/wordcloud')
 def get_wordcloud():
     return render_template('wordcloud.html')
@@ -383,7 +377,6 @@ def handle_404_error(err_msg):
 
 @app.route('/topic')
 def get_topic():
-
     city = 'melbourne'
     date = '2021-01'
     type = 'covid'
