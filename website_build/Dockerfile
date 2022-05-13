@@ -6,7 +6,8 @@
 # Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au
 
 FROM python:3.8
-WORKDIR /backend
-　　ADD . /backend
+EXPOSE 5000
+WORKDIR /website_build
+　　COPY . .
 RUN pip install -r requirements.txt
 CMD ["python","app.py"]
