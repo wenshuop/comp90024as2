@@ -1,12 +1,11 @@
 #encoding:utf-8
-from flask import Flask, jsonify, request, render_template, redirect
+from flask import Flask, request, render_template, redirect
 import couchdb
-from couchdb.design import ViewDefinition
 from wordcloud import WordCloud, STOPWORDS
 
 
 app = Flask(__name__)
-server = couchdb.Server('http://admin:admin@172.26.128.22:5984//')
+server = couchdb.Server('http://admin:admin@172.26.128.22:5984/')
 
 
 @app.route('/')
@@ -347,4 +346,4 @@ def get_wordcloud_pic():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000)
