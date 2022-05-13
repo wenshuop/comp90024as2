@@ -10,4 +10,4 @@ EXPOSE 5000
 WORKDIR /website_build
 　　COPY . .
 RUN pip install -r requirements.txt
-CMD ["python","app.py"]
+CMD ["python3","app.py"]
