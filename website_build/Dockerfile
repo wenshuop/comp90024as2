@@ -7,7 +7,7 @@
 
 FROM python:3.8
 
-WORKDIR /home/ubuntu/COMP90024/comp90024as2/harvest/website_build
+WORKDIR /home/ubuntu/COMP90024/comp90024as2/website_build
 
 COPY . .
 
