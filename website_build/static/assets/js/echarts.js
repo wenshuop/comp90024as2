@@ -35920,7 +35920,7 @@ function symbolPathSetColor(color, innerColor) {
             symbolStyle.fill = innerColor || '#fff';
         }
         else {
-            // FIXME 判断图形默认是填充还是描边，使用 onlyStroke ?
+           
             symbolStyle.fill && (symbolStyle.fill = color);
             symbolStyle.stroke && (symbolStyle.stroke = color);
         }
@@ -40574,8 +40574,7 @@ axisModelCreator('y', AxisModel, getAxisType, extraOption);
 * under the License.
 */
 
-// Grid 是在有直角坐标系的时候必须要存在的
-// 所以这里也要被 Cartesian2D 依赖
+
 
 ComponentModel.extend({
 
@@ -43004,8 +43003,8 @@ var BaseBarSeries = SeriesModel.extend({
     },
 
     defaultOption: {
-        zlevel: 0,                  // 一级层叠
-        z: 2,                       // 二级层叠
+        zlevel: 0,                 
+        z: 2,                      
         coordinateSystem: 'cartesian2d',
         legendHoverLink: true,
         // stack: null
@@ -43014,9 +43013,9 @@ var BaseBarSeries = SeriesModel.extend({
         // xAxisIndex: 0,
         // yAxisIndex: 0,
 
-        // 最小高度改为0
+        
         barMinHeight: 0,
-        // 最小角度为0，仅对极坐标系下的柱状图有效
+        
         barMinAngle: 0,
         // cursor: null,
 
@@ -43030,11 +43029,11 @@ var BaseBarSeries = SeriesModel.extend({
         // In cartesian, the default value is 1. Otherwise null.
         // barMinWidth: null,
 
-        // 默认自适应
+        
         // barWidth: null,
-        // 柱间距离，默认为柱形宽度的30%，可设固定值
+        
         // barGap: '30%',
-        // 类目间柱形距离，默认为类目间距的20%，可设固定值
+        
         // barCategoryGap: '20%',
         // label: {
         //      show: false
@@ -44332,29 +44331,29 @@ var PieSeries = extendSeriesModel({
         legendHoverLink: true,
 
         hoverAnimation: true,
-        // 默认全局居中
+        
         center: ['50%', '50%'],
         radius: [0, '75%'],
-        // 默认顺时针
+        
         clockwise: true,
         startAngle: 90,
-        // 最小角度改为0
+       
         minAngle: 0,
 
         // If the angle of a sector less than `minShowLabelAngle`,
         // the label will not be displayed.
         minShowLabelAngle: 0,
 
-        // 选中时扇区偏移量
+       
         selectedOffset: 10,
-        // 高亮扇区偏移量
+        
         hoverOffset: 10,
 
         // If use strategy to avoid label overlapping
         avoidLabelOverlap: true,
-        // 选择模式，默认关闭，可选single，multiple
+       
         // selectedMode: false,
-        // 南丁格尔玫瑰图模式，'radius'（半径） | 'area'（面积）
+        
         // roseType: null,
 
         percentPrecision: 2,
@@ -44386,20 +44385,18 @@ var PieSeries = extendSeriesModel({
             bleedMargin: 10,
             // Distance between text and label line.
             distanceToLabelLine: 5
-            // formatter: 标签文本格式器，同Tooltip.formatter，不支持异步回调
-            // 默认使用全局文本样式，详见TEXTSTYLE
-            // distance: 当position为inner时有效，为label位置到圆心的距离与圆半径(环状图为内外半径和)的比例系数
+            
         },
         // Enabled when label.normal.position is 'outer'
         labelLine: {
             show: true,
-            // 引导线两段中的第一段长度
+            
             length: 15,
-            // 引导线两段中的第二段长度
+            
             length2: 15,
             smooth: false,
             lineStyle: {
-                // color: 各异,
+                
                 width: 1,
                 type: 'solid'
             }
@@ -45462,7 +45459,7 @@ var pieLayout = function (seriesType, ecModel, api, payload) {
                 return;
             }
 
-            // FIXME 兼容 2.0 但是 roseType 是 area 的时候才是这样？
+            
             if (roseType !== 'area') {
                 angle = (sum === 0 && stillShowZeroSum)
                     ? unitRadian : (value * unitRadian);
@@ -45680,9 +45677,9 @@ SeriesModel.extend({
         // Geo coordinate system
         // geoIndex: 0,
 
-        // symbol: null,        // 图形类型
-        symbolSize: 10,          // 图形大小，半宽（半径）参数，当图形为方向或菱形则总宽度为symbolSize * 2
-        // symbolRotate: null,  // 图形旋转控制
+        // symbol: null,       
+        symbolSize: 10,          
+        // symbolRotate: null
 
         large: false,
         // Available when large is true
@@ -45691,15 +45688,10 @@ SeriesModel.extend({
 
         // label: {
             // show: false
-            // distance: 5,
-            // formatter: 标签文本格式器，同Tooltip.formatter，不支持异步回调
-            // position: 默认自适应，水平布局为'top'，垂直布局为'right'，可选为
-            //           'inside'|'left'|'right'|'top'|'bottom'
-            // 默认使用全局文本样式，详见TEXTSTYLE
+            // distance: 5
         // },
         itemStyle: {
             opacity: 0.8
-            // color: 各异
         },
 
         // If clip the overflow graphics
@@ -47302,7 +47294,7 @@ registerPreprocessor(backwardCompat$1);
 * under the License.
 */
 
-// Fix for 南海诸岛
+
 
 var geoCoord = [126, 25];
 
@@ -47442,7 +47434,6 @@ var fixGeoCoord = function (mapType, region) {
 * under the License.
 */
 
-// Fix for 钓鱼岛
 
 // var Region = require('../Region');
 // var zrUtil = require('zrender/src/core/util');
@@ -47977,9 +47968,9 @@ var MapSeries = SeriesModel.extend({
     },
 
     defaultOption: {
-        // 一级层叠
+       
         zlevel: 0,
-        // 二级层叠
+       
         z: 2,
 
         coordinateSystem: 'geo',
@@ -48012,19 +48003,19 @@ var MapSeries = SeriesModel.extend({
         // layoutSize: 100
 
 
-        // 数值合并方式，默认加和，可选为：
+        
         // 'sum' | 'average' | 'max' | 'min'
         // mapValueCalculation: 'sum',
-        // 地图数值计算结果小数精度
+       
         // mapValuePrecision: 0,
 
 
-        // 显示图例颜色标识（系列标识的小圆点），图例开启时有效
+        
         showLegendSymbol: true,
-        // 选择模式，默认关闭，可选single，multiple
+        
         // selectedMode: false,
         dataRangeHoverLink: true,
-        // 是否开启缩放及漫游模式
+        
         // roam: false,
 
         // Define left-top, right-bottom coords to control view
@@ -50178,7 +50169,7 @@ var mapVisual = function (ecModel) {
 * under the License.
 */
 
-// FIXME 公用？
+
 /**
  * @param {Array.<module:echarts/data/List>} datas
  * @param {string} statisticType 'average' 'sum'
@@ -53316,7 +53307,7 @@ extendChartView({
         var containerGroup = this._containerGroup;
         if (!containerGroup) {
             // FIXME
-            // 加一层containerGroup是为了clip，但是现在clip功能并没有实现。
+           
             containerGroup = this._containerGroup = new Group$2();
             this._initEvents(containerGroup);
             this.group.add(containerGroup);
@@ -55184,7 +55175,7 @@ var treemapLayout = {
         seriesModel.setLayoutInfo(layoutInfo);
 
         // FIXME
-        // 现在没有clip功能，暂时取ec高宽。
+       
         prunning(
             treeRoot,
             // Transform to base element coordinate system.
@@ -55695,7 +55686,7 @@ function generateNodeKey(id) {
  */
 var Graph = function (directed) {
     /**
-     * 是否是有向图
+     * 
      * @type {boolean}
      * @private
      */
@@ -56090,7 +56081,7 @@ Node.prototype = {
 };
 
 /**
- * 图边
+ * 
  * @alias module:echarts/data/Graph.Edge
  * @param {module:echarts/data/Graph.Node} n1
  * @param {module:echarts/data/Graph.Node} n2
@@ -56099,13 +56090,13 @@ Node.prototype = {
 function Edge(n1, n2, dataIndex) {
 
     /**
-     * 节点1，如果是有向图则为源节点
+     * 
      * @type {module:echarts/data/Graph.Node}
      */
     this.node1 = n1;
 
     /**
-     * 节点2，如果是有向图则为目标节点
+     * 
      * @type {module:echarts/data/Graph.Node}
      */
     this.node2 = n2;
@@ -58914,50 +58905,50 @@ var GaugeSeries = SeriesModel.extend({
     defaultOption: {
         zlevel: 0,
         z: 2,
-        // 默认全局居中
+        
         center: ['50%', '50%'],
         legendHoverLink: true,
         radius: '75%',
         startAngle: 225,
         endAngle: -45,
         clockwise: true,
-        // 最小值
+       
         min: 0,
-        // 最大值
+        
         max: 100,
-        // 分割段数，默认为10
+        
         splitNumber: 10,
-        // 坐标轴线
+        
         axisLine: {
-            // 默认显示，属性show控制显示与否
+           
             show: true,
-            lineStyle: {       // 属性lineStyle控制线条样式
+            lineStyle: {       
                 color: [[0.2, '#91c7ae'], [0.8, '#63869e'], [1, '#c23531']],
                 width: 30
             }
         },
-        // 分隔线
+        
         splitLine: {
-            // 默认显示，属性show控制显示与否
+            
             show: true,
-            // 属性length控制线长
+            
             length: 30,
-            // 属性lineStyle（详见lineStyle）控制线条样式
+            
             lineStyle: {
                 color: '#eee',
                 width: 2,
                 type: 'solid'
             }
         },
-        // 坐标轴小标记
+        
         axisTick: {
-            // 属性show控制显示与否，默认不显示
+            
             show: true,
-            // 每份split细分多少段
+           
             splitNumber: 5,
-            // 属性length控制线长
+            
             length: 8,
-            // 属性lineStyle控制线条样式
+            
             lineStyle: {
                 color: '#eee',
                 width: 1,
@@ -58980,9 +58971,9 @@ var GaugeSeries = SeriesModel.extend({
         },
         title: {
             show: true,
-            // x, y，单位px
+            
             offsetCenter: [0, '-40%'],
-            // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+           
             color: '#333',
             fontSize: 15
         },
@@ -58994,10 +58985,10 @@ var GaugeSeries = SeriesModel.extend({
             width: 100,
             height: null, // self-adaption
             padding: [5, 10],
-            // x, y，单位px
+           
             offsetCenter: [0, '40%'],
             // formatter: null,
-            // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+            
             color: 'auto',
             fontSize: 30
         }
@@ -59578,8 +59569,8 @@ var FunnelSeries = extendSeriesModel({
     },
 
     defaultOption: {
-        zlevel: 0,                  // 一级层叠
-        z: 2,                       // 二级层叠
+        zlevel: 0,                  
+        z: 2,                       
         legendHoverLink: true,
         left: 80,
         top: 60,
@@ -59588,7 +59579,7 @@ var FunnelSeries = extendSeriesModel({
         // width: {totalWidth} - left - right,
         // height: {totalHeight} - top - bottom,
 
-        // 默认取数据最小最大值
+        
         // min: 0,
         // max: 100,
         minSize: '0%',
@@ -59599,19 +59590,19 @@ var FunnelSeries = extendSeriesModel({
         label: {
             show: true,
             position: 'outer'
-            // formatter: 标签文本格式器，同Tooltip.formatter，不支持异步回调
+           
         },
         labelLine: {
             show: true,
             length: 20,
             lineStyle: {
-                // color: 各异,
+                
                 width: 1,
                 type: 'solid'
             }
         },
         itemStyle: {
-            // color: 各异,
+            
             borderColor: '#fff',
             borderWidth: 1
         },
@@ -60661,11 +60652,7 @@ Parallel.prototype = {
             rotate(transform, transform, rotation);
             translate(transform, transform, position);
 
-            // TODO
-            // tick等排布信息。
-
-            // TODO
-            // 根据axis order 更新 dimensions顺序。
+            
 
             this._axesLayout[dim] = {
                 position: position,
@@ -62750,8 +62737,8 @@ SeriesModel.extend({
     },
 
     defaultOption: {
-        zlevel: 0,                  // 一级层叠
-        z: 2,                       // 二级层叠
+        zlevel: 0,                  
+        z: 2,                     
 
         coordinateSystem: 'parallel',
         parallelIndex: 0,
@@ -63067,8 +63054,7 @@ function updateElCommon(el, data, dataIndex, seriesScope) {
 //     return false;
 // }
 
-// FIXME
-// 公用方法?
+
 function isEmptyValue(val, axisType) {
     return axisType === 'category'
         ? val == null
@@ -64627,8 +64613,8 @@ var BoxplotSeries = SeriesModel.extend({
      * @override
      */
     defaultOption: {
-        zlevel: 0,                  // 一级层叠
-        z: 2,                       // 二级层叠
+        zlevel: 0,                  
+        z: 2,                      
         coordinateSystem: 'cartesian2d',
         legendHoverLink: true,
 
@@ -65161,11 +65147,11 @@ var CandlestickSeries = SeriesModel.extend({
         clip: true,
 
         itemStyle: {
-            color: '#c23531', // 阳线 positive
-            color0: '#314656', // 阴线 negative     '#c23531', '#314656'
+            color: '#c23531', 
+            color0: '#314656', 
             borderWidth: 1,
             // FIXME
-            // ec2中使用的是lineStyle.color 和 lineStyle.color0
+           
             borderColor: '#c23531',
             borderColor0: '#314656'
         },
@@ -65971,9 +65957,9 @@ SeriesModel.extend({
         // Geo coordinate system
         // geoIndex: 0,
 
-        // symbol: null,        // 图形类型
-        symbolSize: 10          // 图形大小，半宽（半径）参数，当图形为方向或菱形则总宽度为symbolSize * 2
-        // symbolRotate: null,  // 图形旋转控制
+        // symbol: null,        
+        symbolSize: 10          
+        // symbolRotate: null,  
 
         // large: false,
         // Available when large is true
@@ -66626,7 +66612,7 @@ var LinesSeries = SeriesModel.extend({
             show: false,
             position: 'end'
             // distance: 5,
-            // formatter: 标签文本格式器，同Tooltip.formatter，不支持异步回调
+            
         },
 
         lineStyle: {
@@ -72527,13 +72513,13 @@ SeriesModel.extend({
         zlevel: 0,
         z: 2,
 
-        // 默认全局居中
+        
         center: ['50%', '50%'],
         radius: [0, '75%'],
-        // 默认顺时针
+      
         clockwise: true,
         startAngle: 90,
-        // 最小角度改为0
+        
         minAngle: 0,
 
         percentPrecision: 2,
@@ -81393,8 +81379,7 @@ var DataZoomModel = extendComponentModel({
 
         if (autoAxisIndex) {
             // FIXME
-            // 这里是兼容ec2的写法（没指定xAxisIndex和yAxisIndex时把scatter和双数值轴折柱纳入dataZoom控制），
-            // 但是实际是否需要Grid.js#getScaleByOption来判断（考虑time，log等axis type）？
+            
 
             // If both dataZoom.xAxisIndex and dataZoom.yAxisIndex is not specified,
             // dataZoom component auto adopts series that reference to
@@ -81453,9 +81438,7 @@ var DataZoomModel = extendComponentModel({
      * @private
      */
     _isSeriesHasAllAxesTypeOf: function (seriesModel, axisType) {
-        // FIXME
-        // 需要series的xAxisIndex和yAxisIndex都首先自动设置上。
-        // 例如series.type === scatter时。
+        
 
         var is = true;
         eachAxisDim(function (dimNames) {
@@ -82411,7 +82394,7 @@ extendComponentModel({
 
         show: true,
 
-        // tooltip主体内容
+        
         showContent: true,
 
         // 'trigger' only works on coordinate system.
@@ -82430,57 +82413,51 @@ extendComponentModel({
         // 'html': use html for tooltip
         // 'richText': use canvas, svg, and etc. for tooltip
 
-        // 位置 {Array} | {Function}
+        
         // position: null
         // Consider triggered from axisPointer handle, verticalAlign should be 'middle'
         // align: null,
         // verticalAlign: null,
 
-        // 是否约束 content 在 viewRect 中。默认 false 是为了兼容以前版本。
+        
         confine: false,
 
-        // 内容格式器：{string}（Template） ¦ {Function}
+      
         // formatter: null
 
         showDelay: 0,
 
-        // 隐藏延迟，单位ms
         hideDelay: 100,
 
-        // 动画变换时间，单位s
+        
         transitionDuration: 0.4,
 
         enterable: false,
 
-        // 提示背景颜色，默认为透明度为0.7的黑色
+        
         backgroundColor: 'rgba(50,50,50,0.7)',
 
-        // 提示边框颜色
+       
         borderColor: '#333',
 
-        // 提示边框圆角，单位px，默认为4
+        
         borderRadius: 4,
 
-        // 提示边框线宽，单位px，默认为0（无边框）
+        
         borderWidth: 0,
 
-        // 提示内边距，单位px，默认各方向内边距为5，
-        // 接受数组分别设定上右下左边距，同css
+        
         padding: 5,
 
         // Extra css text
         extraCssText: '',
 
-        // 坐标轴指示器，坐标轴触发有效
+        
         axisPointer: {
-            // 默认为直线
-            // 可选为：'line' | 'shadow' | 'cross'
+            
             type: 'line',
 
-            // type 为 line 的时候有效，指定 tooltip line 所在的轴，可选
-            // 可选 'x' | 'y' | 'angle' | 'radius' | 'auto'
-            // 默认 'auto'，会选择类型为 category 的轴，对于双数值轴，笛卡尔坐标系会默认选择 x 轴
-            // 极坐标系会默认选择 angle 轴
+            
             axis: 'auto',
 
             animation: 'auto',
@@ -84694,8 +84671,7 @@ var BrushModel = extendComponentModel({
                                  // If null, no throttle. Valid only in the first brush component
         throttleDelay: 0,        // Unit: ms, 0 means every event will be triggered.
 
-        // FIXME
-        // 试验效果
+       
         removeOnClick: true,
 
         z: 10000
@@ -85184,55 +85160,39 @@ extendComponentModel({
     layoutMode: {type: 'box', ignoreSize: true},
 
     defaultOption: {
-        // 一级层叠
+        
         zlevel: 0,
-        // 二级层叠
+       
         z: 6,
         show: true,
 
         text: '',
-        // 超链接跳转
-        // link: null,
-        // 仅支持self | blank
+        
         target: 'blank',
         subtext: '',
 
-        // 超链接跳转
-        // sublink: null,
-        // 仅支持self | blank
+       
         subtarget: 'blank',
 
-        // 'center' ¦ 'left' ¦ 'right'
-        // ¦ {number}（x坐标，单位px）
+        
         left: 0,
-        // 'top' ¦ 'bottom' ¦ 'center'
-        // ¦ {number}（y坐标，单位px）
+        
         top: 0,
 
-        // 水平对齐
-        // 'auto' | 'left' | 'right' | 'center'
-        // 默认根据 left 的位置判断是左对齐还是右对齐
-        // textAlign: null
-        //
-        // 垂直对齐
-        // 'auto' | 'top' | 'bottom' | 'middle'
-        // 默认根据 top 位置判断是上对齐还是下对齐
-        // textVerticalAlign: null
-        // textBaseline: null // The same as textVerticalAlign.
+        
 
         backgroundColor: 'rgba(0,0,0,0)',
 
-        // 标题边框颜色
+        
         borderColor: '#ccc',
 
-        // 标题边框线宽，单位px，默认为0（无边框）
+        
         borderWidth: 0,
 
-        // 标题内边距，单位px，默认各方向内边距为5，
-        // 接受数组分别设定上右下左边距，同css
+        
         padding: 5,
 
-        // 主副标题纵向间隔，单位px，默认为10，
+        
         itemGap: 10,
         textStyle: {
             fontSize: 18,
@@ -85594,11 +85554,11 @@ var TimelineModel = ComponentModel.extend({
      */
     defaultOption: {
 
-        zlevel: 0,                  // 一级层叠
-        z: 4,                       // 二级层叠
+        zlevel: 0,                  
+        z: 4,                       
         show: true,
 
-        axisType: 'time',  // 模式是时间类型，支持 value, category
+        axisType: 'time',  
 
         realtime: true,
 
@@ -85612,9 +85572,9 @@ var TimelineModel = ComponentModel.extend({
 
         controlPosition: 'left',           // 'left' 'right' 'top' 'bottom' 'none'
         autoPlay: false,
-        rewind: false,                     // 反向播放
+        rewind: false,                     
         loop: true,
-        playInterval: 2000,                // 播放时间间隔，单位ms
+        playInterval: 2000,                
 
         currentIndex: 0,
 
@@ -85788,9 +85748,9 @@ var SliderTimelineModel = TimelineModel.extend({
      */
     defaultOption: {
 
-        backgroundColor: 'rgba(0,0,0,0)',   // 时间轴背景颜色
-        borderColor: '#ccc',               // 时间轴边框颜色
-        borderWidth: 0,                    // 时间轴边框线宽，单位px，默认为0（无边框）
+        backgroundColor: 'rgba(0,0,0,0)',   
+        borderColor: '#ccc',              
+        borderWidth: 0,                    
 
         orient: 'horizontal',              // 'vertical'
         inverse: false,
@@ -85807,7 +85767,7 @@ var SliderTimelineModel = TimelineModel.extend({
             width: 2,
             color: '#304654'
         },
-        label: {                            // 文本标签
+        label: {                           
             position: 'auto',           // auto left right top bottom
                                         // When using number, label position is not
                                         // restricted by viewRect.
@@ -85816,7 +85776,7 @@ var SliderTimelineModel = TimelineModel.extend({
             interval: 'auto',
             rotate: 0,
             // formatter: null,
-            // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+            
             color: '#304654'
         },
         itemStyle: {
@@ -85856,7 +85816,7 @@ var SliderTimelineModel = TimelineModel.extend({
         emphasis: {
             label: {
                 show: true,
-                // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+                
                 color: '#c23531'
             },
 
@@ -87295,7 +87255,7 @@ MarkerView.extend({
                     symbol = symbol(rawIdx, dataParams);
                 }
                 if (isFnSymbolSize) {
-                    // FIXME 这里不兼容 ECharts 2.x，2.x 貌似参数是整个数据？
+                    
                     symbolSize = symbolSize(rawIdx, dataParams);
                 }
             }
@@ -88513,13 +88473,13 @@ var LegendModel = extendComponentModel({
     },
 
     defaultOption: {
-        // 一级层叠
+       
         zlevel: 0,
-        // 二级层叠
+       
         z: 4,
         show: true,
 
-        // 布局方式，默认为水平布局，可选为：
+        
         // 'horizontal' | 'vertical'
         orient: 'horizontal',
 
@@ -88529,22 +88489,18 @@ var LegendModel = extendComponentModel({
         top: 0,
         // bottom: null,
 
-        // 水平对齐
-        // 'auto' | 'left' | 'right'
-        // 默认为 'auto', 根据 x 的位置判断是左对齐还是右对齐
+      
         align: 'auto',
 
         backgroundColor: 'rgba(0,0,0,0)',
-        // 图例边框颜色
+       
         borderColor: '#ccc',
         borderRadius: 0,
-        // 图例边框线宽，单位px，默认为0（无边框）
+       
         borderWidth: 0,
-        // 图例内边距，单位px，默认各方向内边距为5，
-        // 接受数组分别设定上右下左边距，同css
+        
         padding: 5,
-        // 各个item之间的间隔，单位px，默认为10，
-        // 横向布局时为水平间隔，纵向布局时为纵向间隔
+       
         itemGap: 10,
         // the width of legend symbol
         itemWidth: 25,
@@ -88563,15 +88519,15 @@ var LegendModel = extendComponentModel({
         },
 
         textStyle: {
-            // 图例文字颜色
+            
             color: '#333'
         },
         // formatter: '',
-        // 选择模式，默认开启图例开关
+        
         selectedMode: true,
-        // 配置默认选中状态，可配合LEGEND.SELECTED事件做动态数据载入
+       
         // selected: null,
-        // 图例内容（详见legend.data，数组中每一项代表一个item
+        
         // data: [],
 
         // Usage:
@@ -88608,7 +88564,7 @@ var LegendModel = extendComponentModel({
 
         selectorButtonGap: 10,
 
-        // Tooltip 相关配置
+        
         tooltip: {
             show: false
         }
@@ -90392,7 +90348,7 @@ var SliderZoomView = DataZoomView.extend({
             // Should consider axis.min/axis.max when drawing dataShadow.
 
             // FIXME
-            // 应该使用统一的空判断？还是在list里进行空判断？
+            
             var isEmpty = value == null || isNaN(value) || value === '';
             // See #4235.
             var otherCoord = isEmpty
@@ -90662,7 +90618,7 @@ var SliderZoomView = DataZoomView.extend({
         var labelTexts = ['', ''];
 
         // FIXME
-        // date型，支持formatter，autoformatter（ec2 date.getAutoFormatter）
+        
         if (dataZoomModel.get('showDetail')) {
             var axisProxy = dataZoomModel.findRepresentativeAxisProxy();
 
@@ -90851,8 +90807,7 @@ var SliderZoomView = DataZoomView.extend({
 });
 
 function getOtherDim(thisDim) {
-    // FIXME
-    // 这个逻辑和getOtherAxis里一致，但是写在这里是否不好
+   
     var map$$1 = {x: 'y', y: 'x', radius: 'angle', angle: 'radius'};
     return map$$1[thisDim];
 }
@@ -91820,20 +91775,20 @@ var VisualMapModel = extendComponentModel({
         orient: 'vertical',        // 'horizontal' ¦ 'vertical'
 
         backgroundColor: 'rgba(0,0,0,0)',
-        borderColor: '#ccc',       // 值域边框颜色
+        borderColor: '#ccc',       
         contentColor: '#5793f3',
         inactiveColor: '#aaa',
-        borderWidth: 0,            // 值域边框线宽，单位px，默认为0（无边框）
-        padding: 5,                // 值域内边距，单位px，默认各方向内边距为5，
-                                    // 接受数组分别设定上右下左边距，同css
-        textGap: 10,               //
-        precision: 0,              // 小数精度，默认为0，无小数点
-        color: null,               //颜色（deprecated，兼容ec2，顺序同pieces，不同于inRange/outOfRange）
+        borderWidth: 0,            
+        padding: 5,                
+                                    
+        textGap: 10,               
+        precision: 0,              
+        color: null,               
 
         formatter: null,
-        text: null,                // 文本，如['高', '低']，兼容ec2，text[0]对应高值，text[1]对应低值
+        text: null,                
         textStyle: {
-            color: '#333'          // 值域文字颜色
+            color: '#333'          
         }
     },
 
@@ -94109,8 +94064,7 @@ var resetMethods = {
     categories: function () {
         var thisOption = this.option;
         each$1(thisOption.categories, function (cate) {
-            // FIXME category模式也使用pieceList，但在visualMapping中不是使用pieceList。
-            // 是否改一致。
+            
             this._pieceList.push({
                 text: this.formatValueText(cate, true),
                 value: cate
@@ -94583,7 +94537,7 @@ if (!env$1.canvasSupported) {
     };
 
     var getZIndex = function (zlevel, z, z2) {
-        // z 的取值范围为 [0, 1000]
+        
         return (parseFloat(zlevel) || 0) * ZLEVEL_BASE + (parseFloat(z) || 0) * Z_BASE$1 + z2;
     };
 
@@ -94953,7 +94907,7 @@ if (!env$1.canvasSupported) {
                     var p = points$3[k];
 
                     m && applyTransform(p, p, m);
-                    // 不 round 会非常慢
+                    
                     str.push(
                         round$3(p[0] * Z - Z2), comma, round$3(p[1] * Z - Z2),
                         k < nPoint - 1 ? comma : ''
@@ -95035,7 +94989,7 @@ if (!env$1.canvasSupported) {
      * IMAGE
      **************************************************/
     var isImage = function (img) {
-        // FIXME img instanceof Image 如果 img 是一个字符串的时候，IE8 下会报错
+        
         return (typeof img === 'object') && img.tagName && img.tagName.toUpperCase() === 'IMG';
         // return img instanceof Image;
     };
@@ -95102,7 +95056,7 @@ if (!env$1.canvasSupported) {
 
         var vmlEl = this._vmlEl;
         if (!vmlEl) {
-            // FIXME 使用 group 在 left, top 都不是 0 的时候就无法显示了。
+           
             // vmlEl = vmlCore.createNode('group');
             vmlEl = doc.createElement('div');
             initRootElStyle(vmlEl);
@@ -95149,7 +95103,7 @@ if (!env$1.canvasSupported) {
                         'Dy=', round$3(y * scaleY + m[5]));
 
             vmlElStyle.padding = '0 ' + round$3(maxX) + 'px ' + round$3(maxY) + 'px 0';
-            // FIXME DXImageTransform 在 IE11 的兼容模式下不起作用
+           
             vmlElStyle.filter = imageTransformPrefix + '.Matrix('
                 + transformFilter.join('') + ', SizingMethod=clip)';
 
@@ -95486,7 +95440,7 @@ if (!env$1.canvasSupported) {
             this._textVmlEl = textVmlEl;
         }
         else {
-            // 这里是在前面 appendChild 保证顺序的前提下
+           
             skewEl = textVmlEl.firstChild;
             pathEl = skewEl.nextSibling;
             textPathEl = pathEl.nextSibling;
@@ -95665,7 +95619,7 @@ VMLPainter.prototype = {
     },
 
     /**
-     * 刷新
+     * refresh
      */
     refresh: function () {
 
@@ -95703,7 +95657,7 @@ VMLPainter.prototype = {
             // Detached from document at first time
             // to avoid page refreshing too many times
 
-            // FIXME 如果每次都先 removeChild 可能会导致一些填充和描边的效果改变
+            
             this._vmlViewport.appendChild(vmlRoot);
             this._firstPaint = false;
         }
@@ -97400,7 +97354,7 @@ function getSvgElement(displayable) {
 /**
  * @alias module:zrender/svg/Painter
  * @constructor
- * @param {HTMLElement} root 绘图容器
+ * @param {HTMLElement} root 
  * @param {module:zrender/Storage} storage
  * @param {Object} opts
  */
@@ -97661,14 +97615,14 @@ SVGPainter.prototype = {
     },
 
     /**
-     * 获取绘图区域宽度
+     * get width
      */
     getWidth: function () {
         return this._width;
     },
 
     /**
-     * 获取绘图区域高度
+     * get height
      */
     getHeight: function () {
         return this._height;
