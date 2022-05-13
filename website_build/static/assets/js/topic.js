@@ -436,7 +436,7 @@ var LDAvis = function(to_select, data_or_file_name, color1, color2) {
 
         svg.append("text")
             .text("Intertopic Distance Map (via multidimensional scaling)")
-            .attr("x", mdswidth/2 + margin.left)
+            .attr("x", mdswidth/2 )
             .attr("y", 30)
             .style("font-size", "16px")
             .style("text-anchor", "middle");
@@ -590,7 +590,7 @@ var LDAvis = function(to_select, data_or_file_name, color1, color2) {
 
             // topic input container:
             var topicDiv = document.createElement("div");
-            topicDiv.setAttribute("style", "padding: 5px; background-color: #e8e8e8; display: inline-block; width: " + mdswidth + "px; height: 50px; float: left");
+            topicDiv.setAttribute("style", "padding: 5px; background-color: #e8e8e8; display: inline-block; width: " + mdswidth + "px; height: 80px; float: left");
             inputDiv.appendChild(topicDiv);
 
             var topicLabel = document.createElement("label");
@@ -600,7 +600,7 @@ var LDAvis = function(to_select, data_or_file_name, color1, color2) {
             topicDiv.appendChild(topicLabel);
 
             var topicInput = document.createElement("input");
-            topicInput.setAttribute("style", "width: 50px");
+            topicInput.setAttribute("style", "width: 50px;height:20px;display: inline");
             topicInput.type = "text";
             topicInput.min = "0";
             topicInput.max = K; // assumes the data has already been read in
@@ -611,19 +611,21 @@ var LDAvis = function(to_select, data_or_file_name, color1, color2) {
 
             var previous = document.createElement("button");
             previous.setAttribute("id", topicDown);
-            previous.setAttribute("style", "margin-left: 5px");
+            previous.setAttribute("style", "margin-left: 5px ;display: inline");
             previous.innerHTML = "Previous Topic";
             topicDiv.appendChild(previous);
 
             var next = document.createElement("button");
             next.setAttribute("id", topicUp);
-            next.setAttribute("style", "margin-left: 5px");
+            next.setAttribute("style", "margin-left: 5px;display: inline");
             next.innerHTML = "Next Topic";
             topicDiv.appendChild(next);
 
             var clear = document.createElement("button");
+            
             clear.setAttribute("id", topicClear);
-            clear.setAttribute("style", "margin-left: 5px");
+            clear.setAttribute("style", "margin-left: 5px;display: inline");
+            
             clear.innerHTML = "Clear Topic";
             topicDiv.appendChild(clear);
 
@@ -631,7 +633,7 @@ var LDAvis = function(to_select, data_or_file_name, color1, color2) {
             var lambdaDivWidth = barwidth;
             var lambdaDiv = document.createElement("div");
             lambdaDiv.setAttribute("id", lambdaInputID);
-            lambdaDiv.setAttribute("style", "padding: 5px; background-color: #e8e8e8; display: inline-block; height: 50px; width: " + lambdaDivWidth + "px; float: right; margin-right: 30px");
+            lambdaDiv.setAttribute("style", "padding: 5px; background-color: #e8e8e8; display: inline-block; height: 80px; width: " + lambdaDivWidth + "px; float: right; margin-right: 30px");
             inputDiv.appendChild(lambdaDiv);
 
             var lambdaZero = document.createElement("div");
@@ -1324,8 +1326,10 @@ var LDAvis = function(to_select, data_or_file_name, color1, color2) {
             document.getElementById(topicID).value = vis_state.topic = 0;
             state_save(true);
         }
+       
 
     }
+
 
     if (typeof data_or_file_name === 'string')
         d3.json(data_or_file_name, function(error, data) {visualize(data);});

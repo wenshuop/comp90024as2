@@ -1,144 +1,152 @@
+<!-- Team 13, Melbourne
+Jing Qiu, 1152016, jiqiu1@student.unimelb.edu.au
+Meijun Yue, 1190161, meijuny@student.unimelb.edu.au
+Suyi Jiao, 1222833, sjjiao@student.unimelb.edu.au
+Yeting Wu, 1310061, yetingw@student.unimelb.edu.au
+Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
+
 {% extends "layout.html" %}
+
 <head>
-    <title>{% block title %}Vaccination Rate in Melbourne{% endblock %}</title>
+  <title>{% block title %}Vaccination Rate in Melbourne{% endblock %}</title>
 </head>>
 
 {% block right %}
-    <!-- Header -->
-    <header id="header">
-        <h1> Melbourne: Vaccination Rate </h1>
-    </header>
-    <center>
-            <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px; padding-top:3%" id="firstDose">
-            </div>
-            <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px; padding-top:1%" id="secondDose">
-            </div>
-            <p>
-              This is analysis!!
-            </p>
-    </center>
+<!-- Header -->
+<header id="header">
+  <h1> Melbourne: Vaccination Rate </h1>
+</header>
+<center>
+  <div class="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px; padding-top:3%" id="firstDose">
+  </div>
+  <div class="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px; padding-top:1%" id="secondDose">
+  </div>
+  <p>
+    This is analysis!!
+  </p>
+</center>
 {% endblock %}
 
 {% block echarts_js %}
-    <script type="text/javascript">
-        var firstDose = echarts.init(document.getElementById('firstDose'));
-        var firstOption = {
-          title: {
-            text: 'Cumulative First Dose Vaccination Rate in Cities',
-            left: 'center'
+<script type="text/javascript">
+  var firstDose = echarts.init(document.getElementById('firstDose'));
+  var firstOption = {
+    title: {
+      text: 'Cumulative First Dose Vaccination Rate in Cities',
+      left: 'center'
+    },
+    xAxis: {
+      type: 'category',
+      data: {{ dose1.xAxis | safe }}
           },
-          xAxis: {
-            type: 'category',
-            data: {{ dose1.xAxis | safe }}
-          },
-          yAxis: {
-            type: 'value',
-            min: 0.35
-          },
-          legend: {
-              orient: 'horizontal',
-              right: 100,
-              top: 25
-          },
-          series: [
-            {
-              name: 'Melbourne',
-              type: 'line',
-              data: {{ dose1.Melbourne | safe }},
-              areaStyle: {}
+  yAxis: {
+    type: 'value',
+      min: 0.35
+  },
+  legend: {
+    orient: 'horizontal',
+      right: 100,
+        top: 25
+  },
+  series: [
+    {
+      name: 'Melbourne',
+      type: 'line',
+      data: {{ dose1.Melbourne | safe }},
+    areaStyle: {}
             },
-            {
-              name: 'Sydney',
-              type: 'line',
-              data: {{ dose1.Sydney | safe }}
+    {
+      name: 'Sydney',
+      type: 'line',
+      data: {{ dose1.Sydney | safe }}
             },
-            {
-              name: 'Brisbane',
-              type: 'line',
-              data: {{ dose1.Brisbane | safe }}
+    {
+      name: 'Brisbane',
+      type: 'line',
+      data: {{ dose1.Brisbane | safe }}
             },
-            {
-              name: 'Adelaide',
-              type: 'line',
-              data: {{ dose1.Adelaide | safe }}
+    {
+      name: 'Adelaide',
+      type: 'line',
+      data: {{ dose1.Adelaide | safe }}
             },
-            {
-              name: 'Darwin',
-              type: 'line',
-              data: {{ dose1.Darwin | safe }}
+    {
+      name: 'Darwin',
+      type: 'line',
+      data: {{ dose1.Darwin | safe }}
             },
-              {
-              name: 'Perth',
-              type: 'line',
-              data: {{ dose1.Perth | safe }}
+    {
+      name: 'Perth',
+      type: 'line',
+      data: {{ dose1.Perth | safe }}
             },
-              {
-              name: 'Hobart',
-              type: 'line',
-              data: {{ dose1.Hobart | safe }}
+    {
+      name: 'Hobart',
+      type: 'line',
+      data: {{ dose1.Hobart | safe }}
             }
-          ]
+  ]
         };
-        firstDose.setOption(firstOption);
+  firstDose.setOption(firstOption);
 
-        var secondDose = echarts.init(document.getElementById('secondDose'));
-        var secondOption = {
-          title: {
-            text: 'Cumulative Second Dose Vaccination Rate in Cities',
-            left: 'center'
+  var secondDose = echarts.init(document.getElementById('secondDose'));
+  var secondOption = {
+    title: {
+      text: 'Cumulative Second Dose Vaccination Rate in Cities',
+      left: 'center'
+    },
+    xAxis: {
+      type: 'category',
+      data: {{ dose2.xAxis | safe }},
           },
-          xAxis: {
-            type: 'category',
-            data: {{ dose2.xAxis | safe }},
-          },
-          yAxis: {
-            type: 'value',
-            min: 0.2
-          },
-          legend: {
-              orient: 'horizontal',
-              right: 100,
-              top: 25
-          },
-          series: [
-            {
-              name: 'Melbourne',
-              type: 'line',
-              data: {{ dose2.Melbourne | safe }},
-              areaStyle: {}
+  yAxis: {
+    type: 'value',
+      min: 0.2
+  },
+  legend: {
+    orient: 'horizontal',
+      right: 100,
+        top: 25
+  },
+  series: [
+    {
+      name: 'Melbourne',
+      type: 'line',
+      data: {{ dose2.Melbourne | safe }},
+    areaStyle: {}
             },
-            {
-              name: 'Sydney',
-              type: 'line',
-              data: {{ dose2.Sydney | safe }}
+    {
+      name: 'Sydney',
+      type: 'line',
+      data: {{ dose2.Sydney | safe }}
             },
-            {
-              name: 'Brisbane',
-              type: 'line',
-              data: {{ dose2.Brisbane | safe }}
+    {
+      name: 'Brisbane',
+      type: 'line',
+      data: {{ dose2.Brisbane | safe }}
             },
-            {
-              name: 'Adelaide',
-              type: 'line',
-              data: {{ dose2.Adelaide | safe }}
+    {
+      name: 'Adelaide',
+      type: 'line',
+      data: {{ dose2.Adelaide | safe }}
             },
-            {
-              name: 'Darwin',
-              type: 'line',
-              data: {{ dose2.Darwin | safe }}
+    {
+      name: 'Darwin',
+      type: 'line',
+      data: {{ dose2.Darwin | safe }}
             },
-              {
-              name: 'Perth',
-              type: 'line',
-              data: {{ dose2.Perth | safe }}
+    {
+      name: 'Perth',
+      type: 'line',
+      data: {{ dose2.Perth | safe }}
             },
-              {
-              name: 'Hobart',
-              type: 'line',
-              data: {{ dose2.Hobart | safe }}
+    {
+      name: 'Hobart',
+      type: 'line',
+      data: {{ dose2.Hobart | safe }}
             }
-          ]
+  ]
         };
-        secondDose.setOption(secondOption);
+  secondDose.setOption(secondOption);
 </script>
 {% endblock %}

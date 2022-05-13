@@ -1,3 +1,12 @@
+'''
+Team 13, Melbourne
+Jing Qiu, 1152016, jiqiu1@student.unimelb.edu.au
+Meijun Yue, 1190161, meijuny@student.unimelb.edu.au
+Suyi Jiao, 1222833, sjjiao@student.unimelb.edu.au
+Yeting Wu, 1310061, yetingw@student.unimelb.edu.au
+Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au
+'''
+
 import couchdb
 import pandas as pd
 import pyLDAvis

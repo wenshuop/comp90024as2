@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% extends "layout.html" %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,9 +11,58 @@
         
     <!-- Section -->
     <section >
-        <div  id="test">
+        {% block right %}
+      
+        <div >
+            <form action="/topic_dict" method="post" >
+                <center>
+                
+                <select name="date" id="date" style="width: 200px; text-align: center;display: inline" >
+                    <option selected="selected" disabled="disabled"  style='display: none' value=''> date</option>
+                    <option value="2021-01">2021-01</option>
+                    <option value="2021-02">2021-02</option>
+                    <option value="2021-03">2021-03</option>
+                    <option value="2021-04">2021-04</option>
+                    <option value="2021-05">2021-05</option>
+                    <option value="2021-06">2021-06</option>
+                    <option value="2021-07">2021-07</option>
+                    <option value="2021-08">2021-08</option>
+                    <option value="2021-09">2021-09</option>
+                    <option value="2021-10">2021-10</option>
+                    <option value="2021-11">2021-11</option>
+                    <option value="2021-12">2021-12</option>
+                    <option value="2022-01">2022-01</option>
+                    <option value="2022-02">2022-02</option>
+                    <option value="2022-03">2022-03</option>
+                    <option value="2022-04">2022-04</option>
+                </select>
+               
+                <select name="city" id="city" style="width: 200px; text-align: center;display: inline">
+                    <option selected="selected" disabled="disabled"  style='display: none' value=''> city</option>
+                    <option value="melbourne">Melbourne</option>
+                    <option value="adelaide">Adelaide</option>
+                    <option value="sydney">Sydney</option>
+                    <option value="perth(wa)">Perth</option>
+                    <option value="hobart">Hobart</option>
+                    <option value="darwin">Darwin</option>
+                    <option value="canberra">Canberra</option>
+                    <option value="brisbane">Brisbane</option>
+                </select>
+                    <button type="submit" class="btn btn-default" style="margin:5%" value = 'submit'>submit</button>
+                </center>
+            </form>
         </div>
-        <ul class="actions">
+        <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	
+        <div  id="test" style = 'width: 800px;height: 900px;'>
+        </div>
+      
+        <!-- <ul class="actions">
             <li><a href="/" style = '-moz-appearance: none;
                 -webkit-appearance: none;
                 -ms-appearance: none;
@@ -40,13 +89,14 @@
                 text-decoration: none;
                 text-transform: uppercase;
                 white-space: nowrap;'>back</a></li>
-        </ul>
+        </ul> -->
     </section>
+    {% endblock  %}
     
-    
-
-    
+ 
+    {% block echarts_js %}
     <script type="text/javascript">
+       
     function LDAvis_load_lib(url, callback){
       var s = document.createElement('script');
       s.src = url;
@@ -75,11 +125,14 @@
         LDAvis_load_lib("https://d3js.org/d3.v5.js", function(){
              LDAvis_load_lib("{{ url_for('static',filename='assets/js/topic.js') }}", function(){
                      new LDAvis("#" + "test", {{ vis_dict |safe }});
+
                 })
              });
+
     }
     
-    </script>
     
+    </script>
+    {% endblock  %}
 </body>
 </html>

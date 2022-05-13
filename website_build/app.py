@@ -1,10 +1,20 @@
-#encoding:utf-8
+'''
+Team 13, Melbourne
+Jing Qiu, 1152016, jiqiu1@student.unimelb.edu.au
+Meijun Yue, 1190161, meijuny@student.unimelb.edu.au
+Suyi Jiao, 1222833, sjjiao@student.unimelb.edu.au
+Yeting Wu, 1310061, yetingw@student.unimelb.edu.au
+Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au
+'''
+
+# encoding:utf-8
 from flask import Flask, request, render_template, redirect
 import couchdb
 from wordcloud import WordCloud, STOPWORDS
 
 
 app = Flask(__name__)
+# set up couchdb
 server = couchdb.Server('http://admin:admin@172.26.128.22:5984/')
 
 
@@ -14,7 +24,8 @@ def get_home():
 
 
 def get_dose_data(db):
-    dose_x, dose_melb, dose_sy, dose_br, dose_ad, dose_da, dose_pe, dose_ho = [], [], [], [], [], [], [], []
+    dose_x, dose_melb, dose_sy, dose_br, dose_ad, dose_da, dose_pe, dose_ho = [
+    ], [], [], [], [], [], [], []
     for id in db:
         row = db.get(id)
         dose_x.append(row['date'])
@@ -33,26 +44,33 @@ def get_dose_data(db):
     dose_da.reverse()
     dose_pe.reverse()
     dose_ho.reverse()
-    result = {'xAxis': dose_x, 'Melbourne': dose_melb, 'Sydney': dose_sy, 'Brisbane': dose_br, 'Adelaide': dose_ad, 'Darwin': dose_da, 'Perth': dose_pe, 'Hobart': dose_ho}
+    result = {'xAxis': dose_x, 'Melbourne': dose_melb, 'Sydney': dose_sy, 'Brisbane': dose_br,
+              'Adelaide': dose_ad, 'Darwin': dose_da, 'Perth': dose_pe, 'Hobart': dose_ho}
     return result
 
 
 def get_twitter_data(db):
     melb_y, y = [], []
-    melb_pos, melb_neg, sy_pos, sy_neg, br_pos, br_neg, ad_pos, ad_neg = [], [], [], [], [], [], [], []
-    da_pos, da_neg, pe_pos, pe_neg, ho_pos, ho_neg, ca_pos, ca_neg = [], [], [], [], [], [], [], []
-    melb_pos_rate, melb_neg_rate, melb_neu_rate, sy_pos_rate, sy_neg_rate, sy_neu_rate, br_pos_rate, br_neu_rate, br_neg_rate, ad_pos_rate, ad_neu_rate, ad_neg_rate = [], [], [], [], [], [], [], [], [], [], [], []
-    da_pos_rate, da_neg_rate, da_neu_rate, pe_pos_rate, pe_neg_rate, pe_neu_rate, ho_pos_rate, ho_neg_rate, ho_neu_rate, ca_pos_rate, ca_neg_rate, ca_neu_rate = [], [], [], [], [], [], [], [],[], [], [], []
+    melb_pos, melb_neg, sy_pos, sy_neg, br_pos, br_neg, ad_pos, ad_neg = [
+    ], [], [], [], [], [], [], []
+    da_pos, da_neg, pe_pos, pe_neg, ho_pos, ho_neg, ca_pos, ca_neg = [
+    ], [], [], [], [], [], [], []
+    melb_pos_rate, melb_neg_rate, melb_neu_rate, sy_pos_rate, sy_neg_rate, sy_neu_rate, br_pos_rate, br_neu_rate, br_neg_rate, ad_pos_rate, ad_neu_rate, ad_neg_rate = [
+    ], [], [], [], [], [], [], [], [], [], [], []
+    da_pos_rate, da_neg_rate, da_neu_rate, pe_pos_rate, pe_neg_rate, pe_neu_rate, ho_pos_rate, ho_neg_rate, ho_neu_rate, ca_pos_rate, ca_neg_rate, ca_neu_rate = [
+    ], [], [], [], [], [], [], [], [], [], [], []
     pol_score, sub_score = [], []
     X, Y = 0, 0
     for id in db:
         row = db.get(id)
+        # set up coordinates of heatmap
         if X > 15:
             X = 0
             Y += 1
         if row['city'] == 'melbourne':
             melb_pos.append(row['pos'])
             melb_neg.append(-row['neg'])
+            # calculate rates of attitudes
             melb_pos_rate.append(round(row['pos']/row['total']*100, 2))
             melb_neg_rate.append(round(row['neg']/row['total']*100, 2))
             melb_neu_rate.append(round(row['neu']/row['total']*100, 2))
@@ -157,10 +175,12 @@ def get_twitter_data(db):
     return pos_neg, heat_score, sentiment_rate
 
 
+# process doc of couchdb
 def get_doc_data(doc):
     doc = dict(doc)
     del doc['_id']
     del doc['_rev']
+    # delete 'variable'
     if 'variable' in doc:
         del doc['variable']
     return doc
@@ -204,7 +224,8 @@ def get_infection():
 
 @app.route('/sentiment')
 def get_sentiment():
-    pos_neg, heat_score, sentiment_rate = get_twitter_data(server['results_covid'])
+    pos_neg, heat_score, sentiment_rate = get_twitter_data(
+        server['results_covid'])
     return render_template('sentiment_analysis.html', sentiment_rate=sentiment_rate, pos_neg=pos_neg, heat_score=heat_score)
 
 
@@ -251,22 +272,28 @@ def get_household():
 
 @app.route('/education')
 def get_education():
-    secondary = dict(get_doc_data(server['education'].get('e78cc88ab97d696a019b20be463ddf77')))
-    preschool = dict(get_doc_data(server['education'].get('e78cc88ab97d696a019b20be463dfbcb')))
-    technical = dict(get_doc_data(server['education'].get('e78cc88ab97d696a019b20be463dfab8')))
-    other = dict(get_doc_data(server['education'].get('e78cc88ab97d696a019b20be463e0063')))
-    oversea = dict(get_doc_data(server['education'].get('e78cc88ab97d696a019b20be463dedaf')))
-    university = dict(get_doc_data(server['education'].get('e78cc88ab97d696a019b20be463deccb')))
-    source ={
-        'cat':['product', 'Preschool', 'Secondary', 'Technical or Further Educational',
-         'University or other Tertiary', 'Oversea Visitor', 'Other Type'],
-        'Melbourne':[ preschool['Melbourne'], secondary['Melbourne'], technical['Melbourne'], university['Melbourne'], oversea['Melbourne'], other['Melbourne']],
-        'Adelaide':[ preschool['Adelaide'], secondary['Adelaide'], technical['Adelaide'], university['Adelaide'], oversea['Adelaide'], other['Adelaide']],
-        'Brisbane':[ preschool['Brisbane'], secondary['Brisbane'], technical['Brisbane'], university['Brisbane'], oversea['Brisbane'], other['Brisbane']],
-        'Darwin':[ preschool['Darwin'], secondary['Darwin'], technical['Darwin'], university['Darwin'], oversea['Darwin'], other['Darwin']],
-        'Hobart':[ preschool['Hobart'], secondary['Hobart'], technical['Hobart'], university['Hobart'], oversea['Hobart'], other['Hobart']],
-        'Perth':[preschool['Perth'], secondary['Perth'], technical['Perth'], university['Perth'], oversea['Perth'], other['Perth']],
-        'Sydney':[ preschool['Sydney'], secondary['Sydney'], technical['Sydney'], university['Sydney'], oversea['Sydney'], other['Sydney']],
+    secondary = dict(get_doc_data(server['education'].get(
+        'e78cc88ab97d696a019b20be463ddf77')))
+    preschool = dict(get_doc_data(server['education'].get(
+        'e78cc88ab97d696a019b20be463dfbcb')))
+    technical = dict(get_doc_data(server['education'].get(
+        'e78cc88ab97d696a019b20be463dfab8')))
+    other = dict(get_doc_data(server['education'].get(
+        'e78cc88ab97d696a019b20be463e0063')))
+    oversea = dict(get_doc_data(server['education'].get(
+        'e78cc88ab97d696a019b20be463dedaf')))
+    university = dict(get_doc_data(
+        server['education'].get('e78cc88ab97d696a019b20be463deccb')))
+    source = {
+        'cat': ['product', 'Preschool', 'Secondary', 'Technical or Further Educational',
+                'University or other Tertiary', 'Oversea Visitor', 'Other Type'],
+        'Melbourne': [preschool['Melbourne'], secondary['Melbourne'], technical['Melbourne'], university['Melbourne'], oversea['Melbourne'], other['Melbourne']],
+        'Adelaide': [preschool['Adelaide'], secondary['Adelaide'], technical['Adelaide'], university['Adelaide'], oversea['Adelaide'], other['Adelaide']],
+        'Brisbane': [preschool['Brisbane'], secondary['Brisbane'], technical['Brisbane'], university['Brisbane'], oversea['Brisbane'], other['Brisbane']],
+        'Darwin': [preschool['Darwin'], secondary['Darwin'], technical['Darwin'], university['Darwin'], oversea['Darwin'], other['Darwin']],
+        'Hobart': [preschool['Hobart'], secondary['Hobart'], technical['Hobart'], university['Hobart'], oversea['Hobart'], other['Hobart']],
+        'Perth': [preschool['Perth'], secondary['Perth'], technical['Perth'], university['Perth'], oversea['Perth'], other['Perth']],
+        'Sydney': [preschool['Sydney'], secondary['Sydney'], technical['Sydney'], university['Sydney'], oversea['Sydney'], other['Sydney']],
     }
     highest_school_year = []
     for id in server['highest_school_year']:
@@ -286,7 +313,8 @@ def get_unpaid_assist():
 
 @app.route('/mental')
 def get_mental():
-    pos_neg, heat_score, sentiment_rate = get_twitter_data(server['results_all'])
+    pos_neg, heat_score, sentiment_rate = get_twitter_data(
+        server['results_all'])
     return render_template('mental_health.html', sentiment_rate=sentiment_rate, pos_neg=pos_neg, heat_score=heat_score)
 
 
@@ -315,7 +343,7 @@ def get_medical():
 @app.route('/topic_trend')
 def get_topic():
     vis_dict = dict(server['topics'].get('melbourne_2023-01_covid'))
-    return render_template('topic_trend.html',vis_dict=vis_dict)
+    return render_template('topic_trend.html', vis_dict=vis_dict)
 
 
 @app.route('/wordcloud')
@@ -338,11 +366,44 @@ def get_wordcloud_pic():
             # drop '_id' and '_rev' from the retrieved dictionary
             wordcloud_fdict.pop('_id', None)
             wordcloud_fdict.pop('_rev', None)
-            wc = WordCloud(width=800, height=400, max_words=50, stopwords=stopwords, background_color='floralwhite').generate_from_frequencies(wordcloud_fdict)
+            wc = WordCloud(width=800, height=400, max_words=50, stopwords=stopwords,
+                           background_color='floralwhite').generate_from_frequencies(wordcloud_fdict)
             wc.to_file('static/images/wordcloud.png')
         else:
             print('document does not exit.')
+        # redirect to wordcloud page
         return redirect('/wordcloud')
+
+
+# Catch 404 exception errors
+@app.errorhandler(404)
+def handle_404_error(err_msg):
+    return render_template("error404.html"), 404
+
+
+@app.route('/topic')
+def get_topic():
+
+    city = 'melbourne'
+    date = '2021-01'
+    type = 'covid'
+    doc_id = '{}_{}_{}'.format(city.lower().replace(' ', ''), date, type)
+    vis_dict = dict(server['topic_vis'].get(doc_id))
+    return render_template('topic_trend.html', vis_dict=vis_dict)
+
+
+@app.route('/topic_dict', methods=['POST'])
+def get_wordcloud_pic():
+    # set document id, e.g. 'darwin_2021-01_covid'
+    if request.method == 'POST':
+        city = request.form['city']
+        date = request.form['date']
+
+        type = 'covid'
+        doc_id = '{}_{}_{}'.format(city.lower().replace(' ', ''), date, type)
+
+        vis_dict = dict(server['topic_vis'].get(doc_id))
+    return render_template('topic_trend.html', vis_dict=vis_dict)
 
 
 if __name__ == '__main__':

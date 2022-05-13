@@ -1,52 +1,56 @@
+<!-- Team 13, Melbourne
+Jing Qiu, 1152016, jiqiu1@student.unimelb.edu.au
+Meijun Yue, 1190161, meijuny@student.unimelb.edu.au
+Suyi Jiao, 1222833, sjjiao@student.unimelb.edu.au
+Yeting Wu, 1310061, yetingw@student.unimelb.edu.au
+Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
+
 {% extends "layout.html" %}
+
 <head>
-    <title>{% block title %} Economy of Melbourne {% endblock %}</title>
+  <title>{% block title %} Economy of Melbourne {% endblock %}</title>
 </head>>
 
 {% block right %}
-    <!-- Header -->
-    <header id="header">
-        <h1> Melbourne: Housing </h1> 
-    </header>
-    <center>
-            <div class ="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px; padding-top:3%" id="house">
-            </div>
-            <p>
-              写这里！！
-            </p>
-    </center>
-<!-- 这是一个注释 -->
+<!-- Header -->
+<header id="header">
+  <h1> Melbourne: Housing </h1>
+</header>
+<center>
+  <div class="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px; padding-top:3%" id="house">
+  </div>
+  <p>
+    写这里！！
+  </p>
+</center>
 {% endblock %}
 
 {% block echarts_js %}
-    <script type="text/javascript">
-        // 基于准备好的dom，初始化echarts实例
-        var house = echarts.init(document.getElementById('house'));
-        // 指定图表的配置项和数据
-        var ecoSecondOption = {
-            title: {
-              text: 'Housing Prices in Cities',
-              left: 'center'
+<script type="text/javascript">
+  // Initialize echarts instance
+  var house = echarts.init(document.getElementById('house'));
+  // Specify the configuration items and data for the chart
+  var ecoSecondOption = {
+    title: {
+      text: 'Housing Prices in Cities',
+      left: 'center'
+    },
+    legend: {
+      orient: 'vertical',
+      right: 0
+    },
+    tooltip: {},
+    dataset: {
+      source: {{ house_source | safe}}
             },
-            legend: {
-              orient: 'vertical',
-              right: 0
-            },
-            tooltip: {},
-            dataset: {
-              source: {{house_source |safe}}
-            },
-            xAxis: { type: 'category' },
-            yAxis: {},
-            // Declare several bar series, each will be mapped
-            // to a column of dataset.source by default.
-            series: [{ type: 'bar' }, { type: 'bar' }]
+  xAxis: { type: 'category' },
+  yAxis: { },
+  // Declare several bar series, each will be mapped
+  // to a column of dataset.source by default.
+  series: [{ type: 'bar' }, { type: 'bar' }]
           };
 
-        house.setOption(ecoSecondOption);
-        
-
-
+  house.setOption(ecoSecondOption);
 
 </script>
 {% endblock %}

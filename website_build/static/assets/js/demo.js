@@ -1,3 +1,10 @@
+/* Team 13, Melbourne
+Jing Qiu, 1152016, jiqiu1@student.unimelb.edu.au
+Meijun Yue, 1190161, meijuny@student.unimelb.edu.au
+Suyi Jiao, 1222833, sjjiao@student.unimelb.edu.au
+Yeting Wu, 1310061, yetingw@student.unimelb.edu.au
+Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au */
+
 document.addEventListener("DOMContentLoaded", function (event) {
   let img_box = document.querySelector(".img_box");
   let imgs = document.querySelectorAll("img");
@@ -8,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   // Record the index of picture
   let index = 0;
-  let timer = null; 
+  let timer = null;
   // Set the size of image container
   let imgContainerW = img_box.offsetWidth;
   img_box.style.width = imgContainerW * imgs.length + "px";
@@ -28,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
   }
 
   function swapFormat() {
-    index++; 
+    index++;
     if (index >= 4) {
       index = 4;
       img_box.style.transition = "all, linear, 1s";
@@ -40,8 +47,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
       // When the image transition is finished, it immediately switches to the first image by using the delaying timer.
       setTimeout(function () {
-        index = 0; 
-        img_box.style.transition = ""; 
+        index = 0;
+        img_box.style.transition = "";
         swapImg();
       }, 1500);
 
@@ -51,10 +58,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
       swapImg();
     }
   }
-  
+
   timer = setInterval(swapFormat, 3000);
 
-  
+
   right_btn.addEventListener("click", function () {
     swapFormat();
   });
@@ -71,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
       }
       lis[3].className = "cur";
 
-  
+
       setTimeout(function () {
         index = 3;
         img_box.style.transition = "";

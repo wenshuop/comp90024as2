@@ -1,56 +1,66 @@
-﻿{% extends "layout.html" %}
+﻿<!-- Team 13, Melbourne
+Jing Qiu, 1152016, jiqiu1@student.unimelb.edu.au
+Meijun Yue, 1190161, meijuny@student.unimelb.edu.au
+Suyi Jiao, 1222833, sjjiao@student.unimelb.edu.au
+Yeting Wu, 1310061, yetingw@student.unimelb.edu.au
+Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
+
+{% extends "layout.html" %}
+
 <head>
     <title>{% block title %}Melbourne: a good place to live!{% endblock %}</title>
 </head>>
 
 {% block right %}
-    <!-- Header -->
-    <header id="header">
-        <h1> Melbourne: Liveability </h1> 
-    </header>
-	<!-- Banner -->
-         <section id="banner" style="padding: 0em;">
-            <div class="content">
-                <header>
-                    <center>
-                        <div class="banner_container">
-                            <!-- 6张图片 -->
-                            <ul class="img_box">
-                                <li><img src="{{ url_for('static',filename='images/melbourne1.jpeg') }}"alt=""></li>  
-                                <li><img src="{{ url_for('static',filename='images/melbourne2.jpeg') }}"alt=""></li> 
-                                <li><img src="{{ url_for('static',filename='images/covid1.jpeg') }}" alt=""></li>
-                                <li><img src="{{ url_for('static',filename='images/covid2.jpg') }}" alt=""></li> 
-                                <li><img src="{{ url_for('static',filename='images/melbourne1.jpeg') }}" alt=""></li>
-                                <li><img src="{{ url_for('static',filename='images/melbourne2.jpeg') }}" alt=""></li> 
-                        
-                            </ul> 
-                    
-                        <!-- 中间圆点 -->
-                        <ul class="sel_box">
-                            <!-- 自定义属性 -->
-                            <li data-index="0"></li>
-                            <li data-index="1"></li>
-                            <li data-index="2"></li>
-                            <li data-index="3"></li>
-                        </ul>
-                    
-                        <!-- 左箭头 -->
-                        <div class="left_btn"> &lt; </div>
-                        <!-- 右箭头 -->
-                        <div class="right_btn"> &gt; </div>
-                    </div>
-                    </center>       
-                                    </header>
-                                    <p> Melbourne is the capital and most-populous city of the Australian state of Victoria, and the second-most populous city in both Australia and Oceania. It is also a good place to live.<br />
-                                        In recent years, Covid-19 has been common everywhere. Therefore, health is an important indicator in considering the livability of the city of Melbourne. Likewise, housing is an important indicator, too. <br />
-                                        This website discusses the liveability of Melbourne in terms of economy, education, and health.</p>
-                                    <ul class="actions">
-                                        <li><a href="/enterprise" class="button big">Learn More</a></li>
-                                    </ul>
-                                </div>
-                                
-                                
-                            </section>
+<!-- Header -->
+<header id="header">
+    <h1> Melbourne: Liveability </h1>
+</header>
+<!-- Banner -->
+<section id="banner" style="padding: 0em;">
+    <div class="content">
+        <header>
+            <center>
+                <div class="banner_container">
+                    <ul class="img_box">
+                        <li><img src="{{ url_for('static',filename='images/melbourne1.jpeg') }}" alt=""></li>
+                        <li><img src="{{ url_for('static',filename='images/melbourne2.jpeg') }}" alt=""></li>
+                        <li><img src="{{ url_for('static',filename='images/covid1.jpeg') }}" alt=""></li>
+                        <li><img src="{{ url_for('static',filename='images/covid2.jpg') }}" alt=""></li>
+                        <li><img src="{{ url_for('static',filename='images/melbourne1.jpeg') }}" alt=""></li>
+                        <li><img src="{{ url_for('static',filename='images/melbourne2.jpeg') }}" alt=""></li>
+
+                    </ul>
+
+                    <ul class="sel_box">
+                        <!-- Custom Properties -->
+                        <li data-index="0"></li>
+                        <li data-index="1"></li>
+                        <li data-index="2"></li>
+                        <li data-index="3"></li>
+                    </ul>
+
+                    <!-- left button-->
+                    <div class="left_btn"> &lt; </div>
+                    <!-- right button -->
+                    <div class="right_btn"> &gt; </div>
+                </div>
+            </center>
+        </header>
+        <p> Melbourne is the capital and most-populous city of the Australian state of Victoria, and the second-most
+            populous city in both Australia and Oceania. It is also a good place to live.<br />
+            In recent years, Covid-19 has been common everywhere. Therefore, health is an important indicator in
+            considering the livability of the city of Melbourne. Likewise, housing is an important indicator, too.
+            <br />
+            This website discusses the liveability of Melbourne in terms of economy, education, and health.
+        </p>
+        <ul class="actions">
+            <li><a href="/enterprise" class="button big">Learn More</a></li>
+        </ul>
+    </div>
+
+
+</section>
 
 {% endblock %}
 

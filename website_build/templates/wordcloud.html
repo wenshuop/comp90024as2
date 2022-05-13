@@ -1,60 +1,63 @@
+<!-- Team 13, Melbourne
+Jing Qiu, 1152016, jiqiu1@student.unimelb.edu.au
+Meijun Yue, 1190161, meijuny@student.unimelb.edu.au
+Suyi Jiao, 1222833, sjjiao@student.unimelb.edu.au
+Yeting Wu, 1310061, yetingw@student.unimelb.edu.au
+Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
+
 {% extends "layout.html" %}
+
 <head>
     <title>{% block title %} Wordcloud of Australia {% endblock %}</title>
 </head>>
 
 {% block right %}
-    <!-- Header -->
-    <header id="header">
-        <h1> Australia: Wordcloud </h1> 
-    </header>
-        <div>
-            <form action="/wordcloud_pic" method=post>
-                <center>
-                <label style="margin-top:2%">Date:</label>
-                <select name="date" id="date" style="width: 45%; text-align: center" >
-                    <option selected="selected" disabled="disabled"  style='display: none' value=''> </option>
-                    <option value="2021-01">2021-01</option>
-                    <option value="2021-02">2021-02</option>
-                    <option value="2021-03">2021-03</option>
-                    <option value="2021-04">2021-04</option>
-                    <option value="2021-05">2021-05</option>
-                    <option value="2021-06">2021-06</option>
-                    <option value="2021-07">2021-07</option>
-                    <option value="2021-08">2021-08</option>
-                    <option value="2021-09">2021-09</option>
-                    <option value="2021-10">2021-10</option>
-                    <option value="2021-11">2021-11</option>
-                    <option value="2021-12">2021-12</option>
-                    <option value="2022-01">2022-01</option>
-                    <option value="2022-02">2022-02</option>
-                    <option value="2022-03">2022-03</option>
-                    <option value="2022-04">2022-04</option>
-                </select>
-                <label style="margin-top:2%">City:</label>
-                <select name="city" id="city" style="width: 45%; text-align: center">
-                    <option selected="selected" disabled="disabled"  style='display: none' value=''> </option>
-                    <option value="melbourne">Melbourne</option>
-                    <option value="adelaide">Adelaide</option>
-                    <option value="sydney">Sydney</option>
-                    <option value="perth(wa)">Perth</option>
-                    <option value="hobart">Hobart</option>
-                    <option value="darwin">Darwin</option>
-                    <option value="canberra">Canberra</option>
-                    <option value="brisbane">Brisbane</option>
-                </select>
-                    <button type="submit" class="btn btn-default" style="margin:5%">submit</button>
-                </center>
-            </form>
-        </div>
-        <div align="center">
-            <img src="{{ url_for('static',filename='images/wordcloud.png') }}"alt="Wordcloud is not found!">
-        </div>
+<!-- Header -->
+<header id="header">
+    <h1> Australia: Wordcloud </h1>
+</header>
+<div>
+    <form action="/wordcloud_pic" method=post>
+        <center>
+            <label style="margin-top:2%">Date:</label>
+            <select name="date" id="date" style="width: 45%; text-align: center">
+                <option selected="selected" disabled="disabled" style='display: none' value=''> </option>
+                <option value="2021-01">2021-01</option>
+                <option value="2021-02">2021-02</option>
+                <option value="2021-03">2021-03</option>
+                <option value="2021-04">2021-04</option>
+                <option value="2021-05">2021-05</option>
+                <option value="2021-06">2021-06</option>
+                <option value="2021-07">2021-07</option>
+                <option value="2021-08">2021-08</option>
+                <option value="2021-09">2021-09</option>
+                <option value="2021-10">2021-10</option>
+                <option value="2021-11">2021-11</option>
+                <option value="2021-12">2021-12</option>
+                <option value="2022-01">2022-01</option>
+                <option value="2022-02">2022-02</option>
+                <option value="2022-03">2022-03</option>
+                <option value="2022-04">2022-04</option>
+            </select>
+            <label style="margin-top:2%">City:</label>
+            <select name="city" id="city" style="width: 45%; text-align: center">
+                <option selected="selected" disabled="disabled" style='display: none' value=''> </option>
+                <option value="melbourne">Melbourne</option>
+                <option value="adelaide">Adelaide</option>
+                <option value="sydney">Sydney</option>
+                <option value="perth(wa)">Perth</option>
+                <option value="hobart">Hobart</option>
+                <option value="darwin">Darwin</option>
+                <option value="canberra">Canberra</option>
+                <option value="brisbane">Brisbane</option>
+            </select>
+            <button type="submit" class="btn btn-default" style="margin:5%">submit</button>
+        </center>
+    </form>
+</div>
+<div align="center">
+    <img src="{{ url_for('static',filename='images/wordcloud.png') }}" alt="Wordcloud is not found!">
+</div>
 
-<!-- 这是一个注释 -->
 {% endblock %}
 {% block echarts_js %}{% endblock %}
-
-
-
-
