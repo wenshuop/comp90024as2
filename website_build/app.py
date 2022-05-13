@@ -386,7 +386,7 @@ def get_topic():
 
 
 @app.route('/topic_dict', methods=['POST'])
-def get_wordcloud_pic():
+def get_topic_dic():
     # set document id, e.g. 'darwin_2021-01_covid'
     if request.method == 'POST':
         city = request.form['city']
