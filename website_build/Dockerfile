@@ -6,11 +6,7 @@
 # Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au
 
 FROM python:3.8
-
-WORKDIR /home/ubuntu/COMP90024/comp90024as2/website_build
-
-COPY . .
-
+WORKDIR /backend
+　　ADD . /backend
 RUN pip install -r requirements.txt
-
 CMD ["python","app.py"]
