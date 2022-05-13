@@ -18,7 +18,7 @@ ul.img_box {
     position: absolute;
     left: 0;
     top: 0;
-    /* html中的第一张图片不是我们想要显示，第二张才是我们轮播图的第一张图片因此要让这排图片往左移动一张图片的距离 */
+    /* The second image in the homepage is the first image of the rotation chart. */
     transform: translateX(-860px);
     padding: 0;
 }
@@ -29,12 +29,12 @@ ul.img_box {
     padding: 0;
 }
 
-/* 图片大小 */
+/* Size of picture */
 .img_box li img {
     width: 860px;
 }
 
-/* 小圆点 */
+/* Small dots */
 .sel_box {
     position: absolute;
     bottom: 1px;
@@ -44,7 +44,7 @@ ul.img_box {
 
 .sel_box li {
     list-style: none;
-    /* 转换为行内块元素 -- 一行显示 */
+    /* Convert to in-line block elements - one line display */
     display: inline-block;
     width: 10px;
     height: 10px;
@@ -55,7 +55,7 @@ ul.img_box {
     cursor: pointer;
 }
 
-/* 左箭头 */
+/* Left arrow */
 .left_btn {
     position: absolute;
     top: 50%;
@@ -66,7 +66,7 @@ ul.img_box {
     background-color: #fff;
     line-height: 30px;
     padding-left: 3px;
-    /* 将鼠标样式改为小手 */
+    /* Change mouse to small hand */
     cursor: pointer;
 }
 
@@ -84,7 +84,7 @@ ul.img_box {
 }
 
 
-/* 当前图片的小图点样式 */
+/* Small dot of current image */
 .sel_box .cur {
     background-color: red!important;
     transform: scale(1.3);
