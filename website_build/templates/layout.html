@@ -114,10 +114,9 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
 	<script src="{{ url_for('static',filename='assets/js/main.js') }}"></script>
 	<script src="{{ url_for('static',filename='assets/js/demo.js') }}"></script>
 	<script src="{{ url_for('static',filename='assets/js/echarts.js') }}"></script>
-	<!-- <script src='https://cdn.bootcss.com/echarts/3.4.0/echarts.js'></script>
-            <script src='http://gallery.echartsjs.com/dep/echarts/map/js/china.js'></script>
-            <script src='https://cdnjs.cloudflare.com/ajax/libs/echarts/4.3.0/echarts.min.js'></script> -->
+	
 	{% block echarts_js %}{% endblock %}
+	{% block scripts %}{% endblock %}
 
 </body>
 

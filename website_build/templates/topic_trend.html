@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Topic Trend of Australia</title>
     <link rel="stylesheet" href="{{ url_for('static',filename='assets/css/topic.css') }}">
 </head>
 
@@ -12,13 +12,15 @@
     <!-- Section -->
     <section >
         {% block right %}
-      
+        <!-- Header -->
+        <header id="header">
+            <h1> Australia: Topic Trend </h1>
+        </header>
         <div >
             <form action="/topic_dict" method="post" >
                 <center>
-                
                 <select name="date" id="date" style="width: 200px; text-align: center;display: inline; margin-right: 8%" >
-                    <option selected="selected" disabled="disabled"  style='display: none' value=''> date</option>
+                    <option selected="selected" disabled="disabled"  style='display: none' value=''>date</option>
                     <option value="2021-01">2021-01</option>
                     <option value="2021-02">2021-02</option>
                     <option value="2021-03">2021-03</option>
@@ -38,7 +40,7 @@
                 </select>
                
                 <select name="city" id="city" style="width: 200px; text-align: center;display: inline; margin-right: 3%;">
-                    <option selected="selected" disabled="disabled"  style='display: none' value=''> city</option>
+                    <option selected="selected" disabled="disabled"  style='display: none' value=''>city</option>
                     <option value="melbourne">Melbourne</option>
                     <option value="adelaide">Adelaide</option>
                     <option value="sydney">Sydney</option>
@@ -48,7 +50,7 @@
                     <option value="canberra">Canberra</option>
                     <option value="brisbane">Brisbane</option>
                 </select>
-                    <button type="submit" class="btn btn-default" style="margin:5%; width: 15%; height: 30px;" value = 'submit'>submit</button>
+                    <button type="submit" class="btn btn-default" id="topic" style="margin:5%; width: 15%; height: 30px; line-height: 30px" value = 'submit'>submit</button>
                 </center>
             </form>
         </div>
@@ -62,34 +64,7 @@
         <div  id="test" style = 'width: 800px;height: 900px;'>
         </div>
       
-        <!-- <ul class="actions">
-            <li><a href="/" style = '-moz-appearance: none;
-                -webkit-appearance: none;
-                -ms-appearance: none;
-                appearance: none;
-                -moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-                -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-                -ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-                transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-                background-color: transparent;
-                border-radius: 0.375em;
-                border: 0;
-                box-shadow: inset 0 0 0 2px #f56a6a;
-                color: #f56a6a !important;
-                cursor: pointer;
-                display: inline-block;
-                font-family: "Roboto Slab", serif;
-                font-size: 0.8em;
-                font-weight: 700;
-                height: 3.5em;
-                letter-spacing: 0.075em;
-                line-height: 3.5em;
-                padding: 0 2.25em;
-                text-align: center;
-                text-decoration: none;
-                text-transform: uppercase;
-                white-space: nowrap;'>back</a></li>
-        </ul> -->
+        
     </section>
     {% endblock  %}
     
@@ -134,5 +109,9 @@
     
     </script>
     {% endblock  %}
+    {% block scripts %}
+    {{ super() }}
+    <script src="{{ url_for('static',filename='assets/js/buttontopic.js') }}"></script>
+    {% endblock %}
 </body>
 </html>

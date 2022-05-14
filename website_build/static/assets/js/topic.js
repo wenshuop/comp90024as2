@@ -600,7 +600,7 @@ var LDAvis = function(to_select, data_or_file_name, color1, color2) {
             topicDiv.appendChild(topicLabel);
 
             var topicInput = document.createElement("input");
-            topicInput.setAttribute("style", "width: 50px;height:20px;display: inline");
+            topicInput.setAttribute("style", "width: 50px;height:20px;display: inline; margin-left: 15px;");
             topicInput.type = "text";
             topicInput.min = "0";
             topicInput.max = K; // assumes the data has already been read in
@@ -611,20 +611,20 @@ var LDAvis = function(to_select, data_or_file_name, color1, color2) {
 
             var previous = document.createElement("button");
             previous.setAttribute("id", topicDown);
-            previous.setAttribute("style", "margin-left: 5px ;display: inline");
+            previous.setAttribute("style", "margin-left: 15px ;display: inline; font-size: 6px");
             previous.innerHTML = "Previous Topic";
             topicDiv.appendChild(previous);
 
             var next = document.createElement("button");
             next.setAttribute("id", topicUp);
-            next.setAttribute("style", "margin-left: 5px;display: inline");
+            next.setAttribute("style", "margin-left: 15px ;display: inline; font-size: 6px");
             next.innerHTML = "Next Topic";
             topicDiv.appendChild(next);
 
             var clear = document.createElement("button");
             
             clear.setAttribute("id", topicClear);
-            clear.setAttribute("style", "margin-left: 5px;display: inline");
+            clear.setAttribute("style", "margin-left: 15px ;display: inline; font-size: 6px");
             
             clear.innerHTML = "Clear Topic";
             topicDiv.appendChild(clear);
@@ -673,7 +673,7 @@ var LDAvis = function(to_select, data_or_file_name, color1, color2) {
             var lambdaLabel = document.createElement("label");
             lambdaLabel.setAttribute("id", lambdaLabelID);
             lambdaLabel.setAttribute("for", lambdaID);
-            lambdaLabel.setAttribute("style", "height: 20px; width: 60px; font-family: sans-serif; font-size: 14px; margin-left: 80px");
+            lambdaLabel.setAttribute("style", "height: 20px; width: 60px; font-family: sans-serif; font-size: 14px; margin-left: 80px; margin-top: 30px");
             lambdaLabel.innerHTML = "&#955 = <span id='" + lambdaID + "-value'>" + vis_state.lambda + "</span>";
             lambdaDiv.appendChild(lambdaLabel);
 
