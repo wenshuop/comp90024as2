@@ -7,11 +7,6 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au */
 
 document.addEventListener("DOMContentLoaded", function (event) {
 
- 
-
-
-  
-
   let img_box = document.querySelector(".img_box");
   let imgs = document.querySelectorAll("img");
   let sel_box = document.querySelector(".sel_box");
