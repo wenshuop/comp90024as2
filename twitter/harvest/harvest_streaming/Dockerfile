@@ -7,7 +7,7 @@
 
 FROM python:3.9
 
-WORKDIR /home/ubuntu/COMP90024/comp90024as2/harvest/harvest_streaming
+WORKDIR /home/ubuntu/COMP90024/comp90024as2/twitter
 
 COPY . .
 
