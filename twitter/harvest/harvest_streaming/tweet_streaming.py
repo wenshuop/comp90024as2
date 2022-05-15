@@ -11,7 +11,11 @@ import json
 import couchdb
 from collections import defaultdict
 from tweepy import StreamRule, StreamingClient
-from classifier.sentiment_classifier import TweetProcessor
+
+# import classifier
+import sys
+sys.path.append('../../classifier')
+from sentiment_classifier import TweetProcessor
 
 # class TweetStreaming
 class TweetStreaming(StreamingClient):

@@ -13,7 +13,12 @@ import couchdb
 import pandas as pd
 from collections import defaultdict
 from datetime import datetime, timedelta
-from classifier.sentiment_classifier import TweetProcessor
+
+# import classifier
+import sys
+sys.path.append('../../classifier')
+from sentiment_classifier import TweetProcessor
+
 
 # read the city information from file "australia_cities.json"
 def load_cities(file_name):

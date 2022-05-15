@@ -53,12 +53,12 @@ def get_twitter_data(db):
     melb_y, y = [], []
     melb_pos, melb_neg, sy_pos, sy_neg, br_pos, br_neg, ad_pos, ad_neg = [
     ], [], [], [], [], [], [], []
-    da_pos, da_neg, pe_pos, pe_neg, ho_pos, ho_neg, ca_pos, ca_neg = [
-    ], [], [], [], [], [], [], []
+    da_pos, da_neg, pe_pos, pe_neg, ho_pos, ho_neg = [
+    ], [], [], [], [], []
     melb_pos_rate, melb_neg_rate, melb_neu_rate, sy_pos_rate, sy_neg_rate, sy_neu_rate, br_pos_rate, br_neu_rate, br_neg_rate, ad_pos_rate, ad_neu_rate, ad_neg_rate = [
     ], [], [], [], [], [], [], [], [], [], [], []
-    da_pos_rate, da_neg_rate, da_neu_rate, pe_pos_rate, pe_neg_rate, pe_neu_rate, ho_pos_rate, ho_neg_rate, ho_neu_rate, ca_pos_rate, ca_neg_rate, ca_neu_rate = [
-    ], [], [], [], [], [], [], [], [], [], [], []
+    da_pos_rate, da_neg_rate, da_neu_rate, pe_pos_rate, pe_neg_rate, pe_neu_rate, ho_pos_rate, ho_neg_rate, ho_neu_rate = [
+    ], [], [], [], [], [], [], [], []
     pol_score, sub_score = [], []
     X, Y = 0, 0
     for id in db:
@@ -134,8 +134,6 @@ def get_twitter_data(db):
         'pe_neg': pe_neg,
         'ho_pos': ho_pos,
         'ho_neg': ho_neg,
-        'ca_pos': ca_pos,
-        'ca_neg': ca_neg
     }
     sentiment_rate = {
         'y': y,
@@ -161,9 +159,6 @@ def get_twitter_data(db):
         'ho_pos_rate': ho_pos_rate,
         'ho_neg_rate': ho_neg_rate,
         'ho_neu_rate': ho_neu_rate,
-        'ca_pos_rate': ca_pos_rate,
-        'ca_neu_rate': ca_neu_rate,
-        'ca_neg_rate': ca_neg_rate
     }
     heat_score = {'pol_score': pol_score, 'sub_score': sub_score}
     return pos_neg, heat_score, sentiment_rate
