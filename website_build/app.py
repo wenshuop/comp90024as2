@@ -112,13 +112,7 @@ def get_twitter_data(db):
             ho_pos_rate.append(round(row['pos']/row['total']*100, 2))
             ho_neg_rate.append(round(row['neg']/row['total']*100, 2))
             ho_neu_rate.append(round(row['neu']/row['total']*100, 2))
-        elif row['city'] == 'canberra':
-            ca_pos.append(row['pos'])
-            ca_neg.append(-row['neg'])
-            ca_pos_rate.append(round(row['pos']/row['total']*100, 2))
-            ca_neg_rate.append(round(row['neg']/row['total']*100, 2))
-            ca_neu_rate.append(round(row['neu']/row['total']*100, 2))
-        if row['month'] == '2022-05':
+        if row['month'] == '2022-05' or row['city'] == 'canberra':
             continue
         pol_score.append([Y, X, round(row['pol_score'], 3)])
         sub_score.append([Y, X, round(row['sub_score'], 3)])
@@ -311,11 +305,11 @@ def get_unpaid_assist():
     return render_template('unpaid_assistance.html', unpaid_assist=unpaid_assist)
 
 
-@app.route('/mental')
-def get_mental():
+@app.route('/social')
+def get_social():
     pos_neg, heat_score, sentiment_rate = get_twitter_data(
         server['results_all'])
-    return render_template('mental_health.html', sentiment_rate=sentiment_rate, pos_neg=pos_neg, heat_score=heat_score)
+    return render_template('social_media.html', sentiment_rate=sentiment_rate, pos_neg=pos_neg, heat_score=heat_score)
 
 
 @app.route('/medical')
@@ -400,4 +394,4 @@ def get_topic_dic():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=8000)

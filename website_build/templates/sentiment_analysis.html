@@ -8,20 +8,18 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
 {% extends "layout.html" %}
 
 <head>
-  <title>{% block title %}Sentiment Analysis in Melbourne{% endblock %}</title>
+  <title>{% block title %} Sentiment Analysis {% endblock %}</title>
 </head>>
 
 {% block right %}
 <!-- Header -->
 <header id="header">
-  <h1> Melbourne: Sentiment Analysis </h1>
+  <h1> Sentiment Analysis </h1>
 </header>
 <center>
   <div class="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px; padding-top:3%" id="melbSentimentRate">
   </div>
   <div class="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;padding-top:1%" id="sySentimentRate">
-  </div>
-  <div class="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;padding-top:1%" id="caSentimentRate">
   </div>
   <div class="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;padding-top:1%" id="brSentimentRate">
   </div>
@@ -39,8 +37,6 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
   <div class="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;padding-top:1%" id="melbPosNeg">
   </div>
   <div class="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;padding-top:1%" id="syPosNeg">
-  </div>
-  <div class="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;padding-top:1%" id="caPosNeg">
   </div>
   <div class="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;padding-top:1%" id="brPosNeg">
   </div>
@@ -118,6 +114,10 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
         name: 'Positive Rate',
         type: 'bar',
         stack: 'Ad',
+        label: {
+          show: true,
+          position: 'inside'
+        },
         emphasis: {
           focus: 'series'
         },
@@ -127,6 +127,10 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
         name: 'Neutral Rate',
         type: 'bar',
         stack: 'Ad',
+        label: {
+          show: true,
+          position: 'inside'
+        },
         emphasis: {
           focus: 'series'
         },
@@ -136,6 +140,10 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
         name: 'Negative Rate',
         type: 'bar',
         stack: 'Ad',
+        label: {
+          show: true,
+          position: 'inside'
+        },
         emphasis: {
           focus: 'series'
         },
@@ -191,6 +199,10 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
         name: 'Positive Rate',
         type: 'bar',
         stack: 'Ad',
+        label: {
+        show: true,
+        position: 'inside'
+        },
         emphasis: {
           focus: 'series'
         },
@@ -200,6 +212,10 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
         name: 'Neutral Rate',
         type: 'bar',
         stack: 'Ad',
+        label: {
+        show: true,
+        position: 'inside'
+        },
         emphasis: {
           focus: 'series'
         },
@@ -209,6 +225,10 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
         name: 'Negative Rate',
         type: 'bar',
         stack: 'Ad',
+        label: {
+        show: true,
+        position: 'inside'
+        },
         emphasis: {
           focus: 'series'
         },
@@ -264,6 +284,10 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
         name: 'Positive Rate',
         type: 'bar',
         stack: 'Ad',
+        label: {
+        show: true,
+        position: 'inside'
+        },
         emphasis: {
           focus: 'series'
         },
@@ -273,6 +297,10 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
         name: 'Neutral Rate',
         type: 'bar',
         stack: 'Ad',
+        label: {
+        show: true,
+        position: 'inside'
+        },
         emphasis: {
           focus: 'series'
         },
@@ -282,6 +310,10 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
         name: 'Negative Rate',
         type: 'bar',
         stack: 'Ad',
+        label: {
+        show: true,
+        position: 'inside'
+        },
         emphasis: {
           focus: 'series'
         },
@@ -337,6 +369,10 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
         name: 'Positive Rate',
         type: 'bar',
         stack: 'Ad',
+        label: {
+        show: true,
+        position: 'inside'
+        },
         emphasis: {
           focus: 'series'
         },
@@ -346,6 +382,10 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
         name: 'Neutral Rate',
         type: 'bar',
         stack: 'Ad',
+        label: {
+        show: true,
+        position: 'inside'
+        },
         emphasis: {
           focus: 'series'
         },
@@ -363,79 +403,6 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
     ]
               };
   peSentimentRate.setOption(peSentimentRateOption);
-
-  var caSentimentRate = echarts.init(document.getElementById('caSentimentRate'));
-  var caSentimentRateOption = {
-    title: {
-      text: 'Sentiment Analysis in Canberra',
-      left: 'center'
-    },
-    tooltip: {
-      trigger: 'axis',
-      axisPointer: {
-        type: 'shadow'
-      }
-    },
-    legend: {
-      orient: 'horizontal',
-      right: 0,
-      top: 25
-    },
-    grid: {
-      left: '3%',
-      right: '4%',
-      bottom: '3%',
-      containLabel: true
-    },
-    xAxis: [
-      {
-        type: 'category',
-        data: {{ sentiment_rate.y | safe }}
-                  }
-                ],
-  yAxis: [
-    {
-      type: 'value',
-      axisLabel: {
-        formatter: '{value} %'
-      },
-      name: 'Percentage of Different Attitude',
-      nameLocation: 'middle',
-      nameGap: 50,
-      max: 100
-    }
-  ],
-    series: [
-      {
-        name: 'Positive Rate',
-        type: 'bar',
-        stack: 'Ad',
-        emphasis: {
-          focus: 'series'
-        },
-        data: {{ sentiment_rate.ca_pos_rate | safe }}
-                },
-      {
-        name: 'Neutral Rate',
-        type: 'bar',
-        stack: 'Ad',
-        emphasis: {
-          focus: 'series'
-        },
-        data: {{ sentiment_rate.ca_neu_rate | safe }}
-                },
-      {
-        name: 'Negative Rate',
-        type: 'bar',
-        stack: 'Ad',
-        emphasis: {
-          focus: 'series'
-        },
-        data: {{ sentiment_rate.ca_neg_rate | safe }}
-                },
-    ]
-              };
-  caSentimentRate.setOption(caSentimentRateOption);
 
   var brSentimentRate = echarts.init(document.getElementById('brSentimentRate'));
   var brSentimentRateOption = {
@@ -483,6 +450,10 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
         name: 'Positive Rate',
         type: 'bar',
         stack: 'Ad',
+        label: {
+        show: true,
+        position: 'inside'
+        },
         emphasis: {
           focus: 'series'
         },
@@ -492,6 +463,10 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
         name: 'Neutral Rate',
         type: 'bar',
         stack: 'Ad',
+        label: {
+        show: true,
+        position: 'inside'
+        },
         emphasis: {
           focus: 'series'
         },
@@ -501,6 +476,10 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
         name: 'Negative Rate',
         type: 'bar',
         stack: 'Ad',
+        label: {
+        show: true,
+        position: 'inside'
+        },
         emphasis: {
           focus: 'series'
         },
@@ -556,6 +535,10 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
         name: 'Positive Rate',
         type: 'bar',
         stack: 'Ad',
+        label: {
+        show: true,
+        position: 'inside'
+        },
         emphasis: {
           focus: 'series'
         },
@@ -565,6 +548,10 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
         name: 'Neutral Rate',
         type: 'bar',
         stack: 'Ad',
+        label: {
+        show: true,
+        position: 'inside'
+        },
         emphasis: {
           focus: 'series'
         },
@@ -574,6 +561,10 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
         name: 'Negative Rate',
         type: 'bar',
         stack: 'Ad',
+        label: {
+        show: true,
+        position: 'inside'
+        },
         emphasis: {
           focus: 'series'
         },
@@ -629,6 +620,10 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
         name: 'Positive Rate',
         type: 'bar',
         stack: 'Ad',
+        label: {
+        show: true,
+        position: 'inside'
+        },
         emphasis: {
           focus: 'series'
         },
@@ -638,6 +633,10 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
         name: 'Neutral Rate',
         type: 'bar',
         stack: 'Ad',
+        label: {
+        show: true,
+        position: 'inside'
+        },
         emphasis: {
           focus: 'series'
         },
@@ -647,6 +646,10 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
         name: 'Negative Rate',
         type: 'bar',
         stack: 'Ad',
+        label: {
+        show: true,
+        position: 'inside'
+        },
         emphasis: {
           focus: 'series'
         },
@@ -1129,79 +1132,10 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
     };
   hoPosNeg.setOption(hoPosNegOption);
 
-
-  var caPosNeg = echarts.init(document.getElementById('caPosNeg'));
-  var caPosNegOption = {
-    title: {
-      text: 'Number of Positive and Negative attitude of tweets in Canberra',
-      left: 'center'
-    },
-    tooltip: {
-      trigger: 'axis',
-      axisPointer: {
-        type: 'shadow'
-      }
-    },
-    legend: {
-      data: ['positive_count', 'negative_count'],
-      orient: 'horizontal',
-      right: 0,
-      top: 25
-    },
-    grid: {
-      left: '3%',
-      right: '4%',
-      bottom: '3%',
-      containLabel: true
-    },
-    xAxis: [
-      {
-        type: 'value'
-      }
-    ],
-    yAxis: [
-      {
-        type: 'category',
-        axisTick: {
-          show: false
-        },
-        data: {{ pos_neg.y | safe }}
-        }
-      ],
-  series: [
-    {
-      name: 'positive_count',
-      type: 'bar',
-      stack: 'Total',
-      label: {
-        show: true
-      },
-      emphasis: {
-        focus: 'series'
-      },
-      data: {{ pos_neg.ca_pos | safe }}
-        },
-    {
-      name: 'negative_count',
-      type: 'bar',
-      stack: 'Total',
-      label: {
-        show: true
-      },
-      emphasis: {
-        focus: 'series'
-      },
-      data: {{ pos_neg.ca_neg | safe }}
-        }
-  ]
-    };
-  caPosNeg.setOption(caPosNegOption);
-
-
   // prettier-ignore
   const months = {{ pos_neg.y | safe }};
   const citys = [
-    'Adelaide', 'Brisbane', 'Canberra', 'Darwin', 'Hobart', 'Melbourne', 'Perth', 'Sydney'
+    'Adelaide', 'Brisbane', 'Darwin', 'Hobart', 'Melbourne', 'Perth', 'Sydney'
   ];
   const polData = {{ heat_score.pol_score | safe }} .map(function (item) {
     return [item[1], item[0], item[2] || '-'];
@@ -1234,8 +1168,8 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
       }
     },
     visualMap: {
-      min: -0.238,
-      max: 0.453,
+      min: 0.074,
+      max: 0.192,
       calculable: true,
       orient: 'horizontal',
       left: 'center',
@@ -1291,8 +1225,8 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
       }
     },
     visualMap: {
-      min: 0.346,
-      max: 0.503,
+      min: 0.324,
+      max: 0.388,
       calculable: true,
       orient: 'horizontal',
       left: 'center',
