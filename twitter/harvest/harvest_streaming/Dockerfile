@@ -13,4 +13,4 @@ COPY . .
 
 RUN pip install -r requirements.txt
 
-CMD ["python", "tweet_streaming.py"]
+CMD ["python3", "tweet_streaming.py"]
