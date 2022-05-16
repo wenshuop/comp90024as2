@@ -11,7 +11,7 @@
   </tr>
 </table>
 
-### Melbourne Livability
+###  Analyse Melbourne Livability
 
 ### Architecture
 ![architecture](./doc/architecture.png)
@@ -28,7 +28,7 @@
 ```
 
 ### How to Run
-***Make sure the UniMelb VPN is configured and connected properly and follow the following steps.*** 
+***Make sure the UniMelb VPN is correctly configured and connected before continuing.*** 
 ```
 cd mrc
 ```
