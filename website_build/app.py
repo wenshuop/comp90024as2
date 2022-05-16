@@ -36,6 +36,7 @@ def get_dose_data(db):
         dose_da.append(row['Darwin'])
         dose_pe.append(row['Perth'])
         dose_ho.append(row['Hobart'])
+    # reverse data to reach data from past to present   
     dose_x.reverse()
     dose_melb.reverse()
     dose_sy.reverse()
