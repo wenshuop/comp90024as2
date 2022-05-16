@@ -57,9 +57,6 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
   <p style="text-align:justify">
     Above figures show the average polarity score and subjectivity score for each city per month. The average polarity score is a float within range [-1.0, 1.0] that indicates people's emotions. The higher polarity means the more positive the tweet is. The subjectivity score is a float within the range [0.0, 1.0] where 0.0 is very objective and 1.0 is very subjective.  
   </p>
-
-
-
 </center>
 {% endblock %}
 
@@ -662,8 +659,6 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
               };
   daSentimentRate.setOption(daSentimentRateOption);
 
-
-
   var melbPosNeg = echarts.init(document.getElementById('melbPosNeg'));
   var melbPosNegOption = {
     title: {
@@ -730,8 +725,6 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
   ]
                 };
   melbPosNeg.setOption(melbPosNegOption);
-
-
 
   var syPosNeg = echarts.init(document.getElementById('syPosNeg'));
   var syPosNegOption = {
@@ -1253,8 +1246,7 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
     ]
   };
   subScoreHeat.setOption(subScoreHeatOption);
-
-
 </script>
 {% endblock %}
+
 {% block scripts %}{% endblock %}

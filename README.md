@@ -1,4 +1,4 @@
-# comp90024 Assginment2 -- Group 13
+# COMP90024 Assginment2 -- Group 13
 
 ### Contributors
 <table>
@@ -12,6 +12,7 @@
 </table>
 
 ###  Analyse Melbourne Livability
+![website](./doc/homepage.png)
 
 ### Architecture
 ![architecture](./doc/architecture.png)
@@ -29,6 +30,19 @@
 
 ### How to Run
 ***Make sure the UniMelb VPN is correctly configured and connected before continuing.*** 
+#### Install ansible
+##### Linux
+
+```
+sudo apt install ansible
+```
+
+##### MacOS
+
+```
+brew install ansible
+```
+#### Enter the deployment folder
 ```
 cd mrc
 ```

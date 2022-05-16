@@ -127,12 +127,4 @@ document.addEventListener("DOMContentLoaded", function (event) {
       clearInterval(timer);
     }
   });
-
-
-
-
-
- 
-    
-
 });

@@ -11,8 +11,6 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
     <title>{% block title %} Wordcloud {% endblock %}</title>
 </head>>
 
-
-
 {% block right %}
 <!-- Header -->
 <header id="header">
@@ -60,11 +58,10 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
 <div align="center">
     <img src="{{ url_for('static',filename='images/wordcloud.png') }}" alt="Wordcloud is not found!">
 </div>
-
-
-
 {% endblock %}
+
 {% block echarts_js %}{% endblock %}
+
 {% block scripts %}
 {{ super() }}
 <script src="{{ url_for('static',filename='assets/js/buttonword.js') }}"></script>

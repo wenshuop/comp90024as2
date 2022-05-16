@@ -23,6 +23,7 @@ def get_home():
     return render_template('homepage.html')
 
 
+# process dose data
 def get_dose_data(db):
     dose_x, dose_melb, dose_sy, dose_br, dose_ad, dose_da, dose_pe, dose_ho = [
     ], [], [], [], [], [], [], []
@@ -36,7 +37,7 @@ def get_dose_data(db):
         dose_da.append(row['Darwin'])
         dose_pe.append(row['Perth'])
         dose_ho.append(row['Hobart'])
-    # reverse data to reach data from past to present   
+    # reverse data to get data interval from past to present   
     dose_x.reverse()
     dose_melb.reverse()
     dose_sy.reverse()
@@ -50,8 +51,9 @@ def get_dose_data(db):
     return result
 
 
+# process twitter data to different formats to front-end charts required
 def get_twitter_data(db):
-    melb_y, y = [], []
+    y = []
     melb_pos, melb_neg, sy_pos, sy_neg, br_pos, br_neg, ad_pos, ad_neg = [
     ], [], [], [], [], [], [], []
     da_pos, da_neg, pe_pos, pe_neg, ho_pos, ho_neg = [
@@ -75,7 +77,6 @@ def get_twitter_data(db):
             melb_pos_rate.append(round(row['pos']/row['total']*100, 2))
             melb_neg_rate.append(round(row['neg']/row['total']*100, 2))
             melb_neu_rate.append(round(row['neu']/row['total']*100, 2))
-            melb_y.append(row['month'])
         elif row['city'] == 'sydney':
             sy_pos.append(row['pos'])
             sy_neg.append(-row['neg'])
@@ -113,6 +114,7 @@ def get_twitter_data(db):
             ho_pos_rate.append(round(row['pos']/row['total']*100, 2))
             ho_neg_rate.append(round(row['neg']/row['total']*100, 2))
             ho_neu_rate.append(round(row['neu']/row['total']*100, 2))
+        # skip time 2022-05 and canberra data    
         if row['month'] == '2022-05' or row['city'] == 'canberra':
             continue
         pol_score.append([Y, X, round(row['pol_score'], 3)])
@@ -120,7 +122,6 @@ def get_twitter_data(db):
         X += 1
     pos_neg = {
         'y': y,
-        'melb_y': melb_y,
         'melb_pos': melb_pos,
         'melb_neg': melb_neg,
         'sy_pos': sy_pos,
@@ -138,7 +139,6 @@ def get_twitter_data(db):
     }
     sentiment_rate = {
         'y': y,
-        'melb_y': melb_y,
         'melb_pos_rate': melb_pos_rate,
         'melb_neg_rate': melb_neg_rate,
         'melb_neu_rate': melb_neu_rate,
@@ -214,8 +214,7 @@ def get_infection():
 
 @app.route('/sentiment')
 def get_sentiment():
-    pos_neg, heat_score, sentiment_rate = get_twitter_data(
-        server['results_covid'])
+    pos_neg, heat_score, sentiment_rate = get_twitter_data(server['results_covid'])
     return render_template('sentiment_analysis.html', sentiment_rate=sentiment_rate, pos_neg=pos_neg, heat_score=heat_score)
 
 
@@ -335,6 +334,7 @@ def get_wordcloud():
     return render_template('wordcloud.html')
 
 
+# handle the post requests from front-end to get new wordcloud to the users
 @app.route('/wordcloud_pic', methods=['POST'])
 def get_wordcloud_pic():
     # set document id, e.g. 'darwin_2021-01_covid'
@@ -375,6 +375,7 @@ def get_topic():
     return render_template('topic_trend.html', vis_dict=vis_dict)
 
 
+# handle the post requests from front-end to get new topic trend data to the users
 @app.route('/topic_dict', methods=['POST'])
 def get_topic_dic():
     # set document id, e.g. 'darwin_2021-01_covid'
