@@ -12,7 +12,7 @@
 </table>
 
 ###  Analyse Melbourne Livability
-With the above parts, we show a Cloud-based solution in detail. This solution presents the results of our data very well. We discuss 5 scenarios to explore the livability of Melbourne.  
+We show a Cloud-based solution in detail. This solution presents the results of our data very well. We discuss 5 scenarios to explore the livability of Melbourne.  
 From the scenario of economy, Melbourne has the largest number of micro enterprises, compared to other cities. Melbourne also has many large enterprises. In terms of income status, Melbourne has a relatively balanced income distribution. Therefore, the economy of Melbourne is still growing nicely.  
 In education, the number of people having 12 schooling is more than other cities. This indicated that Melbourne has a more academic atmosphere than other cities.   
 However, in health, the vaccination rate in Melbourne is lower. That means the protection awareness of Melbourne residents needs to be improved. The house price of Melbourne is higher than other cities. This is very stressful for people who have not bought a house or are immigrants.  
@@ -25,6 +25,7 @@ In a summary, although there can be some drawbacks of living in Melbourne, they 
 ![architecture](./doc/architecture.png)
 
 ### Demonstration Video
+https://www.youtube.com/watch?v=k2DycYtT0Rc&list=PLNgKTEWVQVJ2BPFCvASUQGAbYBHzL-Ih3&index=4&t=9s
 
 ### Directory Structure
 ```js
