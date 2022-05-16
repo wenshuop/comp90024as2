@@ -32,8 +32,7 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
   <div class="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;padding-top:1%" id="hoSentimentRate">
   </div>
   <p>
-    This is analysis!
-  </p>
+    The above figures show the change of positive/neutral/negative rate of covid-related tweets for each city from 2021-01 to 2022-04, representing people's emotions and feelings on COVID-19 during the pandemic period.  </p>
   <div class="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;padding-top:1%" id="melbPosNeg">
   </div>
   <div class="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;padding-top:1%" id="syPosNeg">
@@ -49,14 +48,13 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
   <div class="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;padding-top:1%" id="hoPosNeg">
   </div>
   <p>
-    This is analysis!
-  </p>
+    The above bar graphs details the number of positive and negative covid-related tweets people posted in each city per month during 2021-01 to 2022-04.  </p>
   <div class="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;" id="polScoreHeat">
   </div>
   <div class="col-xs-12 col-sm-8 col-lg-10 placeholder" style="height:500px;" id="subScoreHeat">
   </div>
   <p>
-    This is analysis!
+    Above figures show the average polarity score and subjectivity score on covid-related tweets per city per month. The average polarity score is a float within range [-1.0, 1.0] that indicates people's emotions. The higher polarity means the more positive the tweet is. The subjectivity score is a float within the range [0.0, 1.0] where 0.0 is very objective and 1.0 is very subjective.  
   </p>
 
 
@@ -1143,7 +1141,7 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
   var polScoreHeat = echarts.init(document.getElementById('polScoreHeat'));
   var polScoreHeatOption = {
     title: {
-      text: 'Pol score of Covid Tweets',
+      text: 'Polarity Score of Covid-Related Tweets',
       left: 'center'
     },
     tooltip: {
@@ -1200,7 +1198,7 @@ Wenshuo Pan, 1226506, wenshuop@student.unimelb.edu.au -->
   var subScoreHeat = echarts.init(document.getElementById('subScoreHeat'));
   var subScoreHeatOption = {
     title: {
-      text: 'Sub score of Covid Tweets',
+      text: 'Subjectivity Score of Covid-Related Tweets',
       left: 'center'
     },
     tooltip: {

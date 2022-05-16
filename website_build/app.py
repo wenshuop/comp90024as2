@@ -388,5 +388,6 @@ def get_topic_dic():
     return render_template('topic_trend.html', vis_dict=vis_dict)
 
 
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
