@@ -17,4 +17,3 @@
     - role: installDependencies
     - role: deployMountVolumes
     - role: docker
-    # - role: wordpress

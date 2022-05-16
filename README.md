@@ -32,9 +32,21 @@
 ```
 cd mrc
 ```
+#### Create instances
+```
+./run-deploy-instance.sh
+```
+#### Deploy the Docker
+```
+./run-deploy-docker.sh
+```
+#### Deploy the CouchDB
+```
+./run-deploy-couchdb.sh
+```
 #### Deploy the data harvest and processing
 ```
-./deploy-harvest-search.sh
+./deploy-harvest-search.sh 
 ./deploy-harvest-streaming.sh
 ./run-deploy-supplement-data-analysis.sh
 ```
