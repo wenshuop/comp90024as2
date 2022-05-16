@@ -17,7 +17,9 @@ From the scenario of economy, Melbourne has the largest number of micro enterpri
 In education, the number of people having 12 schooling is more than other cities. This indicated that Melbourne has a more academic atmosphere than other cities.   
 However, in health, the vaccination rate in Melbourne is lower. That means the protection awareness of Melbourne residents needs to be improved. The house price of Melbourne is higher than other cities. This is very stressful for people who have not bought a house or are immigrants.  
 After analyzing the tweets data, Melbourne has slightly more optimistic residents overall than the other six cities. So, in humanities, most of Melbourne's residents remain optimistic during the epidemic which is better than other cities. this is a good evidence for livability.   
-In a summary, although there can be some drawbacks of living in Melbourne, they can be overcome and won't affect the liveability too much. From our analysis, Melbourne is a highly liveable city.![website](./doc/homepage.jpg)
+In a summary, although there can be some drawbacks of living in Melbourne, they can be overcome and won't affect the liveability too much. From our analysis, Melbourne is a highly liveable city.  
+
+![website](./doc/homepage.jpg)
 
 ### Architecture
 ![architecture](./doc/architecture.png)
