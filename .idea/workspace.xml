@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0cd411d5-3e24-4500-97ba-5422a4bfd396" name="Changes" comment="Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysis/adelaide/all_topic_dict/adelaide_2021-01_all_topic_dict.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysis/adelaide/all_topic_vis/adelaide_2021-01_all_topic_vis.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysis/adelaide/all_wordcloud/adelaide_2021-01_all_wordcloud.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysis/tweet_topics.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/tweet_topics.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +55,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/ccc备份/ccc备份-harvest&amp;cleaner之前版本/classifier/tweet_cleaner.py" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/nlp辅导班/code/src/dataset.py" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">

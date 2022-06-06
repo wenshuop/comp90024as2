@@ -139,7 +139,7 @@ def wordcloud(text):
     print('extracting term frequencies, total number of term {}, total term counts {}'.format(len(wordcloud), sum(wordcloud.values())))
     return wordcloud
 
-def topic_analysis(text, n_features=1000, n_components=5, n_top_words=20):
+def topic_analysis(text, n_features=5000, n_components=5, n_top_words=20):
     # Use tf (raw term count) features for LDA.
     tf_vectorizer = CountVectorizer(ngram_range=(1, 1), max_df=0.95, min_df=2, max_features=n_features)
     tf = tf_vectorizer.fit_transform(text)
